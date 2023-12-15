@@ -50,8 +50,7 @@
     <li>
       <h4><b>​​MMM TRADERS.</b></h4>
       <p>​01<sup>st</sup>April 2017 – 01<sup>st</sup> April 2018 </p>
-      <p>​Operating program of software installed (oroca)<br>
-        ​Billing, packing, receiving of cash and cheque. ​ ​</p>
+      <p>​Supplying and marketing​.</p>
     </li>
   </ul>
   <hr>
@@ -99,6 +98,8 @@
       </ul>
     </li>
     <li>GitHub Desktop</li>
+    <li>Figma</li>
+    <li>Liquid Backend languages</li>
   </ul>
 
   <hr>
