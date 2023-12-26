@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Page</title>
+    <style>
+        #CNIC{
+            width:10px;
+        }
+    </style>
+  </head>
+  <body>
+    <center>
+      <table cellpadding="10">
+        <tr align="center">
+          <td bgcolor="#acf1ac"><a style="text-decoration: none; color: #000;" href="./account.html">Step 1: Account</a></td>
+          <td bgcolor="#acf1ac"><a style="text-decoration: none; color: #000;" href="./details.html">Step 2: Personal Details</a></td>
+          <td bgcolor="#87cefa"><a style="text-decoration: none; color: #000;" href="./reviews.html">Step 3: Your Review</a></td>
+        </tr>
+      </table>
+      <fieldset style="width: 35%; text-align: left">
+        <legend><h3>Your Review</h3></legend>
+        <label for="option">How did you hear about us?</label>
+        <select name="option" id="option">
+            <option value="defaults" disabled selected>Select Your Option</option>
+            <option value="Friends">
+                Friends
+            </option>
+            <option value="SocialMedia">
+                Socail Media
+            </option>
+            <option value="NewsPaper">
+                News Paper
+            </option>
+        </select>
+        <br />
+        <br />
+        <br />
+        <label for="visit">Would You visit again?</label>
+        <br />
+        <input
+          type="radio"
+          name="visit"
+          id="visityes"
+        />
+        <label for="visityes">Yes</label>
+        <input
+          type="radio"
+          name="visit"
+          id="visitno"
+        />
+        <label for="visitno">No</label>
+        <input
+          type="radio"
+          name="visit"
+          id="visitmaybe"
+        />
+        <label for="visitmaybe">Maybe</label>
+        <br />
+        <br />
+        <br />
+        <label for="CNIC">Comments:</label>
+        <br />
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <br />
+        <br />
+        <label for="file">Documents:</label>
+        <br />
+        <input
+          type="file"
+          name="file"
+          id="file"
+        />
+        <br />
+        <br />
+        <input type="checkbox" name="signup" id="signup" required>
+        <label for="signup">Sign me up for email address</label>
+        <br />
+        <br />
+        <a href="./reviews.html"
+          ><img src="./Images/back.png" alt="" width="100" height="auto"
+        /></a>
+        <a href="./thankYouPage.html"
+          ><img src="./Images/submit.png" alt="" width="100" height="auto"
+        /></a>
+      </fieldset>
+    </center>
+  </body>
+</html>
