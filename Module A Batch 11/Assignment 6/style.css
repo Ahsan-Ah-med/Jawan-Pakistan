@@ -1,0 +1,30 @@
+ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+li{
+    list-style: none;
+}
+li:hover{
+    border-bottom: #000 1px solid;
+}
+a{
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+}
+.online_video_container, .offline_video_container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 20px;
+}
+.online_video_container iframe, .offline_video_container video{
+    width: 100%;
+}
