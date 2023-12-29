@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Css Start</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: 1px solid green;
+      }
+      h1,
+      h2 {
+        color: blueviolet;
+      }
+      .box {
+        background-color: cadetblue;
+      }
+      #parent{
+        text-align: center;
+      }
+      .box>p{
+        color: white;
+      }
+      .box2 p{
+        background-color: darkblue;
+        color: white;
+      }
+      h1+p{
+        font-size: 20px;
+      }
+      h1~p{
+        text-decoration: overline;
+      }
+      .box2 p span{
+        color: brown;
+        font-weight: 600;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent">
+      <div class="header">
+        <h1>Introduction to CSS</h1>
+        <h2>There are 10 chepter in this course</h2>
+      </div>
+      <div class="box">
+        <p>Lorem ipsum dolor sit amet.</p>
+        <h1>Breck point</h1>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+      </div>
+      <div class="box2">
+        <p>
+          Lorem ipsum dolor sit amet <span>consectetur, adipisicing elit. Quam quo
+          commodi dolores id,</span> vitae sequi animi quod eius laudantium ipsum.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
