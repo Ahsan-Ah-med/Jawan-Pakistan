@@ -1,0 +1,231 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+resume{
+    max-width: 1000px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0px;
+    border-bottom: 1px solid #000;
+}
+.cvd{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.cvd a:first-child:hover{
+    background: #cb0000c9;
+    color: #fff;
+}
+.cvd a:first-child{
+    color: #fff;
+    background: grey;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1;
+    padding: 10px 20px;
+    transition: 0.5s;
+    font-weight: 600;
+}
+.cvd a:hover{
+    color: red;
+}
+.cvd a{
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+}
+.obj{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 30px 0;
+    border-bottom: 1px solid #000;
+}
+.heading{
+    width: 25%;
+}
+.para{
+    width: 75%;
+}
+.exp{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 30px 0;
+    border-bottom: 1px solid #000;
+}
+.working{
+    width: 100%;
+    border-bottom: 1px solid #000;
+    padding: 20px 0;
+}
+.working:first-child{
+    padding-top: 0;
+}
+.working:last-child{
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.placement{
+    width: 75%;
+}
+.working_heading{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.eduDetails{
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 10px;
+}
+.edu{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 30px 0;
+    border-bottom: 1px solid #000;
+}
+.skills{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 30px 0;
+    /* border-bottom: 1px solid #000; */
+}
+.skillsDetails{
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    gap: 20px 10px;
+}
+.pd h1{
+    line-height: 1;
+    font-size: 55px;
+    font-weight: 800;
+    color: #000;
+    text-transform: uppercase;
+}
+.pd p{
+    font-size: 25px;
+    font-weight: 600;
+    color: #000;
+    text-transform: capitalize;
+    line-height: 1;
+    font-style: italic;
+}
+.heading h2{
+    font-size: 25px;
+    font-weight: 600;
+    color: #0a114d;
+    line-height: 1;
+    text-transform: uppercase;
+}
+h2{
+    font-size: 22px;
+    font-weight: 600;
+    color: #000;
+    line-height: 1;
+    padding-bottom: 10px;
+}
+.working_heading p{
+    font-size: 13px;
+    font-weight: 400;
+    color: #000;
+    line-height: 1;
+}
+.workingDetails p{
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+}
+.qul h2{
+    font-size: 16px;
+}
+.qul p{
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    line-height: 1;
+}
+.skillItem p{
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    line-height: 1;
+}
+.skillItem{
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+.grocery{
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+.bill_heading h1{
+    font-size: 30px;
+    font-weight: 400;
+    color: #000;
+    text-align: center;
+    margin-bottom: 15px;
+}
+table{
+    border-collapse: collapse;
+}
+thead tr{
+    background: #869960;
+    color: #fff;
+}
+thead tr th:first-child{
+    text-align: left;
+}
+thead tr th{
+    font-size: 20px;
+    font-weight: 500;
+    padding: 12px 10px;
+    line-height: 1;
+    border: 1px solid #000;
+}
+tbody tr td:first-child{
+    text-align: left;
+}
+tbody tr td:last-child{
+    background-color: #f1f1f1;
+}
+tbody td{
+    font-size: 18px;
+    padding: 12px 10px;
+    font-weight: 400;
+    color: #000;
+    text-align: center;
+}
+tfoot tr td:last-child{
+    background-color: #f1f1f1;
+}
+tfoot tr td:first-child{
+    font-weight: 600;
+    text-align: right;
+}
+tfoot td{
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+    padding: 12px 10px;
+    text-align: center;
+}
+td{
+    border: 1px solid #000;
+}
