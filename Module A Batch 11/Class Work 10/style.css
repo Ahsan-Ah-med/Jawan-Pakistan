@@ -1,0 +1,58 @@
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(258deg, #542b2b, #a00e0e);
+    padding: 10px 20px;
+}
+.logo p{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+.logo p span{
+    color: #ff0808;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+details{
+    padding: 0 10px;
+    position: relative;
+}
+summary{
+    list-style: none;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+summary span{
+    font-weight: 800;
+    padding-left: 5px;
+    color: red;
+}
+.sub_menu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #811c1c;
+    width: 100px;
+    padding: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: none;
+}
+details[open]> .sub_menu{
+    display: flex;
+}
