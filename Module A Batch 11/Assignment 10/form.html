@@ -45,6 +45,7 @@
           <div class="first">
             <label for="first-name">First Name</label>
             <input
+            required
               type="text"
               name="First-Name"
               id="first-name"
@@ -53,6 +54,7 @@
           <div class="last">
             <label for="last-name">First Name</label>
             <input
+            required
               type="text"
               name="Last-Name"
               id="last-name"
@@ -62,6 +64,7 @@
         <div class="email">
           <label for="email">Work Email</label>
           <input
+          required
             type="email"
             name="Email"
             id="email"
@@ -71,6 +74,7 @@
           <label for="password">Work Password</label>
           <div>
             <input
+            required
               type="password"
               name="Password"
               id="password"
@@ -99,7 +103,7 @@
         </div>
         <div class="org">
           <label for="org">Organization Name</label>
-          <input type="text" name="ORG" id="org" placeholder="org" />
+          <input required  type="text" name="ORG" id="org" placeholder="org" />
         </div>
         <div class="org_size">
           <label for="org_size">Organization Size</label>
@@ -113,7 +117,7 @@
           </select>
         </div>
         <div class="industry">
-          <label for="ind">Organization Size</label>
+          <label for="ind">Industry</label>
           <select name="Industry" id="ind">
             <option value="Select" disabled selected>--Select--</option>
             <option value="Software">Software</option>
@@ -129,7 +133,7 @@
           We encourage you to read the document in its entirety
         </span>
         <div class="policybox">
-          <input type="checkbox" name="Policy" id="policybox" />
+          <input type="checkbox" required name="Policy" id="policybox" />
           <label for="policybox"
             >I understand and agree to the
             <a href="#"
