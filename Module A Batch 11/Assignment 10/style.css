@@ -121,6 +121,18 @@ form {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     padding: 25px;
 }
+.password > div {
+    position: relative;
+}
+.password svg {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    cursor: pointer;
+}
+#hidePassword{
+    display: none;
+}
 
 /* Task 02 */
 
