@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+a {
+    text-decoration: none;
+}
+/* Task 01 */
+.form {
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto;
+}
+p.heading {
+    font-size: 25px;
+    color: #333;
+    font-weight: 400;
+    text-align: center;
+}
+.heading span {
+    font-weight: 600;
+}
+p.subheading {
+    font-size: 13px;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+    margin: 35px 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}   
+.subheading a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #0197ec;
+}
+label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    width: 100%;
+    display: block;
+}
+.name{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.first {
+    width: 50%;
+}
+.last {
+    width: 50%;
+}
+input{
+    width: 100%;
+    padding: 5px 20px;
+    margin: 0;
+    font-size: 10px;
+    font-weight: 500;
+    color: #333;
+    outline: none;
+    border: 0.5px solid #0000002b;
+    border-radius: 4px;
+}
+input::placeholder{
+    color: #777;
+}
+select::placeholder{
+    color: #777;
+}
+select {
+    width: 100%;
+    padding: 5px 20px;
+    margin: 0;
+    font-size: 10px;
+    font-weight: 500;
+    color: #333;
+    outline: none;
+    border: 0.5px solid #0000002b;
+    border-radius: 4px;
+}
+form > div {
+    margin-bottom: 10px;
+}
+span.bottomText {
+    font-size: 12px;
+    color: #333;
+}
+.policybox label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    display: inline;
+    cursor: pointer;
+}
+.policybox a {
+    color: #0197ec;
+    text-decoration: underline;
+}
+input#submit {
+    background: #0197ec;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+input#policybox {
+    width: fit-content;
+}
+form {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 25px;
+}
+
+/* Task 02 */
+
+.tablecontainer {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+thead tr th:first-child{
+    border-top-left-radius: 5px;
+}
+thead tr th:last-child{
+    border-top-right-radius: 5px;
+}
+thead tr th{
+    background: #019879;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: left;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    background: transparent;
+}
+td {
+    padding: 5px 10px;
+}
+tbody tr:hover {
+    background: #f3f3f3;
+    color: #019879;
+    border-bottom: 1px solid #c9c7c7;
+    border-top: 1px solid #c9c7c7;
+}
+tbody tr:last-child {
+    border-bottom: 3px solid #019879;
+}

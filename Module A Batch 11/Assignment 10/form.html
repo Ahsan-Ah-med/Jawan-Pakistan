@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="form">
+      <p class="heading">Try <span>Sign</span> free for 14 days</p>
+      <p class="subheading">
+        Already have a Formstack account?
+        <a href="#"
+          >Start your trial in app
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="16"
+            width="16"
+            viewBox="0 0 512 512">
+            <path
+              fill="#0197ec"
+              d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM241 377c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l87-87-87-87c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L345 239c9.4 9.4 9.4 24.6 0 33.9L241 377z" />
+          </svg>
+        </a>
+      </p>
+      <form action="https://formsubmit.co/ahsan.ahmed.026@gmail.com" method="POST">
+        <div class="name">
+          <div class="first">
+            <label for="first-name">First Name</label>
+            <input
+              type="text"
+              name="First-Name"
+              id="first-name"
+              placeholder="John" />
+          </div>
+          <div class="last">
+            <label for="last-name">First Name</label>
+            <input
+              type="text"
+              name="Last-Name"
+              id="last-name"
+              placeholder="Doe" />
+          </div>
+        </div>
+        <div class="email">
+          <label for="email">Work Email</label>
+          <input
+            type="email"
+            name="Email"
+            id="email"
+            placeholder="John@deo.com" />
+        </div>
+        <div class="password">
+          <label for="password">Work Password</label>
+          <input
+            type="password"
+            name="Password"
+            id="password"
+            placeholder="Password" />
+        </div>
+        <div class="org">
+          <label for="org">Organization Name</label>
+          <input type="text" name="ORG" id="org" placeholder="org" />
+        </div>
+        <div class="org_size">
+          <label for="org_size">Organization Size</label>
+          <select name="ORG-Size" id="org_size">
+            <option value="Select" disabled selected>--Select--</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+          </select>
+        </div>
+        <div class="industry">
+          <label for="ind">Organization Size</label>
+          <select name="Industry" id="ind">
+            <option value="Select" disabled selected>--Select--</option>
+            <option value="Software">Software</option>
+            <option value="Hardware">Hardware</option>
+            <option value="IOT">IOT</option>
+            <option value="Blockchain">Blockchain</option>
+            <option value="SAAS">SAAS</option>
+          </select>
+        </div>
+        <span class="bottomText"
+          >Formstack has updated our Terms of Service effective January 4, 2023
+          <br />
+          We encourage you to read the document in its entirety
+        </span>
+        <div class="policybox">
+          <input type="checkbox" name="Policy" id="policybox" />
+          <label for="policybox"
+            >I understand and agree to the
+            <a href="#"
+              >Formstack Privacy Policy, Software Services Agreement,</a
+            >
+            and <a href="#">Acceptable use Policy.</a></label
+          >
+        </div>
+        <input type="submit" name="submit" id="submit" value="Start free trial">
+      </form>
+    </div>
+  </body>
+</html>
