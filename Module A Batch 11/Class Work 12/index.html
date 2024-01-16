@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 10 Task</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="formContainer">
+        <!-- main image -->
+        <div class="mainImge">
+            <img src="./Images/mainImage.png" alt="">
+        </div>
+        <!-- header -->
+        <div class="head">
+            <h1>Register now</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        </div>
+        <!-- form start -->
+        <form action="https://formsubmit.co/ahsan.ahmed.026@gmail.com" method="POST">
+            <div id="name">
+                <div id="first">
+                    <label for="firstname">First Name</label>
+                    <input required type="text" name="First Name" id="firstname">
+                </div>
+                <div id="last">
+                    <label for="lastname">Last Name</label>
+                    <input required type="text" name="Last Name" id="lastname">
+                </div>
+            </div>
+            <div id="confident">
+                <div id="email">
+                    <label for="email">Email</label>
+                    <input required type="email" name="Email Name" id="emailaddress">
+                </div>
+                <div id="phone">
+                    <label for="lastname">Phone number</label>
+                    <input type="number" name="Phone Number" id="phoneNumber">
+                </div>
+            </div>
+            <div id="stadd1">
+                <label for="st1">Street Address</label>
+                <input required type="text" name="Street Address 1" id="st1">
+            </div>
+            <div id="stadd2">
+                <label for="st2">Street Address Line 2</label>
+                <input type="text" name="Street Address Line 2" id="st2">
+            </div>
+
+            <div id="location">
+                <div id="statePro">
+                    <label for="state">State/Prvince</label>
+                    <input required type="text" name="State/Prvince" id="state">
+                </div>
+                <div id="country">
+                    <label for="cont">Country</label>
+                    <input required type="text" name="Country" id="cont">
+                </div>
+            </div>
+
+            <div id="code">
+                <div id="postZip">
+                    <label for="post">Post/Zip Code</label>
+                    <input required type="text" name="Post/Zip Code" id="post">
+                </div>
+                <div id="area">
+                    <label for="areacode">Area Code</label>
+                    <input required type="text" name="Area Code" id="areacode">
+                </div>
+            </div>
+            <div id="agreement">
+                <input type="checkbox" required name="Agreement" id="agree">
+                <label for="agree">I agree to the defined <a href="#"> terms, conditions, and policies</a></label>
+            </div>
+            <input type="submit" value="Register Now">
+        </form>
+
+    </div>
+</body>
+</html>

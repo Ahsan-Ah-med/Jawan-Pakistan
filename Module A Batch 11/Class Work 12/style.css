@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+img{
+    width: 100%;
+}
+.formContainer {
+    width: 100%;
+    max-width: 490px;
+    margin: 90px auto;
+}
+.head {
+    margin-bottom: 30px;
+}
+.head h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #07074d;
+}
+.head p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #536387;
+    margin-top: 12px;
+}
+label{
+    display: block;
+    font-size: 14px;
+    color: #536387;
+    margin-bottom: 10px;
+}
+div#name, div#confident, div#location , div#code {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+div#area, div#postZip, div#statePro, div#country, div#email, div#phone, div#first ,div#last, div#stadd1, div#stadd2 {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+div#stadd1, div#stadd2 {
+    width:100%;
+}
+input:not(input[type='checkbox']) {
+    text-align: center;
+    width: 100%;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 1px solid #dde3ec;
+    background: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+}
+#agreement > label {
+    display: inline;
+}
+form > div {
+    margin-bottom: 15px;
+}
+input:focus-visible{
+    border-color: #6a64f1 !important;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+    outline: none;
+}
+input#agree {
+    margin-right: 10px;
+}
+input[type="submit"] {
+    font-size: 16px !important;
+    border-radius: 5px !important;
+    padding: 14px 25px !important;
+    border: none !important;
+    font-weight: 500 !important;
+    background: #6a64f1 !important;
+    color: white !important;
+    cursor: pointer;
+    margin-top: 25px;
+}
+input[type='checkbox']:checked{
+    opacity: 0.3;
+}
