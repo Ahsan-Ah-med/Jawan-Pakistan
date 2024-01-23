@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: #7d2ae8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.formDetails, .formBox {
+    width: 50%;
+    background: #fff;
+    padding: 60px 30px;
+}
+.formDetails{
+    background: linear-gradient(to left,#7d2ae88a, #7d2ae88a), url('./images/office-desk-5954672_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+.formBox h1 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #333;
+    position: relative;
+    margin-bottom: 35px;
+}
+.formBox h1:after {
+    content: '';
+    width: 7%;
+    height: 3px;
+    position: absolute;
+    background: #7d2ae8;
+    bottom: 0;
+    left: 0;
+}
+input {
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #333;
+    padding: 10px 0px 10px 30px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.email, .password{
+    position: relative;
+    margin-bottom: 15px;
+}
+.email::after {
+    content: '';
+    background: url('./images/email.png');
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    top: 15px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.password::after {
+    content: '';
+    background: url('./images/lock.png');
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    top: 15px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+a {
+    color: #7d2ae8;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+.formBox button {
+    display: block;
+    background: #7d2ae8;
+    border: 0;
+    color: #fff;
+    padding: 15px 20px;
+    width: 100%;
+    border-radius: 7px;
+    margin: 40px 0 30px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.formBox p{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+.formDetails h1 {
+    color: #fff;
+    font-weight: 500;
+    font-size: 30px;
+    opacity: 0.8;
+}
+.formDetails p {
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    opacity: 0.8;
+}
