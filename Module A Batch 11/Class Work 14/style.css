@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 0;
+    margin: 20px;
+    flex-direction: row;
+    justify-content: center;
+    overflow-x: visible;
+    padding: 50px 0;
+}
+.cards{
+    width: 300px;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: -2rem 0 3rem -2rem #000;
+    transition: 0.5s;
+}
+img{
+    width: 100%;
+}
+.innerCard{
+    padding: 20px;
+}
+.cards:hover {
+    transform: translate(-0.5rem,-1rem) rotate(3deg);
+}
+.cards:hover~.cards {
+    transform: translateX(30px);
+}
