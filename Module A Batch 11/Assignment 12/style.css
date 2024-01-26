@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;800&family=Roboto:wght@400;500&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -23,10 +24,16 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1140px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   padding: 8px;
+}
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 }
 .logo {
   width: 100%;
@@ -67,6 +74,7 @@ ul.menu {
   background-color: #fff;
   padding: 4px 5px;
   border-radius: 50px;
+  animation: bounce 1s infinite;
 }
 .order svg {
   width: 14px;
@@ -76,12 +84,12 @@ ul.menu {
   padding: 70px 15px;
 }
 .service_cont {
-  max-width: 1140px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
 }
 .heading p {
-  font-family: "Apercu";
+  font-family: 'Roboto', sans-serif;;
   font-style: normal;
   font-weight: 400;
   font-size: 40px;
@@ -91,7 +99,7 @@ ul.menu {
   margin-bottom: 8px;
 }
 .heading p span {
-  font-family: "futurak";
+  font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 52px;
@@ -99,7 +107,7 @@ ul.menu {
   color: #ffffff;
 }
 .para p {
-  font-family: "Apercu";
+  font-family: 'Roboto', sans-serif;;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -147,12 +155,12 @@ ul.menu {
 }
 .location_cont {
   text-align: center;
-  max-width: 1140px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
 }
 .locations .heading span {
-  font-family: "futurak";
+  font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 52px;
@@ -161,7 +169,7 @@ ul.menu {
 }
 .locations .heading h2 {
   margin-bottom: 8px;
-  font-family: "butler";
+  font-family: 'Roboto', sans-serif;;
   font-size: 48px;
   line-height: 60px;
   color: #ffffff;
@@ -186,7 +194,7 @@ ul.menu {
   padding: 0 15px;
 }
 .address > span {
-  font-family: "apercu";
+  font-family: 'Roboto', sans-serif;;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
@@ -196,7 +204,7 @@ ul.menu {
   margin-bottom: 8px;
 }
 .address h2 span {
-  font-family: "futurak";
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 32px;
   line-height: 29px;
@@ -209,7 +217,7 @@ ul.menu {
   line-height: 38px;
   color: #ffffff;
   margin-bottom: 24px;
-  font-family: "apercu";
+  font-family: 'Roboto', sans-serif;;
 }
 .address p a {
   color: inherit;
@@ -217,7 +225,7 @@ ul.menu {
   font-weight: inherit;
 }
 .address p {
-  font-family: "Apercu";
+  font-family: 'Roboto', sans-serif;;
   font-weight: 400;
   font-size: 15px;
   line-height: 19px;
@@ -236,6 +244,7 @@ ul.menu {
   background-color: #fff;
   padding: 4px 5px;
   border-radius: 50px;
+  animation: bounce 1s infinite;
 }
 a.loca_btn {
   margin-top: 40px;
@@ -262,17 +271,17 @@ a.loca_btn {
   top: 32px;
 }
 a.loca_btn.btn2 {
-  background: #28a745;
-  border-color: #28a745;
+  background: #ed1c24;
+  border-color: #ed1c24;
 }
 a.loca_btn.btn2 svg path {
-  fill: #28a745;
+  fill: #ed1c24;
 }
 .braches .heading {
   text-align: center;
 }
 .braches .heading span {
-  font-family: "futurak";
+  font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 52px;
@@ -280,7 +289,7 @@ a.loca_btn.btn2 svg path {
   color: #ffffff;
 }
 .braches .heading h2 {
-  font-family: "butler";
+  font-family: 'Roboto', sans-serif;;
   font-style: normal;
   font-size: 48px;
   line-height: 60px;
@@ -293,7 +302,7 @@ a.loca_btn.btn2 svg path {
   position: relative;
 }
 .braches_cont {
-  max-width: 1140px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
 }
@@ -303,7 +312,7 @@ a.loca_btn.btn2 svg path {
   gap: 40px 30px;
 }
 .braches_card div > span {
-  font-family: "apercu";
+  font-family: 'Roboto', sans-serif;;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -316,7 +325,7 @@ a.loca_btn.btn2 svg path {
   display: block;
 }
 .braches_card div > h2 span {
-  font-family: "futurak";
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 24px;
   line-height: 29px;
@@ -333,7 +342,7 @@ a.loca_btn.btn2 svg path {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  font-family: "Apercu";
+  font-family: 'Roboto', sans-serif;;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -348,9 +357,6 @@ a.loca_btn.btn2 svg path {
 }
 .braches_card div p a {
   color: inherit;
-}
-.braches_card .loca_btn svg {
-  transform: rotate(-37deg);
 }
 .braches_card .loca_btn {
   margin: 40px auto 0;
@@ -369,4 +375,48 @@ a.loca_btn.btn2 svg path {
   right: 0px;
   bottom: -50px;
 }
-
+.humbugger svg {
+  width: 20px;
+}
+.humbugger {
+  display: none;
+  cursor: pointer;
+}
+.mobile_menu {
+  width: 100%;
+  max-width: 320px;
+  height: 100vh;
+  position: fixed;
+  background: black;
+  left: -100%;
+  transition: 1s;
+}
+.mobile_menu ul.menu {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
+  flex-direction: column;
+  padding: 20px;
+}
+.mobile_menu li{
+  border-bottom: 1px solid #fff;
+  width: 100%;
+  padding-bottom: 5px;
+}
+div#closeBtn {
+  width: 20px;
+  margin: 5px 5px 0 auto;
+  cursor: pointer;
+}
+.Active{
+  left: 0;
+}
+@keyframes bounce {
+  0%, 100% {
+      transform: translateX(0);
+  }
+  50% {
+      transform: translateX(10px);
+  }
+}
