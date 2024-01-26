@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salt & Pepper</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="font.css" />
+    <link rel="stylesheet" href="./slick slider/slick-theme.css" />
+    <link rel="stylesheet" href="./slick slider/slick.css" />
+    <script src="./slick slider/slick.min.js"></script>
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <div class="homePage" id="homePage">
+      <div class="header">
+        <nav>
+          <div class="logo">
+            <img
+              src="./images/65b73fb7-2706-4440-87b9-9555fcd0ba80.webp"
+              alt="" />
+          </div>
+          <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Publications</a></li>
+            <li><a href="#">Feedback</a></li>
+            <li class="get"><a href="#">Get a Franchise</a></li>
+            <li class="order">
+              <a href="#"
+                >Order Online
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+                  </svg>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="banner">
+        <a href="#"
+          ><img src="./images/6d49fde6-2e27-4068-8b27-73bd0ee60cde.webp" alt=""
+        /></a>
+        <a href="#"
+          ><img src="./images/ac51af11-090c-49e8-9296-472de72fc5cb.webp" alt=""
+        /></a>
+        <a href="#"
+          ><img src="./images/c0ac3861-5a22-47cc-8f27-9aaed33c85e0.webp" alt=""
+        /></a>
+        <a href="#"
+          ><img src="./images/f1542832-c427-43bc-bee3-6e80af4d4569.webp" alt=""
+        /></a>
+      </div>
+      <div class="service">
+        <div class="service_cont">
+          <div class="heading">
+            <p>
+              Welcome to <span>Salt'n Pepper</span>
+              <br />
+              Restaurants! Our Brands
+            </p>
+          </div>
+          <div class="para">
+            <p>
+              Please click our brands below for further information,
+              reservations or to order online!
+            </p>
+          </div>
+          <div class="service_cards">
+            <div class="card">
+              <a href="#">
+                <img
+                  src="./images/8a66dd76-03d2-4b71-8d03-cf045f0248a7.webp"
+                  alt="" />
+                <span>Order Now</span>
+              </a>
+            </div>
+            <div class="card">
+              <a href="#">
+                <img
+                  src="./images/9d9cb355-ac8c-404e-a608-c28242343cd1.webp"
+                  alt="" />
+                <span>Order Now</span>
+              </a>
+            </div>
+            <div class="card">
+              <a href="#">
+                <img
+                  src="./images/f9238d0e-7c34-4139-a081-c57b7713628e.webp"
+                  alt="" />
+                <span>Order Now</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="locations">
+        <div class="bg_image">
+          <img
+            src="./images/bb1bd702-431a-4f3a-a0ca-c5966a1f7985.webp"
+            alt="" />
+        </div>
+        <div class="location_cont">
+          <div class="heading">
+            <span>Salt'n Pepper</span>
+            <h2>Restaurant Franchises</h2>
+          </div>
+          <div class="para">
+            <p>
+              Each of our franchises are individually managed. For further
+              details, kindly contact them directly.
+            </p>
+          </div>
+          <div class="location_card" id="addCard1">
+            <div class="address">
+              <span>Islamabad</span>
+              <h2><span>Salt'n Pepper</span> Restaurant</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
+                </svg>
+                Plot# 55, Shabbir Plaza, Blue Area, F-6, Islamabad
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+                </svg>
+                <a href="tel:051-2604904-6"> Ph: 051-2604904-6</a>
+              </p>
+              <a class="loca_btn" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+            <div class="addView">
+              <img
+                src="./images/7aba8915-02ed-46ee-bd96-1063abe072fa.webp"
+                alt="" />
+            </div>
+          </div>
+          <div class="location_card" id="addCard2">
+            <div class="address">
+              <span>Faisalabad</span>
+              <h2><span>Salt'n Pepper</span> Restaurant</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
+                </svg>
+                4-Kohinoor City, Faisalabad
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+                </svg>
+                <a href="tel:041-8711404">Ph: 041-8711404</a>
+              </p>
+              <a class="loca_btn" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+            <div class="addView">
+              <img
+                src="./images/11771dbf-36a1-4684-a55e-18af61e0f77c.webp"
+                alt="" />
+            </div>
+          </div>
+          <div class="location_card" id="addCard1">
+            <div class="address">
+              <span>Bahawalpur</span>
+              <h2><span>Salt'n Pepper</span> Restaurant</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
+                </svg>
+                D.C Chowk, opposite Commissioner House, Bahawalpur
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+                </svg>
+                <a href="tel:062-2740271-2">Ph: 062-2740271-2</a>
+              </p>
+              <a class="loca_btn" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+            <div class="addView">
+              <img
+                src="./images/11771dbf-36a1-4684-a55e-18af61e0f77c.webp"
+                alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="braches">
+        <div class="bg_image">
+          <img
+            src="./images/5c3e9532-2fd4-4458-9d20-fa3b8b7f0c28.webp"
+            alt="" />
+        </div>
+        <div class="bg_image2">
+          <img
+            src="./images/379a4928-376b-4f23-9277-262b4ad50d44.webp"
+            alt="" />
+        </div>
+        <div class="braches_cont">
+          <div class="heading">
+            <span>Salt'n Pepper</span>
+            <h2>Express Franchises</h2>
+          </div>
+          <div class="braches_card">
+            <div>
+              <img
+                src="./images/baaaf1e6-1c6a-464b-9ba6-58577855f10d.webp"
+                alt="" />
+              <span>Packages Mall</span>
+              <h2><span>Salt'n Pepper</span> Express</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path>
+                </svg>
+                First Floor Packages Mall
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path>
+                </svg>
+                <a href="tel:0333-0310534">Ph: 0333-0310534</a>
+              </p>
+              <a class="loca_btn" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+            <div>
+              <img
+                src="./images/5653706f-83e4-42bb-99f9-4a64e9a1101a.webp"
+                alt="" />
+              <span>Emporium Mall</span>
+              <h2><span>Salt'n Pepper</span> Express</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path>
+                </svg>
+                2nd Floor, Food Court Emporium Mall
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path>
+                </svg>
+                <a href="tel:0311-1100947">Ph: 0311-1100947</a>
+              </p>
+              <a class="loca_btn" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+            <div>
+              <img
+                src="./images/9f2b5abf-88a1-4f49-9f98-c3dfee664e40.webp"
+                alt="" />
+              <span>Gujranwala</span>
+              <h2><span>Salt'n Pepper</span> Express</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path>
+                </svg>
+                Sixteenth Avenue Mall
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path>
+                </svg>
+                <a href="tel:03006024000">Ph: 0300 6024000</a>
+              </p>
+              <a class="loca_btn" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+            <div>
+              <img
+                src="./images/0f3ddba0-18a0-450e-af77-188aeb795934.webp"
+                alt="" />
+              <span>sargodha</span>
+              <h2><span>Salt'n Pepper</span> Express</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path>
+                </svg>
+                Opposite Sargodha Arts Council Babar Road
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path>
+                </svg>
+                <a href="tel:0483725500">Ph: (048) 3725500</a>
+              </p>
+              <a class="loca_btn" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+            <div>
+              <img
+                src="./images/171bb884-f60a-4d94-a0b9-78204522564e.webp"
+                alt="" />
+              <span>Jhelum</span>
+              <h2><span>Salt'n Pepper</span> Express</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path>
+                </svg>
+                Opposite Dancing Fountain Gallery 2 Citi Housing Jhelum,
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path>
+                </svg>
+                <a href="tel:03077675555">Ph: 0307 7675555</a>
+              </p>
+              <a class="loca_btn" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+            <div>
+              <img
+                src="./images/31b37f0c-5936-4232-a55e-8042c2656526.webp"
+                alt="" />
+              <span>Faisal Town</span>
+              <h2><span>Salt'n Pepper</span> Express</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path>
+                </svg>
+                34-C Abul Hassan Isfahani Rd, Faisal Town,Lahore
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path>
+                </svg>
+                <a href="tel:042-111-100-678">Ph: 042-111-100-678</a>
+              </p>
+              <a class="loca_btn" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+            <div>
+              <img
+                src="./images/2b5877b5-ca49-4161-a30e-752ddce91595.webp"
+                alt="" />
+              <span>DHA</span>
+              <h2><span>Salt'n Pepper</span> Express</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path>
+                </svg>
+                93-Y Phase III, DHA,Lahore
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path>
+                </svg>
+                <a href="tel:042-111-100-678">Ph: 042-111-100-678</a>
+              </p>
+              <a class="loca_btn" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+            <div>
+              <img
+                src="./images/0cdc03af-9732-4d0c-9174-f4e66953b3c8.webp"
+                alt="" />
+              <span>Bahria Town</span>
+              <h2><span>Salt'n Pepper</span> Express</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path>
+                </svg>
+                Arwa Heights Building 19 Nishtar Block, Sector E, Bahria Town
+                Lahore
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path>
+                </svg>
+                <a href="tel:042-111-100-678">Ph: 042-111-100-678</a>
+              </p>
+              <a class="loca_btn" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+            <div>
+              <img
+                src="./images/a860f757-114b-4453-ba86-f7b24dc0f24e.webp"
+                alt="" />
+              <span>Gujar Khan</span>
+              <h2><span>Salt'n Pepper</span> Express</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path>
+                </svg>
+                New Metro City Gujar Khan
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path>
+                </svg>
+                <a href="tel:032-111-14-962">Ph: 032-111-14-962</a>
+              </p>
+              <a class="loca_btn" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="locations">
+        <div class="location_cont">
+          <div class="heading">
+            <span>Salt'n Pepper</span>
+            <h2>Village Franchise</h2>
+          </div>
+          <div class="para">
+            <p></p>
+          </div>
+          <div class="location_card" id="addCard2">
+            <div class="address">
+              <span>GUJRANWALA</span>
+              <h2><span>Salt'n Pepper</span> Village</h2>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
+                </svg>
+                Adjacent to Rida Marquees /DHA Main Gate, GT Road Gujranwala
+                Cantt
+              </p>
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    fill="#b4b4b4"
+                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+                </svg>
+                <a href="tel:055-3880400"> Ph: 055-3884500 l ,055-3880400</a>
+              </p>
+              <a class="loca_btn btn2" href="#"
+                >Get Directions
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      fill="#dc3545"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path>
+                  </svg> </span
+              ></a>
+            </div>
+            <div class="addView">
+              <img
+                src="./images/0df39a08-2dca-4998-adda-4ca66b1132cb.webp"
+                alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

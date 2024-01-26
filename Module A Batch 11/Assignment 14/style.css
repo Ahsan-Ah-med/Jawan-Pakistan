@@ -1,0 +1,372 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #000;
+}
+img {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+li {
+  list-style: none;
+}
+.header {
+  background: #000;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 8px;
+}
+.logo {
+  width: 100%;
+  max-width: 165px;
+  display: flex;
+}
+ul.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+}
+.menu a {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: apercu;
+}
+.get {
+  padding: 12px 16px;
+  border: 1px solid #fff;
+  border-radius: 50px;
+}
+.order {
+  background-color: #ed1c24;
+  border-radius: 50px;
+  border: 1px solid #ed1c24;
+  padding: 10px 16px;
+}
+.order a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.order span {
+  display: flex;
+  background-color: #fff;
+  padding: 4px 5px;
+  border-radius: 50px;
+}
+.order svg {
+  width: 14px;
+}
+.service {
+  background: #000;
+  padding: 70px 15px;
+}
+.service_cont {
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+}
+.heading p {
+  font-family: "Apercu";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.heading p span {
+  font-family: "futurak";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 62px;
+  color: #ffffff;
+}
+.para p {
+  font-family: "Apercu";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+  color: #ffffffb3;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.service_cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card {
+  width: 100%;
+  max-width: 280px;
+}
+.card a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+}
+.card img {
+  background: #fff;
+  padding: 20px 15px;
+}
+.card a span {
+  display: block;
+  width: fit-content;
+  border: 1px solid #ffffff4d;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #ffffff;
+  padding: 16px 55px;
+}
+.locations {
+  position: relative;
+  background: #ffffff0f;
+  padding: 70px;
+}
+.location_cont {
+  text-align: center;
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+}
+.locations .heading span {
+  font-family: "futurak";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 62px;
+  color: #ffffff;
+}
+.locations .heading h2 {
+  margin-bottom: 8px;
+  font-family: "butler";
+  font-size: 48px;
+  line-height: 60px;
+  color: #ffffff;
+}
+.location_card {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+.address {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 0 15px;
+}
+.addView {
+  width: 50%;
+  display: flex;
+  padding: 0 15px;
+}
+.address > span {
+  font-family: "apercu";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+  color: #ed1c24;
+  margin-bottom: 8px;
+}
+.address h2 span {
+  font-family: "futurak";
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 29px;
+  color: #ffffff;
+}
+.address h2 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
+  color: #ffffff;
+  margin-bottom: 24px;
+  font-family: "apercu";
+}
+.address p a {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+.address p {
+  font-family: "Apercu";
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+  color: #ffffffb3;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.loca_btn span svg {
+  width: 14px;
+}
+.loca_btn span {
+  display: flex;
+  background-color: #fff;
+  padding: 4px 5px;
+  border-radius: 50px;
+}
+a.loca_btn {
+  margin-top: 40px;
+  display: flex;
+  width: fit-content;
+  border: 1px solid #ffffff4d;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #ffffff;
+  padding: 16px 28px;
+  align-items: center;
+  gap: 10px;
+}
+.address p svg {
+  width: 16px;
+}
+#addCard2 {
+  flex-direction: row-reverse;
+}
+.bg_image {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+}
+a.loca_btn.btn2 {
+  background: #28a745;
+  border-color: #28a745;
+}
+a.loca_btn.btn2 svg path {
+  fill: #28a745;
+}
+.braches .heading {
+  text-align: center;
+}
+.braches .heading span {
+  font-family: "futurak";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 62px;
+  color: #ffffff;
+}
+.braches .heading h2 {
+  font-family: "butler";
+  font-style: normal;
+  font-size: 48px;
+  line-height: 60px;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+.braches {
+  padding: 70px 0;
+  background: #000;
+  position: relative;
+}
+.braches_cont {
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+}
+.braches_card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 30px;
+}
+.braches_card div > span {
+  font-family: "apercu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+  color: #ed1c24;
+  text-align: center;
+  margin: 24px 0 8px;
+  display: block;
+}
+.braches_card div > h2 span {
+  font-family: "futurak";
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+}
+.braches_card div > h2 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+.braches_card div p {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-family: "Apercu";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.03em;
+  color: #ffffffb3;
+  margin-bottom: 12px;
+  gap: 5px;
+  text-align: center;
+}
+.braches_card div p svg {
+  width: 16px;
+}
+.braches_card div p a {
+  color: inherit;
+}
+.braches_card .loca_btn svg {
+  transform: rotate(-37deg);
+}
+.braches_card .loca_btn {
+  margin: 40px auto 0;
+}
+.braches_card div img {
+  border-radius: 5px;
+}
+.braches .bg_image{
+  position: absolute;
+  left: 33px;
+  top: 40px;
+  width: fit-content;
+}
+.braches .bg_image2{
+  position: absolute;
+  right: 0px;
+  bottom: -50px;
+}
+
