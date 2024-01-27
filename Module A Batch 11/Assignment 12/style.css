@@ -40,6 +40,9 @@ nav {
   max-width: 165px;
   display: flex;
 }
+.logo a {
+  display: flex;
+}
 ul.menu {
   display: flex;
   align-items: center;
@@ -68,6 +71,7 @@ ul.menu {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  font-size: 16px;
 }
 .order span {
   display: flex;
@@ -121,6 +125,8 @@ ul.menu {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px 10px;
 }
 .card {
   width: 100%;
@@ -297,7 +303,7 @@ a.loca_btn.btn2 svg path {
   margin-bottom: 30px;
 }
 .braches {
-  padding: 70px 0;
+  padding: 70px 20px;
   background: #000;
   position: relative;
 }
@@ -405,18 +411,191 @@ a.loca_btn.btn2 svg path {
   padding-bottom: 5px;
 }
 div#closeBtn {
-  width: 20px;
+  width: 14px;
   margin: 5px 5px 0 auto;
   cursor: pointer;
 }
 .Active{
   left: 0;
 }
-@keyframes bounce {
-  0%, 100% {
-      transform: translateX(0);
-  }
-  50% {
-      transform: translateX(10px);
-  }
+.express {
+  padding: 60px 20px 38px;
+  background: #000;
+}
+.express_cont {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.heading {
+  text-align: center;
+}
+.express_cont .heading span {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 52px;
+  color: #FFFFFF;
+}
+.express_cont .heading h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 48px;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+}
+.express_cont .heading h2 sub {
+  font-size: 26px;
+}
+.express_card {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 30px;
+}
+.exCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px 20px;
+}
+.eximg {
+  width: 32px;
+  display: flex;
+}
+.sologen span {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #ED1C24;
+}
+h2.head {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+.head span {
+  font-weight: 600;
+  font-size: 24px;
+}
+.exCard p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+  color: #000000;
+}
+.socail {
+  width: 100%;
+  background: #000;
+  padding: 30px 20px 60px;
+}
+.sohead h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.socard {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+}
+footer {
+  width: 100%;
+  padding: 70px 20px 20px;
+}
+.footer {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  
+}
+.footerCont{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+.footerCont > div {
+  width: 25%;
+}
+.text p:first-child {
+  padding: 25px 0;
+}
+.text p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: #ffffffb3;
+  letter-spacing: 0.61px;
+}
+.footer h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+}
+.footer li a,.footer li  {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: #ffffffb3;
+  letter-spacing: 0.61px;
+}
+.footer ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.fologo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+.fologo a {
+  background: #ED1C24;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.follow > a {
+  display: flex;
+  width: 100%;
+  max-width: 140px;
+  margin-bottom: 20px;
+}
+.footerBottom{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+.footerBottom p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.61px;
+  color: #ffffffb3;
 }

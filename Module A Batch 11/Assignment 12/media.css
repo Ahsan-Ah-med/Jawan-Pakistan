@@ -1,8 +1,119 @@
-@media only screen and (max-width: 990px){
-    ul.menu{
-        display: none;
-    }
-    .humbugger {
-        display: block;
-      }
+@media only screen and (max-width: 990px) {
+  ul.menu {
+    display: none;
+  }
+  .humbugger {
+    display: block;
+  }
+  .service_cards {
+    justify-content: center;
+  }
+  .location_card,
+  #addCard2 {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .address,
+  .addView {
+    width: 100%;
+  }
+  .braches_card,
+  .express_card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footerCont {
+    flex-wrap: wrap;
+  }
+  .footerCont > div {
+    width: 45%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .braches_card,
+  .express_card {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .order a {
+    font-size: 12px;
+    gap: 5px;
+  }
+  .order {
+    padding: 5px 10px;
+  }
+  .order svg {
+    width: 10px;
+  }
+  .logo {
+    max-width: 100px;
+  }
+  .locations {
+    padding: 70px 20px;
+  }
+  .socard {
+    gap: 5px;
+  }
+  .footerCont > div {
+    width: 100%;
+  }
+  .follow > a {
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .heading p {
+    font-size: 25px;
+  }
+  .heading p span {
+    font-size: 30px;
+  }
+  .para p {
+    font-size: 12px;
+  }
+  .locations .heading span {
+    font-size: 30px;
+    line-height: 30px;
+  }
+  .locations .heading h2 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+  .address > span {
+    font-size: 14px;
+  }
+  .address h2 span {
+    font-size: 30px;
+  }
+  .address h2 {
+    font-size: 24px;
+  }
+  .address p {
+    font-size: 12px;
+  }
+  .braches .heading span,
+  .braches .heading h2 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+  .express_cont .heading span,
+  .express_cont .heading h2 {
+    font-size: 30px;
+  }
+  .express_cont .heading h2 sub {
+    font-size: 22px;
+  }
+  .exCard{
+    gap: 5px;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
 }
