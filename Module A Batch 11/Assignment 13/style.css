@@ -1,0 +1,311 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  width: 100%;
+}
+li {
+  list-style: none;
+  padding: 0 10px;
+}
+a {
+  text-decoration: none;
+}
+.header {
+  background: #161617cc;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+.header nav {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1050px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+ul.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+.nav a {
+  font-size: 12px;
+  font-weight: 400;
+  color: #ffffffcc;
+  text-decoration: none;
+}
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.mb,
+.mobileMenu {
+  display: none;
+}
+.mbnav a {
+  font-size: 28px;
+  line-height: 1.1428571429;
+  font-weight: 600;
+  letter-spacing: 0.007em;
+  color: #e8e8ed;
+  text-decoration: none;
+}
+.mobileMenu {
+  padding: 10px 48px;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: -100vh;
+  left: 0;
+  background: #121212;
+  overflow: scroll;
+  transition: 0.5s;
+}
+.menuClose {
+  text-align: right;
+}
+.mbnav li {
+  padding: 6px 0;
+}
+.banner {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px 50px;
+}
+.banner h2 {
+  font-size: clamp(32px, (56 / 1440) * 100vw, 56px);
+  line-height: 1.07143;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+.banner p {
+  font-size: clamp(18px, (28 / 1440) * 100vw, 28px);
+  line-height: 1.10722;
+  font-weight: 400;
+  letter-spacing: 0.004em;
+  margin-top: 10px;
+}
+.bannerbtn a {
+  color: #2997ff;
+  font-size: clamp(16px, (22 / 1440) * 100vw, 22px);
+  line-height: 1.381;
+  font-weight: 400;
+  text-decoration: none;
+  margin-right: 30px;
+}
+.bannerImage {
+  display: flex;
+}
+.banner2 {
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+.banner3 {
+  background: url("./Images/hero_apple_vision_pro_avail__ecthwv10twsy_largetall_2x.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #1d1d1f;
+}
+.leftBox {
+  background: url("./Images/promo_apple_watch_series_9_order__b3u85rm9zf6u_large_2x.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #fff;
+  padding: 40px;
+}
+.rightBox {
+  background: url("./Images/promo_mbp__ek7p477bkp6q_large_2x.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #1d1d1f;
+  padding: 40px;
+}
+.twoColoumBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.twoColoumBox h2 {
+  font-size: clamp(32px, (40 / 1440) * 100vw, 40px);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: 0em;
+}
+.twoColoumBox span {
+  font-size: 20px;
+  color: red;
+  margin: 10px 0;
+}
+.twoColoumBox p {
+  font-size: clamp(18px, (220 / 1440) * 100vw, 22px);
+  line-height: 1.2381;
+  font-weight: 400;
+  letter-spacing: 0.016em;
+  margin-bottom: 15px;
+}
+.twobox2 .rightBox {
+  background: url("./Images/promo_ipad__fioegapg12qi_large_2x.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.twobox2 .leftBox {
+  background: url("./Images/promo_airpods_pro_order__d8xv36p4uwae_large_2x.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.twobox3 .rightBox {
+  background: url("./Images/promo_iphone_tradein__bugw15ka691e_large_2x.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.twobox3 .leftBox {
+  background: url("./Images/tile__cauwwcyyn9hy_large_2x.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.slideItem a {
+  position: relative;
+}
+.slideItem {
+  margin: 10px 10px;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+.slideItem.slick-active {
+  opacity: 1;
+}
+.slidebtn {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1d1d1f;
+  background: #ffffff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: clamp(15px, (16 / 1440) * 100vw, 16px);
+  font-weight: 600;
+  gap: 10px;
+}
+.des p {
+  font-size: clamp(15px, (20 / 1440) * 100vw, 20px);
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: 0em;
+  color: #fff;
+}
+.slidebtn {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  text-align: center;
+}
+footer {
+  background: #f5f5f7;
+  padding: 20px;
+}
+.footer {
+  max-width: 1050px;
+  width: 100%;
+  margin: 0 auto;
+}
+.about p {
+  color: #0000008f;
+  font-size: 12px;
+  padding-bottom: 10px;
+  line-height: 1.3333733333;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+@media only screen and (max-width: 990px) {
+  ul.nav {
+    display: none;
+  }
+  .mb,
+  .mobileMenu {
+    display: block;
+  }
+  .twoColoumBox {
+    flex-direction: column;
+  }
+  .leftBox,
+  .rightBox {
+    width: 100%;
+    padding: 25px;
+  }
+  .rightBox {
+    background: url("./Images/promo_mbp__ek7p477bkp6q_small_2x.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .mobileMenu {
+    padding: 10px 20px;
+  }
+  .btns {
+    padding: 5px 10px;
+    gap: 5px;
+  }
+  .slidebtn {
+    gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .mbimg {
+    display: block !important;
+  }
+  .dkimg {
+    display: none !important;
+  }
+  .slidebtn{
+    flex-direction: column-reverse;
+  }
+}
