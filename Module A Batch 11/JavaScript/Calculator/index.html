@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>Calculator</title>
+
+</head>
+<body>
+<div class="main">
+    <div class="calculator-display screen">
+        <input class="value" placeholder="0" type="text" readonly id="calc-display" name="calc-display" maxlength="8" />
+    </div>
+    <div class="button">
+        <div class="firstR">
+            <button style="background-color: #f5f7ff;" class="btn C" onclick="operator('%');">%</button>
+            <button  style="background-color: #f5f7ff;" id="mrc" class="btn" onclick="square();">x<sup>2</sup></button>
+            <button  style="background-color: #f5f7ff;" id="mplus" class="btn" onclick="del1();">CE</button>
+            <button style="background-color: #1d2953;" onclick="empty();" id="mminus" class="btn C spclBtn">C</button>
+        </div>
+        <div class="firstR">
+            <button onclick="number('7');" class="btn num">7</button>
+            <button onclick="number('8');" class="btn num">8</button>
+            <button onclick="number('9');" class="btn num">9</button>
+            <button style="background-color:#2288ff;" onclick="operator('/');" class="btn spclBtn">÷</button>
+        </div>
+        <div class="firstR">
+            <button onclick="number('4');" class="btn num">4</button>
+            <button onclick="number('5');" class="btn num">5</button>
+            <button onclick="number('6');" class="btn num">6</button>
+            <button style="background-color:#ffc804;" onclick="operator('*');" class="btn spclBtn">×</button>
+        </div>
+        <div class="firstR">
+            <button onclick="number('1');" class="btn num">1</button>
+            <button onclick="number('2');" class="btn num">2</button>
+            <button onclick="number('3');" class="btn num">3</button>
+            <button style="background-color:#ff445a;" onclick="operator('-');" class="btn spclBtn">-</button>
+        </div>
+        <div class="firstR">
+            <button onclick="number('0');" class="btn num">0</button>
+            <button onclick="operator('.');" class="btn num">.</button>
+            <button style="background-color:#f5f7ff;" onclick="equals();" class="btn iet">=</button>
+            <button style="background-color:#63de78;" onclick="operator('+');" class="btn spclBtn" >+</button>
+        </div>
+    </div>
+</div>
+<script src="./index.js">
+</script>
+</body>
+</html>
