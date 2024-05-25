@@ -1,0 +1,653 @@
+<div class="custom_anno">
+  <div class="custom_cq_anno custom-width">
+    <div class="anno_container">
+      <div class="custom_anno_tel">
+        <a href="{{ section.settings.tele_link }}">
+          {% if section.settings.cont_img != blank %}
+            <div class="contact_icon">
+              <img src="{{ section.settings.cont_img | img_url: 'master' }}">
+            </div>
+          {% endif %}
+          <div class="contact_tele">
+            <h3>{{ section.settings.tele_no }}</h3>
+          </div>
+        </a>
+      </div>
+      <div class="custom_anno_slider" dir="rtl">
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when 'Text' -%}
+              <div class="anno_text_box">
+                <h3>{{ block.settings.text }}</h3>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+      <div class="custom_anno_icon">
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when 'Icon' -%}
+              <div class="anno_icon">
+                <a href="{{ block.settings.icon_link }}">
+                  {% if block.settings.icon_img != blank %}
+                    <img src="{{ block.settings.icon_img | img_url: 'master' }}">
+                  {% endif %}
+                </a>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="custom_anno_mobile_slider">
+      <div class="custom_anno_slider_2" dir="rtl">
+        <div class="custom_anno_tel">
+          <a href="{{ section.settings.tele_link }}">
+            {% if section.settings.cont_img != blank %}
+              <div class="contact_icon">
+                <img src="{{ section.settings.cont_img | img_url: 'master' }}">
+              </div>
+            {% endif %}
+            <div class="contact_tele">
+              <h3>{{ section.settings.tele_no }}</h3>
+            </div>
+          </a>
+        </div>
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when 'Text' -%}
+              <div class="anno_text_box">
+                <h3>{{ block.settings.text }}</h3>
+              </div>
+          {% endcase %}
+        {% endfor %}
+        <div class="custom_mobile_social_icon">
+          {% for block in section.blocks %}
+            {%- case block.type -%}
+              {%- when 'Icon' -%}
+                <div class="anno_icon">
+                  <a href="{{ block.settings.icon_link }}">
+                    {% if block.settings.icon_img != blank %}
+                      <img src="{{ block.settings.icon_img | img_url: 'master' }}">
+                    {% endif %}
+                  </a>
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom_anno{
+    width:100%;
+    background-color: {{ section.settings.back_color }};
+    {% if template == 'product' %}
+      display: none;
+    {% endif %}
+  }
+  .custom_cq_anno{
+    padding: {{ section.settings.padding_tb }}px {{ section.settings.padding_lr }}px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .anno_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .custom_anno_tel{
+    width: 20%;
+  }
+  .custom_anno_slider{
+    width: 70%;
+  }
+  .custom_anno_icon{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .custom_anno_tel a{
+    display: flex;
+    align-items: center;
+  }
+  .contact_icon{
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    display: flex;
+  }
+  .contact_icon img{
+    width: 16px;
+    height: 16px;
+  }
+  .contact_tele h3 p{
+    color: {{ section.settings.cont_fc }};
+    text-align: center;
+    font-family: Poppins;
+    font-size: {{ section.settings.cont_fz }}px;
+    font-style: normal;
+    font-weight: {{ section.settings.cont_fw }};
+    line-height: 16.362px;
+  }
+  .anno_icon{
+    width: 28px;
+    height: 28px;
+    margin-right: 14px;
+  }
+  .anno_icon:last-child{
+    margin-right:0;
+  }
+  .anno_icon a img{
+    width: 15px;
+    height: 15px;
+  }
+  .anno_text_box h3 p{
+    color: {{ section.settings.anno_fc }};
+    text-align: center;
+    font-family: Poppins;
+    font-size: {{ section.settings.anno_fz }}px;
+    font-style: normal;
+    font-weight: {{ section.settings.anno_fw }};
+    line-height: 16.362px;
+  }
+  .anno_text_box h3 p strong{
+    color: {{ section.settings.anno_fc_bold }};
+    font-size: {{ section.settings.anno_fz }}px;
+    font-weight: {{ section.settings.anno_fw_bold }};
+  }
+  .custom_mobile_social_icon, .custom_anno_slider_2 .custom_anno_tel{
+    display: flex !important;
+    justify-content: center;
+  }
+  .custom_anno_mobile_slider{
+    display: none;
+  }
+  .custom_anno_slider_2 .slick-track{
+    display: flex;
+    align-items: center;
+  }
+  .anno_icon a{
+    border-radius: 50%;
+    border: 1px solid {{ section.settings.icon_bor_color }};
+    background: {{ section.settings.icon_bg_color }};
+    padding: 0px 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  .anno_icon a:hover{
+    border: 1px solid {{ section.settings.icon_bor_color_hover }};
+    background: {{ section.settings.icon_bg_color_hover }};
+  }
+
+  @media only screen and (max-width:990px){
+    .anno_container{
+      display: none;
+    }
+    .custom_anno_mobile_slider{
+      display: block;
+    }
+    .anno_icon:last-child{
+      margin-right: 14px;
+    }
+    .custom_anno_slider_2 .custom_anno_tel a{
+      flex-direction: row-reverse;
+    }
+  }
+
+  @media only screen and (max-width:767px){
+    .custom_cq_anno{
+      padding: {{ section.settings.padding_tb_mb }}px {{ section.settings.padding_lr_mb }}px;
+    }
+    .contact_tele h3 p{
+      font-size: {{ section.settings.cont_fz_mb }}px;
+    }
+    .anno_text_box h3 p, .anno_text_box h3 p strong{
+      font-size: {{ section.settings.anno_fz_mb }}px;
+    }
+
+  }
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  $('.custom_anno_slider').slick({
+    slidesToShow: 1,
+   slidesToScroll: 1,
+   autoplay: {{ section.settings.slick_autoplay }},
+    autoplaySpeed: 0,
+     dots: {{ section.settings.slick_dots }},
+     arrows: {{ section.settings.slick_arrow }},
+       speed: {{ section.settings.slick_autoplay_speed | times: 1000 }},
+         cssEase: 'linear',
+         infinite: true,
+      initialSlide: 1,
+    centerPadding: '60px',
+    centerMode: true,
+    rtl: true,
+    {% if section.settings.pre_arr != blank %}
+    prevArrow:'<img src="{{ section.settings.pre_arr | img_url: 'master' }}"/>',
+    {% endif %}
+    {% if section.settings.next_arr != blank %}
+    nextArrow:'<img src="{{ section.settings.next_arr | img_url: 'master' }}"/>',
+    {% endif %}
+
+    responsive: [
+      {
+       breakpoint: 1200,
+       settings: {
+         arrows: {{ section.settings.slick_arrow }},
+         centerMode: false,
+         centerPadding: '40px',
+         slidesToShow: 2,
+         slidesToScroll: 1,
+       }
+     },
+     {
+       breakpoint: 990,
+       settings: {
+         arrows: {{ section.settings.slick_arrow }},
+         centerMode: false,
+         centerPadding: '40px',
+         slidesToShow: 2,
+         slidesToScroll: 1,
+       }
+     },
+     {
+       breakpoint: 768,
+       settings: {
+         arrows: false,
+         dots: false,
+         centerMode: false,
+         centerPadding: '40px',
+         slidesToShow: 2,
+         slidesToScroll: 1,
+       }
+     },
+     {
+       breakpoint: 600,
+       settings: {
+         arrows: false,
+         centerMode: false,
+         autoplay: false,
+         centerPadding: '40px',
+         slidesToShow: 1,
+         slidesToScroll: 1,
+       }
+     }
+   ]
+  });
+  });
+
+
+  $(document).ready(function() {
+  $('.custom_anno_slider_2').slick({
+    slidesToShow: 4,
+   slidesToScroll: 1,
+   autoplay: {{ section.settings.slick_autoplay }},
+    autoplaySpeed: 0,
+     dots: {{ section.settings.slick_dots }},
+     arrows: {{ section.settings.slick_arrow }},
+       speed: {{ section.settings.slick_autoplay_speed | times: 1000 }},
+         cssEase: 'linear',
+         infinite: true,
+      initialSlide: 1,
+    centerPadding: '60px',
+    centerMode: true,
+    rtl: true,
+    {% if section.settings.pre_arr != blank %}
+    prevArrow:'<img src="{{ section.settings.pre_arr | img_url: 'master' }}"/>',
+    {% endif %}
+    {% if section.settings.next_arr != blank %}
+    nextArrow:'<img src="{{ section.settings.next_arr | img_url: 'master' }}"/>',
+    {% endif %}
+
+    responsive: [
+      {
+       breakpoint: 1200,
+       settings: {
+         arrows: {{ section.settings.slick_arrow }},
+         centerMode: false,
+         centerPadding: '40px',
+         slidesToShow: 3,
+         slidesToScroll: 1,
+       }
+     },
+     {
+       breakpoint: 990,
+       settings: {
+         arrows: {{ section.settings.slick_arrow }},
+         centerMode: false,
+         centerPadding: '40px',
+         slidesToShow: 2,
+         slidesToScroll: 1,
+       }
+     },
+     {
+       breakpoint: 768,
+       settings: {
+         arrows: false,
+         dots: false,
+         centerMode: false,
+         centerPadding: '40px',
+         slidesToShow: 2,
+         slidesToScroll: 1,
+       }
+     },
+     {
+       breakpoint: 600,
+       settings: {
+         arrows: false,
+          autoplay: false,
+         centerMode: false,
+         centerPadding: '0px',
+         slidesToShow: 1,
+         slidesToScroll: 1,
+       }
+     }
+   ]
+  });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "back_color",
+      "label": "Background Color",
+      "default": "#FCE39E"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_tb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top-Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_lr",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top-Left",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_tb_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top-Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_lr_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top-Left",
+      "default": 20
+    },
+    {
+      "type": "richtext",
+      "id": "tele_no",
+      "label": "Contact Number"
+    },
+    {
+      "type": "image_picker",
+      "id": "cont_img",
+      "label": "Contact Icon"
+    },
+    {
+      "type": "url",
+      "id": "tele_link",
+      "label": "Contact link"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+        {
+      "type": "checkbox",
+      "id": "slick_arrow",
+      "label": "Arrow Show/Hide",
+      "default": false
+    },
+        {
+      "type": "checkbox",
+      "id": "slick_dots",
+      "label": "Dots Show/Hide",
+      "default": false
+    },
+        {
+      "type": "checkbox",
+      "id": "slick_autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "slick_autoplay_speed",
+      "min": 0,
+      "max": 15,
+      "step": 1,
+      "unit": "sec",
+      "label": "Autoplay Speed",
+      "default": 2
+    },
+    {
+      "type": "image_picker",
+      "id": "pre_arr",
+      "label": "Previous Arrow Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "next_arr",
+      "label": "Next Arrow Icon"
+    },
+    {
+      "type": "header",
+      "content": "Fonts Settings"
+    },
+    {
+      "type": "header",
+      "content": "Contact Settings"
+    },
+    {
+      "type": "range",
+      "id": "cont_fz",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "cont_fw",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Font Weight",
+      "default": 600
+    },
+    {
+      "type": "color",
+      "id": "cont_fc",
+      "label": "Font Color",
+      "default": "#064E3B"
+    },
+    {
+      "type": "range",
+      "id": "cont_fz_mb",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size Mobile",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Announcement Settings"
+    },
+    {
+      "type": "range",
+      "id": "anno_fz",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "anno_fw",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Font Weight",
+      "default": 400
+    },
+    {
+      "type": "color",
+      "id": "anno_fc",
+      "label": "Font Color",
+      "default": "#1E2C21"
+    },
+    {
+      "type": "header",
+      "content": "OnBold Settings"
+    },
+    {
+      "type": "range",
+      "id": "anno_fw_bold",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Font Weight",
+      "default": 600
+    },
+    {
+      "type": "color",
+      "id": "anno_fc_bold",
+      "label": "Font Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "anno_fz_mb",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size Mobile",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "icon_bg_color",
+      "label": "Icon Background Color",
+      "default": "#FEDD78"
+    },
+    {
+      "type": "color",
+      "id": "icon_bg_color_hover",
+      "label": "Icon Background Color On Hover",
+      "default": "#e5ad00"
+    },
+    {
+      "type": "color",
+      "id": "icon_bor_color",
+      "label": "Icon Border Color",
+      "default": "#FFF8F1"
+    },
+    {
+      "type": "color",
+      "id": "icon_bor_color_hover",
+      "label": "Icon Border Color On Hover",
+      "default": "#FFF8F1"
+    }
+
+
+
+
+  ],
+  "blocks":[
+  {
+      "name": "Announcement Text",
+    "type": "Text",
+    "settings":[
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "TEXT"
+        }
+    ]
+  },
+        {
+      "name": "Socail Icon",
+    "type": "Icon",
+    "settings":[
+        {
+            "type": "image_picker",
+            "id": "icon_img",
+            "label": "Icon Image"
+        },
+        {
+          "type": "url",
+          "id": "icon_link",
+          "label": "Social link"
+        }
+
+
+    ]
+  }
+],
+  "presets": [
+  {
+    "name": "CQ Announcement Bar"
+
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,763 @@
+<div class="buySteps-container section-{{ section.id }}">
+  <div class="custom_side_image">
+    {% if section.settings.side_image != blank %}
+      <img src="{{ section.settings.side_image | img_url: 'master' }}">
+    {% endif %}
+  </div>
+  <div class="buySteps-box-1">
+    <div class="buySteps-heading">{{ section.settings.main_buySteps_heading }}</div>
+  </div>
+  <div class="buySteps-box-2">
+    {% for block in section.blocks %}
+      <div class="buy-step-{{ forloop.index }} buy-step">
+        <div class="buy_img_container buyImgBorder">
+          <div class="loopIndex">
+            <h1>{{ forloop.index }}</h1>
+          </div>
+          <div class="buy_img_container_inner">
+            <img src="{{ block.settings.step_logo | img_url: 'master' }}">
+          </div>
+        </div>
+        <div class="buy-content-{{ forloop.index }} buy-content">
+          <h2 class="text-container">
+            <div class="buyTitle">
+              {{ block.settings.step_tittle -}}
+            </div>
+            <div class="buyText">
+              {{ block.settings.step_name }}
+            </div>
+          </h2>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<style>
+            .buySteps-container{
+            flex-wrap: wrap;
+            width: 100%;
+            gap: 40px;
+            margin: 0 auto;
+            max-width: 1500px;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            display: flex;
+            gap: 52px;
+            align-self: stretch;
+            background: {{section.settings.main_background}};
+            padding: {{ section.settings.secTopPad }}px {{ section.settings.secRightLeftPad }}px {{section.settings.secBottomPad}}px;
+            position: relative;
+              overflow: hidden;
+            }
+            .buySteps-box-1{
+              width: 100%;
+              text-align: center
+            }
+             .buySteps-heading p{
+             line-height: 52px;
+              letter-spacing: -1px;
+              font-size: {{ section.settings.mainFontSize }}px;
+              color: {{section.settings.main_headingColor}};
+              font-weight: {{ section.settings.main_headingWeight }};
+               margin: 0px;
+               line-height: 52px;
+            }
+            .buySteps-heading strong{
+              color: {{section.settings.main_heading_bold}};;
+              font-weight: {{ section.settings.main_headingWeight }};
+              font-size: {{ section.settings.mainFontSize }}px;
+              padding: 0px 5px;
+            }
+             .buyTitle{
+               padding: 20px 0px;
+             }
+            .buySteps-box-2{
+
+              width: 100%;
+              gap: 60px;
+              max-width: {{ section.settings.page_size }}px;
+              display: inline-flex;
+              align-items: flex-start;
+              flex-shrink: 0;
+              justify-content: space-between;
+            }
+            .buySteps-box-3{
+            display: flex;
+              justify-content: space-evenly;
+              width: 100%;
+                text-align: center
+
+            }
+
+            .buy-step{
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              align-items: center;
+              gap: 0px;
+             width: 33%;
+            }
+
+            .loopIndex {
+              position: absolute;
+
+              background-color: {{ section.settings.stepBgColor }};
+              border-radius: 25px;
+              text-align: center;
+              top: 0;
+               right: 5px;
+              border: 1px solid {{ section.settings.borderColor }};
+               width: 50px;
+               height: 50px;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              z-index: 0;
+            }
+            .loopIndex h1{
+              -webkit-text-stroke: 1px {{ section.settings.strokeColor }};
+              -webkit-text-fill-color: {{ section.settings.stepBgColor }};
+              font-size: {{ section.settings.numberSize }}px;
+              font-weight: {{ section.settings.numberWeight }};
+            }
+            .buy_img_container{
+              display: block;
+            }
+            .buy_img_container img{
+              /* width: 200px; */
+
+              /* border-radius: 50%;
+              max-width: 200px;
+              max-height: 200px;
+              height: 200px */
+            }
+  .buy_img_container_inner{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ section.settings.imgBgColor }};
+    border-radius: 50%;
+    overflow: hidden;
+     z-index: -1;
+  }
+  .buy-step:hover .buy_img_container_inner{
+    background-color: {{ section.settings.imgBgColor_hover }};
+  }
+
+            .buy-content {
+              padding: 0px 10px;
+              text-align: center;
+            }
+            .buySteps-box-2 h3{
+              margin: 8px 0px 0px 0px;
+              color: {{section.settings.steps_color}};
+              font-weight: 700;
+              text-transform: none;
+            }
+            .text-container{
+             margin: 0px;
+            }
+             .section-{{ section.id }} .buyTitle p{
+              color: {{section.settings.steps_title_color}};
+              font-weight: {{ section.settings.buyTitleWeight }};
+              font-size: {{ section.settings.buyTitleSize }}px;
+              line-height: 26px;
+              letter-spacing: 0px;
+            }
+            .section-{{ section.id }} .text-container .buyText p{
+              color: {{section.settings.steps_name_color}};
+              font-weight: {{ section.settings.step_name_Weight }};
+              font-size: {{ section.settings.step_nam_Size }}px;
+              letter-spacing: 0;
+            }
+            .text-container p{
+              margin: 0px 0px 0px 0px;
+              letter-spacing: 0;
+              text-transform: none;
+            }
+            .buyText p{
+            line-height: 26px;
+            }
+            .section-{{ section.id }} .buyImgBorder{
+            border: 1px solid {{ section.settings.imgBorderColor }};
+            border-radius: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            position: relative;
+            box-shadow: 0px 1px 4px 0px #8BC349;
+            }
+      .buy-step:hover .buyImgBorder{
+       box-shadow: 0px 1px 4px #FFC207;
+      }
+            .bouncyBtn{
+              font-style: normal;
+              line-height: normal;
+              letter-spacing: -0.598px;
+            }
+            .buyText{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .buyText img{
+              width: 10px;
+            }
+            .text-container p {
+      margin-right: 5px;
+  }
+   .buy-content .text-container p strong{
+      position: relative;
+   }
+  .buy-content .text-container p strong:after{
+     content: "";
+     background-image:url('{{ section.settings.para_image | img_url: 'master' }}');
+     position: absolute;
+     left: 0;
+     bottom: -7px;
+     max-width: 100%;
+     width: 100%;
+     height: 100%;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: contain;
+      z-index: -1;
+      opacity: 0;
+  }
+  .buy-step:hover .text-container p strong:after{
+    opacity:1;
+  }
+  .buy-step:hover .buy_img_container img{
+    filter: grayscale(1);
+  }
+  .custom_side_image{
+    position: absolute;
+    left: -23%;
+    transition: 1s;
+    transform: scaleX(-1);
+    top: 30px;
+  }
+  .custom_side_image.leftScroll{
+    left: 0;
+  }
+
+           @media only screen and (max-width: 1023px) {
+             .buySteps-box-2 {
+                  gap: 0px;
+              }
+             .buyTitle {
+                  padding: 15px 0px;
+              }
+              .loopIndex {
+
+             right: 4%;
+          }
+
+
+             .buy-step {
+                gap: 0px;
+            }
+
+             .section-{{ section.id }} .text-container .buyTitle p {
+                  font-size: {{ section.settings.buyTitleSize1023 }}px;
+              }
+             .section-{{ section.id }} .text-container .buyText {
+                font-size: {{ section.settings.buyTextSize1023 }}px;
+            }
+            .loopIndex h1 {
+                font-size: {{ section.settings.numberSizeOnMob }}px;
+            }
+            .buyText p {
+                  line-height: 20px;
+              }
+             .buy-content {
+                padding: 0px 0px;
+                text-align: center;
+            }
+          }
+          @media only screen and (max-width: 900px) {
+             .buySteps-container{
+               padding: {{ section.settings.secTopPadMob }}px {{ section.settings.secRightLeftPadMob }}px {{section.settings.secBottomPadMob}}px;
+            }
+           }
+        @media only screen and (max-width: 767px) {
+      .buy_img_container_inner{
+        width: 150px;
+        height: 150px;
+      }
+              .buySteps-heading p {
+                  line-height: 37px;
+                  font-size: {{ section.settings.buyStepFontSizeOnMob }}px;
+              }
+
+           .buySteps-box-2 {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+          .buySteps-container {
+                gap: 0px;
+            }
+      .buySteps-box-1{
+      margin-bottom: 30px;
+      }
+      .buySteps-box-2{
+      margin-bottom: 10px;
+      }
+         .buy-step {
+              width: 50%;
+              flex-wrap: wrap;
+              margin-bottom: 20px;
+          }
+      .buyImgBorder {
+          padding: 6px;
+      }
+
+        .section-{{ section.id }} .text-container .buyTitle p {
+              font-size: {{ section.settings.buyTitleSize767 }}px;
+          }
+        }
+
+  @media only screen and (max-width:600px){
+    .custom_side_image, .leftScroll {
+      display: none;
+    }
+  }
+  @media only screen and (max-width:500px){
+    .buy-step {
+      width: 100%;
+    }
+  }
+
+  .buySteps-heading p strong:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -2px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s ease, background-position 1.5s ease;
+    background: linear-gradient(to right,transparent 50%,#49946d 50%);
+    background-size: 200% 100%;
+    background-position: left bottom;
+    transition: all .5s ease-out;
+  }
+  .rightToleft p strong:after {
+    background-position: right bottom !important;
+    opacity: 1 !important;
+  }
+  .rightToleft p strong{
+    color: #fff;
+    position: relative;
+  }
+</style>
+
+<script>
+  window.addEventListener('scroll', function() {
+    var section = document.querySelector('.buySteps-container');
+    var customImage = document.querySelector('.custom_side_image');
+
+    // Yahan pe aap class ka naam change kar sakte hain agar kuch aur naam rakhna hai to
+    var classNameToAdd = 'leftScroll';
+
+    if (section.getBoundingClientRect().top < window.innerHeight) {
+      // Jab window scroll karke section ke top pe aa jaye, class add karenge
+      customImage.classList.add(classNameToAdd);
+    } else {
+      // Agar window section ke top se bahar jaata hai, class hata denge
+      customImage.classList.remove(classNameToAdd);
+    }
+  });
+
+
+    window.addEventListener('scroll', function() {
+     var section = document.querySelector('.buySteps-container');
+     var customImage = document.querySelector('.buySteps-heading');
+
+     // Yahan pe aap class ka naam change kar sakte hain agar kuch aur naam rakhna hai to
+     var classNameToAdd = 'rightToleft';
+
+     if (section.getBoundingClientRect().top < window.innerHeight) {
+       // Jab window scroll karke section ke top pe aa jaye, class add karenge
+       customImage.classList.add(classNameToAdd);
+     } else {
+       // Agar window section ke top se bahar jaata hai, class hata denge
+       customImage.classList.remove(classNameToAdd);
+     }
+   });
+</script>
+{% schema %}
+ {
+   "name": "Buy Guide",
+   "settings": [
+     {
+      "type": "header",
+      "content": "Desktop Settings",
+      "info": "The settings below work above 900px screens"
+    },
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1250
+    },
+    {
+      "type": "header",
+      "content": "Section Paddings"
+    },
+    {
+      "type": "range",
+      "id": "secTopPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secRightLeftPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Left Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secBottomPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+     {
+       "type": "header",
+       "content": "Heading Settings"
+     },
+     {
+       "type": "richtext",
+       "id": "main_buySteps_heading",
+       "label": "Main Heading"
+     },
+     {
+      "type": "range",
+      "id": "main_headingWeight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Main Heading Font Weight",
+      "default": 500
+    },
+     {
+      "type": "range",
+      "id": "mainFontSize",
+      "min": 8,
+      "max": 48,
+      "step": 1,
+      "label": "Main Heading Font size",
+      "default": 26
+    },
+     {
+       "type": "color",
+       "id": "main_headingColor",
+       "label": "Main Heading Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "main_heading_bold",
+       "label": "Main Heading Bold Color",
+       "default": "#49946D"
+     },
+     {
+       "type": "color",
+       "id": "main_background",
+       "label": "Section Background Color",
+       "default": "#000000"
+     },
+     {
+       "type": "header",
+       "content": "block Images setting"
+     },
+     {
+     "type": "color",
+     "id": "imgBorderColor",
+     "label": "Image Border Color",
+     "default": "#000000"
+     },
+     {
+       "type": "header",
+       "content": "title settings"
+     },
+     {
+       "type": "color",
+       "id": "steps_title_color",
+       "label": "Steps Name Color",
+       "default": "#000000"
+     },
+     {
+        "type": "range",
+        "id": "buyTitleSize",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Name Size",
+        "default": 16
+     },
+     {
+        "type": "range",
+        "id": "buyTitleWeight",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "label": "Step Name Weight",
+        "default": 700
+      },
+     {
+       "type": "header",
+       "content": "Step Number Settings"
+     },
+     {
+       "type": "color",
+       "id": "strokeColor",
+       "label": "Steps Outline Color",
+       "default": "#dfe3e8"
+     },
+     {
+       "type": "color",
+       "id": "stepBgColor",
+       "label": "Steps Background Color",
+       "default": "#49946D"
+     },
+     {
+       "type": "color",
+       "id": "borderColor",
+       "label": "Steps Border Color",
+       "default": "#064E3B"
+     },
+     {
+        "type": "range",
+        "id": "numberSize",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Number Size",
+        "default": 32
+      },
+     {
+        "type": "range",
+        "id": "numberWeight",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "label": "Step Number Weight",
+        "default": 400
+      },
+     {
+       "type": "header",
+       "content": "name settings"
+     },
+     {
+       "type": "color",
+       "id": "steps_name_color",
+       "label": "Steps Text Color",
+       "default": "#000000"
+     },
+     {
+       "type": "image_picker",
+       "id": "arrowImg",
+       "label": "Steps Arrow After"
+     },
+     {
+        "type": "range",
+        "id": "step_nam_Size",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Text Size",
+        "default": 16
+      },
+     {
+        "type": "range",
+        "id": "step_name_Weight",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "label": "Step Text Weight",
+        "default": 700
+      },
+     {
+       "type": "color",
+       "id": "imgBgColor",
+       "label": "Image Background Color"
+     },
+     {
+       "type": "color",
+       "id": "imgBgColor_hover",
+       "label": "Image Background Color On Hover"
+     },
+     {
+       "type": "header",
+       "content": "Mobile settings",
+       "info": "This setting will work on 1280 screen sizes"
+     },
+     {
+        "type": "range",
+        "id": "stepText1280",
+        "min": 8,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Title Font size",
+        "default": 18
+      },
+     {
+       "type": "header",
+       "content": "Mobile settings",
+       "info": "This setting will work on 1023 screen sizes"
+     },
+     {
+        "type": "range",
+        "id": "secTopPadMob",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Top padding on mobile",
+        "default": 30
+      },
+     {
+        "type": "range",
+        "id": "secRightLeftPadMob",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Right Left Padding on Mobile",
+        "default": 30
+      },
+     {
+        "type": "range",
+        "id": "secBottomPadMob",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Bottom Padding Mobile",
+        "default": 30
+      },
+     {
+        "type": "range",
+        "id": "buyTitleSize1023",
+        "min": 8,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Title Font size",
+        "default": 16
+      },
+     {
+        "type": "range",
+        "id": "buyTextSize1023",
+        "min": 8,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Title Font size",
+        "default": 8
+      },
+     {
+        "type": "range",
+        "id": "numberSizeOnMob",
+        "min": 8,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Number Font size",
+        "default": 20
+      },
+     {
+       "type": "header",
+       "content": "Mobile settings",
+       "info": "This setting will work on 767 screen sizes"
+     },
+     {
+        "type": "range",
+        "id": "buyTitleSize767",
+        "min": 8,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Title Font size",
+        "default": 12
+      },
+     {
+        "type": "range",
+        "id": "buyStepFontSizeOnMob",
+        "min": 8,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Buy Heading Font size",
+        "default": 30
+      },
+       {
+          "type": "image_picker",
+          "id": "para_image",
+          "label": "Title Below Image"
+        },
+     {
+        "type": "image_picker",
+        "id": "side_image",
+        "label": "Image"
+      }
+
+     ],
+     "blocks":[
+            {
+          "name": "slider",
+           "type": "block",
+           "settings": [
+             {
+             "type": "image_picker",
+             "id": "step_logo",
+             "label": "Step logo"
+             },
+             {
+             "type": "richtext",
+             "id": "step_tittle",
+             "label": "Step Tittle"
+             },
+             {
+             "type": "richtext",
+             "id": "step_name",
+             "label": "Step Name"
+             }
+     ]
+     }
+     ],
+"presets": [
+    {
+      "name": "Buy Guide"
+
+    }
+  ]
+ }
+{% endschema %}

@@ -1,0 +1,1441 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+<div class="accountPage">
+  <div class="accountMenuContainer">
+    <ul class="accountMenu">
+      <li>
+        <div class="optionContainer">
+          <button class="addressesBtn isActive" data-label="addresses">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="24"
+              viewBox="0 0 25 24"
+              fill="none"
+            >
+              <path d="M12.6663 11.75C13.1481 11.75 13.5599 11.5784 13.9016 11.2353C14.2432 10.8921 14.4141 10.4796 14.4141 9.99778C14.4141 9.51593 14.2425 9.10417 13.8993 8.7625C13.5562 8.42083 13.1437 8.25 12.6618 8.25C12.18 8.25 11.7682 8.42158 11.4266 8.76472C11.0849 9.10786 10.9141 9.52036 10.9141 10.0022C10.9141 10.4841 11.0856 10.8958 11.4288 11.2375C11.7719 11.5792 12.1844 11.75 12.6663 11.75ZM12.6641 20.025C14.8807 18.0083 16.5182 16.1792 17.5766 14.5375C18.6349 12.8958 19.1641 11.45 19.1641 10.2C19.1641 8.23683 18.5366 6.62938 17.2818 5.37763C16.0269 4.12588 14.4877 3.5 12.6641 3.5C10.8404 3.5 9.30121 4.12588 8.04636 5.37763C6.7915 6.62938 6.16406 8.23683 6.16406 10.2C6.16406 11.45 6.70573 12.8958 7.78906 14.5375C8.8724 16.1792 10.4974 18.0083 12.6641 20.025ZM12.6641 22C9.98073 19.7167 7.97656 17.5958 6.65156 15.6375C5.32656 13.6792 4.66406 11.8667 4.66406 10.2C4.66406 7.7 5.46823 5.70833 7.07656 4.225C8.6849 2.74167 10.5474 2 12.6641 2C14.7807 2 16.6432 2.74167 18.2516 4.225C19.8599 5.70833 20.6641 7.7 20.6641 10.2C20.6641 11.8667 20.0016 13.6792 18.6766 15.6375C17.3516 17.5958 15.3474 19.7167 12.6641 22Z" fill="black" />
+            </svg>
+            <p>
+              {% if section.settings.viewAddressText != blank %}
+                {{ section.settings.viewAddressText }}
+              {% else %}
+                {{ 'customer.account.view_addresses' | t }}
+              {% endif %}
+            </p>
+          </button>
+        </div>
+      </li>
+      <li>
+        <div class="optionContainer">
+          <button class="orderBtn" data-label="orderHistory">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="24"
+              viewBox="0 0 25 24"
+              fill="none"
+            >
+              <path d="M5.56361 21C5.29695 21 5.05945 20.9209 4.85111 20.7625C4.64278 20.6042 4.50528 20.4 4.43861 20.15L1.61361 9.97505C1.54695 9.72505 1.59278 9.50005 1.75111 9.30005C1.90945 9.10005 2.12195 9.00005 2.38861 9.00005H7.38861L12.0136 2.25005C12.0969 2.15005 12.1886 2.07088 12.2886 2.01255C12.3886 1.95422 12.5053 1.92505 12.6386 1.92505C12.7719 1.92505 12.8886 1.95422 12.9886 2.01255C13.0886 2.07088 13.1803 2.15005 13.2636 2.25005L17.8636 9.00005H22.9886C23.2386 9.00005 23.4428 9.10005 23.6011 9.30005C23.7594 9.50005 23.8053 9.72505 23.7386 9.97505L20.8886 20.15C20.8219 20.4 20.6844 20.6042 20.4761 20.7625C20.2678 20.9209 20.0303 21 19.7636 21H5.56361ZM5.81361 19.5H19.5136L22.0386 10.5H3.31361L5.81361 19.5ZM12.6636 16.5C13.0803 16.5 13.4344 16.3542 13.7261 16.0625C14.0178 15.7709 14.1636 15.4167 14.1636 15C14.1636 14.5834 14.0178 14.2292 13.7261 13.9375C13.4344 13.6459 13.0803 13.5 12.6636 13.5C12.2469 13.5 11.8928 13.6459 11.6011 13.9375C11.3094 14.2292 11.1636 14.5834 11.1636 15C11.1636 15.4167 11.3094 15.7709 11.6011 16.0625C11.8928 16.3542 12.2469 16.5 12.6636 16.5ZM9.21361 9.00005H16.0386L12.6386 4.00005L9.21361 9.00005Z" fill="black" />
+            </svg>
+            <p>{{ section.settings.historyText }}</p>
+          </button>
+        </div>
+      </li>
+      <li>
+        <div class="optionContainer">
+          <button class="detailsBtn" data-label="accountDetails">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="24"
+              viewBox="0 0 25 24"
+              fill="none"
+            >
+              <path d="M12.6641 11.9751C11.5641 11.9751 10.6641 11.6251 9.96406 10.9251C9.26406 10.2251 8.91406 9.3251 8.91406 8.2251C8.91406 7.1251 9.26406 6.2251 9.96406 5.5251C10.6641 4.8251 11.5641 4.4751 12.6641 4.4751C13.7641 4.4751 14.6641 4.8251 15.3641 5.5251C16.0641 6.2251 16.4141 7.1251 16.4141 8.2251C16.4141 9.3251 16.0641 10.2251 15.3641 10.9251C14.6641 11.6251 13.7641 11.9751 12.6641 11.9751ZM4.66406 20.0001V17.6501C4.66406 17.0168 4.8224 16.4751 5.13906 16.0251C5.45573 15.5751 5.86406 15.2334 6.36406 15.0001C7.48073 14.5001 8.55156 14.1251 9.57656 13.8751C10.6016 13.6251 11.6307 13.5001 12.6641 13.5001C13.6974 13.5001 14.7224 13.6293 15.7391 13.8876C16.7557 14.1459 17.8217 14.5184 18.9371 15.0049C19.4588 15.2404 19.877 15.5818 20.1918 16.0291C20.5067 16.4764 20.6641 17.0168 20.6641 17.6501V20.0001H4.66406ZM6.16406 18.5001H19.1641V17.6501C19.1641 17.3834 19.0849 17.1293 18.9266 16.8876C18.7682 16.6459 18.5724 16.4668 18.3391 16.3501C17.2724 15.8334 16.2974 15.4793 15.4141 15.2876C14.5307 15.0959 13.6141 15.0001 12.6641 15.0001C11.7141 15.0001 10.7891 15.0959 9.88906 15.2876C8.98906 15.4793 8.01406 15.8334 6.96406 16.3501C6.73073 16.4668 6.53906 16.6459 6.38906 16.8876C6.23906 17.1293 6.16406 17.3834 6.16406 17.6501V18.5001ZM12.6641 10.4751C13.3141 10.4751 13.8516 10.2626 14.2766 9.8376C14.7016 9.4126 14.9141 8.8751 14.9141 8.2251C14.9141 7.5751 14.7016 7.0376 14.2766 6.6126C13.8516 6.1876 13.3141 5.9751 12.6641 5.9751C12.0141 5.9751 11.4766 6.1876 11.0516 6.6126C10.6266 7.0376 10.4141 7.5751 10.4141 8.2251C10.4141 8.8751 10.6266 9.4126 11.0516 9.8376C11.4766 10.2626 12.0141 10.4751 12.6641 10.4751Z" fill="#000000" />
+            </svg>
+            <p>{{ section.settings.infoText }}</p>
+          </button>
+        </div>
+      </li>
+      <li>
+        <div class="optionContainer">
+          <button data-label="subscriptionArea">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="24"
+              viewBox="0 0 25 24"
+              fill="none"
+            >
+              <path d="M13.7641 17.45L17.2641 13.95C17.4474 13.7667 17.5807 13.5625 17.6641 13.3375C17.7474 13.1125 17.7891 12.875 17.7891 12.625C17.7891 12.0917 17.6016 11.6375 17.2266 11.2625C16.8516 10.8875 16.3974 10.7 15.8641 10.7C15.5307 10.7 15.1974 10.8083 14.8641 11.025C14.5307 11.2417 14.1641 11.5917 13.7641 12.075C13.3641 11.5917 12.9974 11.2417 12.6641 11.025C12.3307 10.8083 11.9974 10.7 11.6641 10.7C11.1307 10.7 10.6766 10.8875 10.3016 11.2625C9.92656 11.6375 9.73906 12.0917 9.73906 12.625C9.73906 12.875 9.78073 13.1125 9.86406 13.3375C9.9474 13.5625 10.0807 13.7667 10.2641 13.95L13.7641 17.45ZM14.6391 21.575C14.3391 21.875 13.9766 22.025 13.5516 22.025C13.1266 22.025 12.7641 21.875 12.4641 21.575L3.08906 12.2C2.9224 12.0333 2.8099 11.8583 2.75156 11.675C2.69323 11.4917 2.66406 11.3 2.66406 11.1V3.5C2.66406 3.06667 2.80573 2.70833 3.08906 2.425C3.3724 2.14167 3.73073 2 4.16406 2H11.7641C11.9641 2 12.1641 2.02917 12.3641 2.0875C12.5641 2.14583 12.7474 2.25833 12.9141 2.425L22.2391 11.75C22.5557 12.0667 22.7141 12.4375 22.7141 12.8625C22.7141 13.2875 22.5557 13.6583 22.2391 13.975L14.6391 21.575ZM13.6141 20.55L21.2141 12.95L11.7641 3.5H4.16406V11.1L13.6141 20.55ZM6.78906 7.4C7.13906 7.4 7.44323 7.27083 7.70156 7.0125C7.9599 6.75417 8.08906 6.45 8.08906 6.1C8.08906 5.75 7.9599 5.44583 7.70156 5.1875C7.44323 4.92917 7.13906 4.8 6.78906 4.8C6.43906 4.8 6.1349 4.92917 5.87656 5.1875C5.61823 5.44583 5.48906 5.75 5.48906 6.1C5.48906 6.45 5.61823 6.75417 5.87656 7.0125C6.1349 7.27083 6.43906 7.4 6.78906 7.4Z" fill="black" />
+            </svg>
+            <p>{{ section.settings.subscriptionText }}</p>
+          </button>
+        </div>
+      </li>
+      {% comment %}
+        <li>
+          <div class="optionContainer">
+            <button data-label="changePassWord">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="24"
+                viewBox="0 0 25 24"
+                fill="none"
+              >
+                <path d="M6.16406 22C5.75156 22 5.39844 21.8531 5.10469 21.5594C4.81094 21.2656 4.66406 20.9125 4.66406 20.5V9.65C4.66406 9.2375 4.81094 8.88438 5.10469 8.59063C5.39844 8.29688 5.75156 8.15 6.16406 8.15H7.91406V5.75C7.91406 4.43583 8.37745 3.31562 9.30421 2.38937C10.231 1.46312 11.3518 1 12.6667 1C13.9816 1 15.1016 1.46312 16.0266 2.38937C16.9516 3.31562 17.4141 4.43583 17.4141 5.75V8.15H19.1641C19.5766 8.15 19.9297 8.29688 20.2234 8.59063C20.5172 8.88438 20.6641 9.2375 20.6641 9.65V20.5C20.6641 20.9125 20.5172 21.2656 20.2234 21.5594C19.9297 21.8531 19.5766 22 19.1641 22H6.16406ZM6.16406 20.5H19.1641V9.65H6.16406V20.5ZM12.6683 17C13.1988 17 13.6516 16.8164 14.0266 16.4492C14.4016 16.082 14.5891 15.6406 14.5891 15.125C14.5891 14.625 14.4002 14.1708 14.0224 13.7625C13.6446 13.3542 13.1904 13.15 12.6599 13.15C12.1293 13.15 11.6766 13.3542 11.3016 13.7625C10.9266 14.1708 10.7391 14.6292 10.7391 15.1375C10.7391 15.6458 10.928 16.0833 11.3058 16.45C11.6836 16.8167 12.1377 17 12.6683 17ZM9.41406 8.15H15.9141V5.75C15.9141 4.84722 15.5984 4.07986 14.967 3.44793C14.3356 2.81598 13.569 2.5 12.667 2.5C11.765 2.5 10.9974 2.81598 10.3641 3.44793C9.73073 4.07986 9.41406 4.84722 9.41406 5.75V8.15Z" fill="black" />
+              </svg>
+              <p>Mot de passe</p>
+            </button>
+          </div>
+        </li>
+
+          <li>
+          <div class="optionContainer">
+          <button>
+          <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="24"
+          viewBox="0 0 25 24"
+          fill="none"
+          >
+          <path d="M22.6641 5.5V18.5C22.6641 18.9 22.5141 19.25 22.2141 19.55C21.9141 19.85 21.5641 20 21.1641 20H4.16406C3.76406 20 3.41406 19.85 3.11406 19.55C2.81406 19.25 2.66406 18.9 2.66406 18.5V5.5C2.66406 5.1 2.81406 4.75 3.11406 4.45C3.41406 4.15 3.76406 4 4.16406 4H21.1641C21.5641 4 21.9141 4.15 22.2141 4.45C22.5141 4.75 22.6641 5.1 22.6641 5.5ZM4.16406 8.225H21.1641V5.5H4.16406V8.225ZM4.16406 11.45V18.5H21.1641V11.45H4.16406Z" fill="black" />
+          </svg>
+          <p>Moyens de paiement</p>
+          </button>
+          </div>
+          </li>
+          <li>
+          <div class="optionContainer">
+          <button>
+          <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="24"
+          viewBox="0 0 25 24"
+          fill="none"
+          >
+          <path d="M4.66406 19V17.5H6.76406V9.85C6.76406 8.45 7.17656 7.20417 8.00156 6.1125C8.82656 5.02083 9.91406 4.33333 11.2641 4.05V3.325C11.2641 2.94167 11.4016 2.625 11.6766 2.375C11.9516 2.125 12.2807 2 12.6641 2C13.0474 2 13.3766 2.125 13.6516 2.375C13.9266 2.625 14.0641 2.94167 14.0641 3.325V4.05C15.4141 4.33333 16.5057 5.02083 17.3391 6.1125C18.1724 7.20417 18.5891 8.45 18.5891 9.85V17.5H20.6641V19H4.66406ZM12.6641 22C12.1307 22 11.6641 21.8042 11.2641 21.4125C10.8641 21.0208 10.6641 20.55 10.6641 20H14.6641C14.6641 20.55 14.4682 21.0208 14.0766 21.4125C13.6849 21.8042 13.2141 22 12.6641 22ZM8.26406 17.5H17.0891V9.85C17.0891 8.61667 16.6641 7.56667 15.8141 6.7C14.9641 5.83333 13.9224 5.4 12.6891 5.4C11.4557 5.4 10.4099 5.83333 9.55156 6.7C8.69323 7.56667 8.26406 8.61667 8.26406 9.85V17.5Z" fill="black" />
+          </svg>
+          <p>Notifications</p>
+          </button>
+          </div>
+          </li>
+      {% endcomment %}
+      <li>
+        <div class="optionContainer">
+          <button data-label="contactForm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="24"
+              viewBox="0 0 25 24"
+              fill="none"
+            >
+              <path d="M12.2141 23.0001V21.5001H19.6641V20.1501H15.9641V12.7501H19.6641V11.0501C19.6641 8.98343 18.9391 7.20426 17.4891 5.7126C16.0391 4.22093 14.2807 3.4751 12.2141 3.4751C10.1474 3.4751 8.3724 4.22093 6.88906 5.7126C5.40573 7.20426 4.66406 8.98343 4.66406 11.0501V12.7501H8.36406V20.1501H4.66406C4.26406 20.1501 3.91406 20.0001 3.61406 19.7001C3.31406 19.4001 3.16406 19.0501 3.16406 18.6501V11.0501C3.16406 9.80455 3.40156 8.63054 3.87656 7.52807C4.35156 6.42559 4.9974 5.46197 5.81406 4.63722C6.63073 3.81247 7.59076 3.1626 8.69416 2.6876C9.79758 2.2126 10.9726 1.9751 12.2192 1.9751C13.4658 1.9751 14.6349 2.2126 15.7266 2.6876C16.8182 3.1626 17.7645 3.81247 18.5654 4.63722C19.3662 5.46197 19.9995 6.42559 20.4654 7.52807C20.9312 8.63054 21.1641 9.80455 21.1641 11.0501V21.5001C21.1641 21.9001 21.0141 22.2501 20.7141 22.5501C20.4141 22.8501 20.0641 23.0001 19.6641 23.0001H12.2141ZM4.66406 18.6501H6.86406V14.2501H4.66406V18.6501ZM17.4641 18.6501H19.6641V14.2501H17.4641V18.6501Z" fill="black" />
+            </svg>
+            <p>{{ section.settings.contactText }}</p>
+          </button>
+        </div>
+      </li>
+      <li>
+        <div class="optionContainer">
+          <a href="{{ routes.account_logout_url }}">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="24"
+              viewBox="0 0 25 24"
+              fill="none"
+            >
+              <path d="M4.66406 21C4.26406 21 3.91406 20.85 3.61406 20.55C3.31406 20.25 3.16406 19.9 3.16406 19.5V4.5C3.16406 4.1 3.31406 3.75 3.61406 3.45C3.91406 3.15 4.26406 3 4.66406 3H11.9391V4.5H4.66406V19.5H11.9391V21H4.66406ZM16.8141 16.375L15.7391 15.3L18.2891 12.75H9.53906V11.25H18.2391L15.6891 8.7L16.7641 7.625L21.1641 12.025L16.8141 16.375Z" fill="black" />
+            </svg>
+            <p>{{ 'customer.log_out' | t }}</p>
+          </a>
+        </div>
+      </li>
+    </ul>
+    {% comment %}Order History {% endcomment %}
+    <div class="customer account orderHistory sectionHidden">
+      <div class="accountOrderHistory">
+        <div>
+          {% paginate customer.orders by 20 %}
+            {%- if customer.orders.size > 0 -%}
+              <table role="table" class="order-history">
+                <caption class="visually-hidden">
+                  {{ 'customer.orders.title' | t }}
+                </caption>
+                <thead role="rowgroup">
+                  <tr role="row">
+                    <th
+                      id="ColumnOrder"
+                      scope="col"
+                      role="columnheader"
+                    >
+                      {{ 'customer.orders.order_number' | t }}
+                    </th>
+                    <th
+                      id="ColumnDate"
+                      scope="col"
+                      role="columnheader"
+                    >
+                      {{ 'customer.orders.date' | t }}
+                    </th>
+                    <th
+                      id="ColumnPayment"
+                      scope="col"
+                      role="columnheader"
+                    >
+                      {{ 'customer.orders.payment_status' | t }}
+                    </th>
+                    <th
+                      id="ColumnFulfillment"
+                      scope="col"
+                      role="columnheader"
+                    >
+                      {{ 'customer.orders.fulfillment_status' | t }}
+                    </th>
+                    <th
+                      id="ColumnTotal"
+                      scope="col"
+                      role="columnheader"
+                    >
+                      {{ 'customer.orders.total' | t }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody role="rowgroup">
+                  {%- for order in customer.orders -%}
+                    <tr role="row">
+                      <td
+                        id="RowOrder"
+                        role="cell"
+                        headers="ColumnOrder"
+                        data-label="{{ 'customer.orders.order_number' | t }}"
+                      >
+                        <a
+                          href="{{ order.customer_url }}"
+                          aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}"
+                        >
+                          {{ order.name }}
+                        </a>
+                      </td>
+                      <td
+                        headers="RowOrder ColumnDate"
+                        role="cell"
+                        data-label="{{ 'customer.orders.date' | t }}"
+                      >
+                        {{ order.created_at | time_tag: format: 'date' }}
+                      </td>
+                      <td
+                        headers="RowOrder ColumnPayment"
+                        role="cell"
+                        data-label="{{ 'customer.orders.payment_status' | t }}"
+                      >
+                        {{ order.financial_status_label }}
+                      </td>
+                      <td
+                        headers="RowOrder ColumnFulfillment"
+                        role="cell"
+                        data-label="{{ 'customer.orders.fulfillment_status' | t }}"
+                      >
+                        {{ order.fulfillment_status_label }}
+                      </td>
+                      <td
+                        headers="RowOrder ColumnTotal"
+                        role="cell"
+                        data-label="{{ 'customer.orders.total' | t }}"
+                      >
+                        {{ order.total_net_amount | money_with_currency }}
+                      </td>
+                    </tr>
+                  {%- endfor -%}
+                </tbody>
+              </table>
+            {%- else -%}
+              <p>{{ 'customer.orders.none' | t }}</p>
+            {%- endif -%}
+
+            {%- if paginate.pages > 1 -%}
+              {%- if paginate.parts.size > 0 -%}
+                <nav
+                  class="pagination"
+                  role="navigation"
+                  aria-label="{{ 'general.pagination.label' | t }}"
+                >
+                  <ul role="list">
+                    {%- if paginate.previous -%}
+                      <li>
+                        <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            viewBox="0 0 10 6"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                              fill="currentColor">
+                          </svg>
+                        </a>
+                      </li>
+                    {%- endif -%}
+
+                    {%- for part in paginate.parts -%}
+                      <li>
+                        {%- if part.is_link -%}
+                          <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
+                            {{- part.title -}}
+                          </a>
+                        {%- else -%}
+                          {%- if part.title == paginate.current_page -%}
+                            <span
+                              aria-current="page"
+                              aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
+                            >
+                              {{- part.title -}}
+                            </span>
+                          {%- else -%}
+                            <span>{{ part.title }}</span>
+                          {%- endif -%}
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+
+                    {%- if paginate.next -%}
+                      <li>
+                        <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            viewBox="0 0 10 6"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                              fill="currentColor">
+                          </svg>
+                        </a>
+                      </li>
+                    {%- endif -%}
+                  </ul>
+                </nav>
+              {%- endif -%}
+            {%- endif -%}
+          {% endpaginate %}
+        </div>
+      </div>
+    </div>
+    {% comment %}   Account settings {% endcomment %}
+    <div class="customer accountDetails sectionHidden">
+      <div class="account">
+        {% comment %}
+          <h2>{{ 'customer.account.details' | t }}</h2>
+        {% endcomment %}
+        {%- form 'customer_address', customer.default_address -%}
+          <div class="field">
+            <input
+              type="text"
+              id="AddressFirstName_{{ form.id }}"
+              name="address[first_name]"
+              value="{{ form.first_name }}"
+              autocomplete="given-name"
+              placeholder="{{ 'customer.addresses.first_name' | t }}"
+            >
+            <label for="AddressFirstName_{{ form.id }}">{{ 'customer.addresses.first_name' | t }}</label>
+          </div>
+          <div class="field">
+            <input
+              type="text"
+              id="AddressLastName_{{ form.id }}"
+              name="address[last_name]"
+              value="{{ form.last_name }}"
+              autocomplete="family-name"
+              placeholder="{{ 'customer.addresses.last_name' | t }}"
+            >
+            <label for="AddressLastName_{{ form.id }}">{{ 'customer.addresses.last_name' | t }}</label>
+          </div>
+          <div class="field">
+            <input
+              type="tel"
+              id="AddressPhone_{{ form.id }}"
+              name="address[phone]"
+              value="{{ form.phone }}"
+              autocomplete="tel"
+              placeholder="{{ 'customer.addresses.phone' | t }}"
+            >
+            <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
+          </div>
+          <div>
+            <button class="animatedBtn">{{ 'customer.addresses.update' | t }}</button>
+          </div>
+        {%- endform -%}
+      </div>
+    </div>
+    {% comment %} Reset Password {% endcomment %}
+    <div class="customer reset-password changePassWord sectionHidden">
+      <h1>
+        {{ 'customer.reset_password.title' | t }}
+      </h1>
+      <p>
+        {{ 'customer.reset_password.subtext' | t }}
+      </p>
+      {%- form 'reset_customer_password' -%}
+        {%- if form.errors -%}
+          <h2
+            class="form__message"
+            tabindex="-1"
+            autofocus
+          >
+            <span class="visually-hidden">{{ 'accessibility.error' | t }} </span>
+            <svg aria-hidden="true" focusable="false">
+              <use href="#icon-error" />
+            </svg>
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+          <ul>
+            {%- for field in form.errors -%}
+              <li>
+                {%- if field == 'form' -%}
+                  {{ form.errors.messages[field] }}
+                {%- else -%}
+                  <a href="#{{ field }}">
+                    {{ form.errors.translated_fields[field] | capitalize }}
+                    {{ form.errors.messages[field] }}
+                  </a>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        <div class="field">
+          <input
+            type="password"
+            name="customer[password]"
+            id="password"
+            autocomplete="new-password"
+            {% if form.errors contains 'password' %}
+              aria-invalid="true"aria-describedby="password-error"
+            {% endif -%}
+            placeholder="{{ 'customer.reset_password.password' | t }}"
+          >
+          <label for="password">
+            {{ 'customer.reset_password.password' | t }}
+          </label>
+          {%- if form.errors contains 'password' -%}
+            <small id="password-error" class="form__message">
+              <svg aria-hidden="true" focusable="false">
+                <use href="#icon-error" />
+              </svg>
+              {{ form.errors.translated_fields.password | capitalize }}
+              {{ form.errors.messages.password }}
+            </small>
+          {%- endif -%}
+        </div>
+
+        <div class="field">
+          <input
+            type="password"
+            name="customer[password_confirmation]"
+            id="password_confirmation"
+            autocomplete="new-password"
+            {% if form.errors contains 'password_confirmation' %}
+              aria-invalid="true"aria-describedby="password_confirmation-error"
+            {% endif -%}
+            placeholder="{{ 'customer.reset_password.password_confirm' | t }}"
+          >
+          <label for="password_confirmation">
+            {{ 'customer.reset_password.password_confirm' | t }}
+          </label>
+          {%- if form.errors contains 'password_confirmation' -%}
+            <small id="password_confirmation-error" class="form__message">
+              <svg aria-hidden="true" focusable="false">
+                <use href="#icon-error" />
+              </svg>
+              {{ form.errors.translated_fields.password_confirmation | capitalize }}
+              {{ form.errors.messages.password_confirmation }}
+            </small>
+          {%- endif -%}
+        </div>
+
+        <button>
+          {{ 'customer.reset_password.submit' | t }}
+        </button>
+      {%- endform -%}
+    </div>
+    {% comment %} ADDRESSES {% endcomment %}
+    {%- paginate customer.addresses by 5 -%}
+      <script src="{{ 'customer.js' | asset_url }}" defer></script>
+
+      <script>
+        window.addEventListener('load', () => {
+          typeof CustomerAddresses !== 'undefined' && new CustomerAddresses();
+        });
+      </script>
+      <div class="customer addresses" data-customer-addresses>
+        <div class="addressBox" data-address>
+          <button
+            type="button"
+            aria-expanded="false"
+            aria-controls="AddAddress"
+          >
+            {{ 'customer.addresses.add_new' | t }}
+          </button>
+          <div id="AddAddress">
+            <h2 id="AddressNewHeading">{{ 'customer.addresses.add_new' | t }}</h2>
+            {%- form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' -%}
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressFirstNameNew"
+                  name="address[first_name]"
+                  value="{{ form.first_name }}"
+                  autocomplete="given-name"
+                  placeholder="{{ 'customer.addresses.first_name' | t }}"
+                >
+                <label for="AddressFirstNameNew">{{ 'customer.addresses.first_name' | t }}</label>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressLastNameNew"
+                  name="address[last_name]"
+                  value="{{ form.last_name }}"
+                  autocomplete="family-name"
+                  placeholder="{{ 'customer.addresses.last_name' | t }}"
+                >
+                <label for="AddressLastNameNew">{{ 'customer.addresses.last_name' | t }}</label>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressCompanyNew"
+                  name="address[company]"
+                  value="{{ form.company }}"
+                  autocomplete="organization"
+                  placeholder="{{ 'customer.addresses.company' | t }}"
+                >
+                <label for="AddressCompanyNew">{{ 'customer.addresses.company' | t }}</label>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressAddress1New"
+                  name="address[address1]"
+                  value="{{ form.address1 }}"
+                  autocomplete="address-line1"
+                  placeholder="{{ 'customer.addresses.address1' | t }}"
+                >
+                <label for="AddressAddress1New">{{ 'customer.addresses.address1' | t }}</label>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressAddress2New"
+                  name="address[address2]"
+                  value="{{ form.address2 }}"
+                  autocomplete="address-line2"
+                  placeholder="{{ 'customer.addresses.address2' | t }}"
+                >
+                <label for="AddressAddress2New">{{ 'customer.addresses.address2' | t }}</label>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressCityNew"
+                  name="address[city]"
+                  value="{{ form.city }}"
+                  autocomplete="address-level2"
+                  placeholder="{{ 'customer.addresses.city' | t }}"
+                >
+                <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
+              </div>
+              <div>
+                <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
+                <div class="select">
+                  <select
+                    id="AddressCountryNew"
+                    name="address[country]"
+                    data-default="{{ form.country }}"
+                    autocomplete="country"
+                  >
+                    {{ all_country_option_tags }}
+                  </select>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    viewBox="0 0 10 6"
+                  >
+                    <use href="#icon-caret" />
+                  </svg>
+                </div>
+              </div>
+              <div id="AddressProvinceContainerNew" style="display: none">
+                <div class="select">
+                  <select
+                    id="AddressProvinceNew"
+                    name="address[province]"
+                    data-default="{{ form.province }}"
+                    autocomplete="address-level1"
+                  ></select>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    viewBox="0 0 10 6"
+                  >
+                    <use href="#icon-caret" />
+                  </svg>
+                </div>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressZipNew"
+                  name="address[zip]"
+                  value="{{ form.zip }}"
+                  autocapitalize="characters"
+                  autocomplete="postal-code"
+                  placeholder="{{ 'customer.addresses.zip' | t }}"
+                >
+                <label for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
+              </div>
+              <div class="field">
+                <input
+                  type="tel"
+                  id="AddressPhoneNew"
+                  name="address[phone]"
+                  value="{{ form.phone }}"
+                  autocomplete="tel"
+                  placeholder="{{ 'customer.addresses.phone' | t }}"
+                >
+                <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
+              </div>
+              <div>
+                {{ form.set_as_default_checkbox }}
+                <label for="address_default_address_new">{{ 'customer.addresses.set_default' | t }}</label>
+              </div>
+              <div>
+                <button>{{ 'customer.addresses.add' | t }}</button>
+                <button type="reset">{{ 'customer.addresses.cancel' | t }}</button>
+              </div>
+            {%- endform -%}
+          </div>
+        </div>
+
+        <ul role="list">
+          {%- for address in customer.addresses -%}
+            <li data-address>
+              {%- if address == customer.default_address -%}
+                <h2>{{ 'customer.addresses.default' | t }}</h2>
+              {%- endif -%}
+              {% comment %} {{ address | format_address }} {% endcomment %}
+              <div class="addressDetail addressName">{{ address.name }}</div>
+              <div class="addressDetail addressAddress">{{ address.address1 }}</div>
+              <div class="addressDetail addressCity">{{ address.city }}</div>
+
+              <button
+                type="button"
+                id="EditFormButton_{{ address.id }}"
+                aria-label="{{ 'customer.addresses.edit_address' | t }} {{ forloop.index }}"
+                aria-controls="EditAddress_{{ address.id }}"
+                aria-expanded="false"
+                data-address-id="{{ address.id }}"
+              >
+                {{ 'customer.addresses.edit' | t }}
+              </button>
+              <button
+                type="button"
+                aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
+                data-target="{{ address.url }}"
+                data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
+              >
+                {{ 'customer.addresses.delete' | t }}
+              </button>
+              <div id="EditAddress_{{ address.id }}">
+                <h2>{{ 'customer.addresses.edit_address' | t }}</h2>
+                {%- form 'customer_address', address -%}
+                  <div class="field">
+                    <input
+                      type="text"
+                      id="AddressFirstName_{{ form.id }}"
+                      name="address[first_name]"
+                      value="{{ form.first_name }}"
+                      autocomplete="given-name"
+                      placeholder="{{ 'customer.addresses.first_name' | t }}"
+                    >
+                    <label for="AddressFirstName_{{ form.id }}">{{ 'customer.addresses.first_name' | t }}</label>
+                  </div>
+                  <div class="field">
+                    <input
+                      type="text"
+                      id="AddressLastName_{{ form.id }}"
+                      name="address[last_name]"
+                      value="{{ form.last_name }}"
+                      autocomplete="family-name"
+                      placeholder="{{ 'customer.addresses.last_name' | t }}"
+                    >
+                    <label for="AddressLastName_{{ form.id }}">{{ 'customer.addresses.last_name' | t }}</label>
+                  </div>
+                  <div class="field">
+                    <input
+                      type="text"
+                      id="AddressCompany_{{ form.id }}"
+                      name="address[company]"
+                      value="{{ form.company }}"
+                      autocomplete="organization"
+                      placeholder="{{ 'customer.addresses.company' | t }}"
+                    >
+                    <label for="AddressCompany_{{ form.id }}">{{ 'customer.addresses.company' | t }}</label>
+                  </div>
+                  <div class="field">
+                    <input
+                      type="text"
+                      id="AddressAddress1_{{ form.id }}"
+                      name="address[address1]"
+                      value="{{ form.address1 }}"
+                      autocomplete="address-line1"
+                      placeholder="{{ 'customer.addresses.address1' | t }}"
+                    >
+                    <label for="AddressAddress1_{{ form.id }}">{{ 'customer.addresses.address1' | t }}</label>
+                  </div>
+                  <div class="field">
+                    <input
+                      type="text"
+                      id="AddressAddress2_{{ form.id }}"
+                      name="address[address2]"
+                      value="{{ form.address2 }}"
+                      autocomplete="address-line2"
+                      placeholder="{{ 'customer.addresses.address2' | t }}"
+                    >
+                    <label for="AddressAddress2_{{ form.id }}">{{ 'customer.addresses.address2' | t }}</label>
+                  </div>
+                  <div class="field">
+                    <input
+                      type="text"
+                      id="AddressCity_{{ form.id }}"
+                      name="address[city]"
+                      value="{{ form.city }}"
+                      autocomplete="address-level2"
+                      placeholder="{{ 'customer.addresses.city' | t }}"
+                    >
+                    <label for="AddressCity_{{ form.id }}">{{ 'customer.addresses.city' | t }}</label>
+                  </div>
+                  <div>
+                    <label for="AddressCountry_{{ form.id }}">
+                      {{ 'customer.addresses.country' | t }}
+                    </label>
+                    <div class="select">
+                      <select
+                        id="AddressCountry_{{ form.id }}"
+                        name="address[country]"
+                        data-address-country-select
+                        data-default="{{ form.country }}"
+                        data-form-id="{{ form.id }}"
+                        autocomplete="country"
+                      >
+                        {{ all_country_option_tags }}
+                      </select>
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        viewBox="0 0 10 6"
+                      >
+                        <use href="#icon-caret" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div id="AddressProvinceContainer_{{ form.id }}" style="display:none;">
+                    <label for="AddressProvince_{{ form.id }}">
+                      {{ 'customer.addresses.province' | t }}
+                    </label>
+                    <div class="select">
+                      <select
+                        id="AddressProvince_{{ form.id }}"
+                        name="address[province]"
+                        data-default="{{ form.province }}"
+                        autocomplete="address-level1"
+                      ></select>
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        viewBox="0 0 10 6"
+                      >
+                        <use href="#icon-caret" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <input
+                      type="text"
+                      id="AddressZip_{{ form.id }}"
+                      name="address[zip]"
+                      value="{{ form.zip }}"
+                      autocapitalize="characters"
+                      autocomplete="postal-code"
+                      placeholder="{{ 'customer.addresses.zip' | t }}"
+                    >
+                    <label for="AddressZip_{{ form.id }}">{{ 'customer.addresses.zip' | t }}</label>
+                  </div>
+                  <div class="field">
+                    <input
+                      type="tel"
+                      id="AddressPhone_{{ form.id }}"
+                      name="address[phone]"
+                      value="{{ form.phone }}"
+                      autocomplete="tel"
+                      placeholder="{{ 'customer.addresses.phone' | t }}"
+                    >
+                    <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
+                  </div>
+                  <div>
+                    {{ form.set_as_default_checkbox }}
+                    <label for="address_default_address_{{ form.id }}">
+                      {{ 'customer.addresses.set_default' | t }}
+                    </label>
+                  </div>
+                  <div>
+                    <button>{{ 'customer.addresses.update' | t }}</button>
+                    <button type="reset">{{ 'customer.addresses.cancel' | t }}</button>
+                  </div>
+                {%- endform -%}
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        {%- if paginate.pages > 1 -%}
+          {%- if paginate.parts.size > 0 -%}
+            <nav
+              class="pagination"
+              role="navigation"
+              aria-label="{{ 'general.pagination.label' | t }}"
+            >
+              <ul role="list">
+                {%- if paginate.previous -%}
+                  <li>
+                    <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        viewBox="0 0 10 6"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                          fill="currentColor">
+                      </svg>
+                    </a>
+                  </li>
+                {%- endif -%}
+
+                {%- for part in paginate.parts -%}
+                  <li>
+                    {%- if part.is_link -%}
+                      <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
+                        {{- part.title -}}
+                      </a>
+                    {%- else -%}
+                      {%- if part.title == paginate.current_page -%}
+                        <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
+                          {{- part.title -}}
+                        </span>
+                      {%- else -%}
+                        <span>{{ part.title }}</span>
+                      {%- endif -%}
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+
+                {%- if paginate.next -%}
+                  <li>
+                    <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}">
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        viewBox="0 0 10 6"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                          fill="currentColor">
+                      </svg>
+                    </a>
+                  </li>
+                {%- endif -%}
+              </ul>
+            </nav>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    {%- endpaginate -%}
+    {% comment %}   Contact From {% endcomment %}
+    <div class="customer contactForm sectionHidden">
+      {% form 'contact' %}
+        <div class="contactFieldContainer">
+          <h1 class="messageHeading">Vous voudrez nous écrire ?</h1>
+          <div class="message">
+            <textarea name="contact[body]" id="message" cols="95" rows="15">Votre Message</textarea>
+          </div>
+
+          <div class="submit">
+            <input type="submit" value="Envoyer">
+          </div>
+        </div>
+      {% endform %}
+      <div class="messageHeadingdiv">
+        <h1 class="messageHeading">Ou nous appeler ?</h1>
+        <div class="contactNumber">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M18.1547 13.3149C16.8538 13.3149 15.5952 13.0998 14.4212 12.7126C14.051 12.5836 13.6385 12.6804 13.353 12.9708L11.6924 15.0895C8.6993 13.6376 5.89653 10.895 4.40524 7.74374L6.46766 5.95837C6.75322 5.65723 6.83783 5.23778 6.72149 4.86135C6.33016 3.66752 6.12921 2.38765 6.12921 1.06476C6.12921 0.483983 5.65327 0 5.08213 0H1.42267C0.851535 0 0.164062 0.258125 0.164062 1.06476C0.164062 11.0563 8.3397 19.3593 18.1547 19.3593C18.9056 19.3593 19.2018 18.6818 19.2018 18.0902V14.3797C19.2018 13.7989 18.7258 13.3149 18.1547 13.3149Z" fill="#070707"/>
+          </svg>
+          <a href="tel:+0758159153">07 58 15 91 53</a>
+        </div>
+      </div>
+    </div>
+    {% comment %}   Subscription area {% endcomment %}
+    <div class="customer subscriptionArea sectionHidden">
+      <h1>No Subscriptions Available</h1>
+    </div>
+  </div>
+</div>
+
+<style>
+          .accountPage {
+            padding: {{ section.settings.secTopBotPadding }}px {{ section.settings.leftRightPadding }}px;
+          }
+          .accountMenuContainer {
+            display: flex;
+            align-items: center;
+          }
+          .sectionHidden {
+            display: none !important;
+          }
+        .customer{
+          display: flex;
+          flex-wrap: wrap;
+          align-items: flex-start;
+          justify-content: space-around;
+        }
+          .optionContainer {}
+          .optionContainer button,
+          .optionContainer a {
+            background-color: transparent;
+            display: flex;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+          }
+          .accountMenu li:last-child {
+            border: none;
+          }
+          .accountMenu li {
+            width: 100%;
+            border-bottom: 1px solid{{ section.settings.bottomLine }};
+            padding: 10px;
+          }
+          .accountMenu li button:hover path {
+            fil: #00ffff;
+          }
+          .accountMenu li p {
+            color: {{ section.settings.optionTxt }};
+            font-size: {{ section.settings.optionSize }}px;
+            font-style: normal;
+            font-weight: {{ section.settings.optionWeight }};
+            line-height: 24px
+          }
+          .optionContainer button:visited {
+            background-color
+          }
+        .contactNumber{
+          display: flex;
+          width: 336px;
+          padding: 12px 16px;
+          align-items: center;
+          gap: 8px;
+          border-radius: 12px;
+          border: 1px solid #064E3B;
+          /* Shadow/xs */
+          box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+        }
+        .contactNumber a{
+          color: #49946D;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 22.864px;
+          font-family: Helvetica !important;
+          text-decoration: none;
+        }
+
+          .accountMenu {
+            list-style: none;
+            flex-direction: column;
+            display: flex;
+            padding: 8px 12px;
+            align-items: flex-start;
+            gap: 10px;
+            border-radius: 12px;
+            border: 1px solid #064E3B;
+            background: #F7F0E9;
+            width: 360px;
+            height: fit-content;
+          }
+          .isActive p{
+            color: {{ section.settings.colorOnActive }} !important;
+          }
+          .isActive svg path{
+            fill: {{ section.settings.colorOnActive }};
+          }
+          .addresses ul {
+            display: flex;
+            justify-content: space-evenly;
+            align-content: center;
+            flex-wrap: wrap;
+            align-items: flex-end;;
+            width: 100%;
+          }
+          .customer:not(.account):not(.order) {
+            max-width: 100%;
+            width: 100%;
+        }
+        .customer h1, .customer h2, .customer h3{
+          color: {{ section.settings.headingColor }};
+          font-size: {{ section.settings.headingText }}px;
+          font-style: normal;
+          font-weight: {{ section.settings.headingWeight }};
+          line-height: 20px;
+          margin-bottom: 30px;
+          font-family: Helvetica !important;
+        }
+        .message textarea{
+          color: #344054;
+          font-family: Helvetica !important;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 20px;
+        }
+        .message textarea{
+          display: flex;
+          width: 480px;
+          height: 250px;
+          padding: 10px 14px;
+          align-items: center;
+          gap: 8px;
+          border-radius: 12px;
+          border: 1px solid #064E3B;
+          background: #FFFBF6;
+          box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+          margin: 0 auto;
+        }
+        .customer form{
+          margin: 0;
+        }
+        .submit input{
+          display: flex !important;
+          width: 480px !important;
+          padding: 12px 42px 12px 210px !important;
+          align-items: center !important;
+          gap: 24px;
+          border-radius: 12px;
+          border: 1px solid #064E3B;
+         background-color: {{ section.settings.btnBGColor }};
+          color: {{ section.settings.btnTextColor }};
+          text-align: center;
+          font-family: Poppins;
+         font-size: {{ section.settings.btnTextSize }}px;
+          font-style: normal;
+          font-weight: {{ section.settings.btnWeight }};
+          line-height: normal;
+          letter-spacing: -0.598px;
+          margin: 0 auto;
+          margin-top: 70px;
+          box-shadow: 5px 5px 0 0px, 6px 4px 0 0px #064E3B, 4px 6px 0 0px #064E3B, 6px 6px 0 0px #064E3B;
+        }
+        .animatedBtn:before, .animatedBtn:after{
+          content: none !important;
+        }
+        .submit input:hover{
+          box-shadow: 2px 2px 0 0px, 3px 1px 0 0px #064E3B, 2px 3px 0 0px #064E3B, 3px 3px 0 0px #064E3B;
+          transform: translateX(2px);
+          transform: translate(2px, 2px);
+        }
+
+         .addressBox button{
+          padding: 12px 40px !important;
+          border-radius: 12px;
+          border: 1px solid #064E3B;
+         background-color: {{ section.settings.btnBGColor }};
+          color: {{ section.settings.btnTextColor }};
+          text-align: center;
+          font-family: Poppins !important;
+         font-size: {{ section.settings.btnTextSize }}px;
+          font-style: normal;
+          font-weight: {{ section.settings.btnWeight }};
+          line-height: normal;
+          letter-spacing: -0.598px;
+          margin: 0 auto;
+          box-shadow: 5px 5px 0 0px, 6px 4px 0 0px #064E3B, 4px 6px 0 0px #064E3B, 6px 6px 0 0px #064E3B;
+        }
+        .addressBox button:before, .addressBox button:after{
+          content: none !important;
+        }
+        .addressBox button:hover{
+          box-shadow: 2px 2px 0 0px, 3px 1px 0 0px #064E3B, 2px 3px 0 0px #064E3B, 3px 3px 0 0px #064E3B;
+          transform: translateX(2px);
+          transform: translate(2px, 2px);
+        }
+         ul[role="list"] li button, .customer button{
+          {% comment %} width: 50px; {% endcomment %}
+          padding: 12px 100px !important;
+          border-radius: 12px;
+          border: 1px solid #064E3B;
+         background-color: {{ section.settings.btnBGColor }};
+          color: {{ section.settings.btnTextColor }};
+          text-align: center;
+          font-family: Poppins !important;
+         font-size: {{ section.settings.btnTextSize }}px;
+          font-style: normal;
+          font-weight: {{ section.settings.btnWeight }};
+          line-height: normal;
+          letter-spacing: 0.5px;
+          box-shadow: 5px 5px 0 0px, 6px 4px 0 0px #064E3B, 4px 6px 0 0px #064E3B, 6px 6px 0 0px #064E3B;
+        }
+        ul[role="list"] li button:before, ul[role="list"] li button:after, .customer button:before, .customer button:after{
+          content: none !important;
+        }
+         ul[role="list"] li button:hover, .customer button:hover{
+          box-shadow: 2px 2px 0 0px, 3px 1px 0 0px #064E3B, 2px 3px 0 0px #064E3B, 3px 3px 0 0px #064E3B;
+          transform: translateX(2px);
+          transform: translate(2px, 2px);
+        }
+        .accountDetails .field input{
+          display: flex !important;
+          width: 763px !important;
+          padding: 12px 16px !important;
+          align-items: center !important;
+          gap: 8px !important;
+          border-radius: 12px !important;
+          border: 1px solid #064E3B !important;
+          box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05) !important;
+          color: #49946D !important;
+          font-size: 16px !important;
+          font-style: normal !important;
+          font-weight: 400 !important;
+          line-height: 24px !important;
+          background: transparent !important;
+        }
+          .accountDetails .field label, .addresses .field label{
+          display: flex;
+          padding: 0px 10px;
+          align-items: flex-start;
+          gap: 10px;
+          background: #F7F0E9;
+          position: absolute;
+          top: -8px !important;
+          color: #000;
+          font-size: 14px !important;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 20px;
+        }
+         .customer.addresses .field input, .customer.addresses select{
+          display: flex !important;
+          width: 100% !important;
+          padding: 12px 16px !important;
+          align-items: center !important;
+          gap: 8px !important;
+          border-radius: 12px !important;
+          border: 1px solid #064E3B !important;
+          box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05) !important;
+          color: #49946D !important;
+          font-size: 16px !important;
+          font-style: normal !important;
+          font-weight: 400 !important;
+          line-height: 24px !important;
+          background: transparent !important;
+        }
+        .field:after, .select:after, .customer .field:after, .customer select:after, .localization-form__select:after{
+          content: none !important;
+        }
+        .field__input:focus, .field__input:not(:placeholder-shown), .field__input:-webkit-autofill, .customer .field input:focus, .customer .field input:not(:placeholder-shown), .customer .field input:-webkit-autofill{
+          padding: 12px 16px;
+          border-radius: 12px;
+          border: 1px solid #064E3B;
+          box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05) !important;
+        }
+
+
+        @media only screen and (max-width: 767px) {
+    .accountMenuContainer {
+    align-items: center;
+    flex-direction: column;
+    }
+    .accountPage {
+    padding: 36px 20px;
+    }
+    .customer:not(.account):not(.order) {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0;
+    }
+    .accountMenu{
+    width: 100% !important;
+    }
+    .customer button, .customer button[type='button']{
+    font-size: 12px;
+    padding: 12px 50px !important;
+    }
+    .account{
+      max-width: 100%;
+      padding: 0;
+    }
+    .customer td:before, .account table td:first-of-type a, td time, td{
+      font-size: 12px !important;
+    }
+    .accountDetails .field input{
+      font-size: 14px !important;
+    }
+    .accountDetails .field label, .addresses .field label{
+      font-size: 12px !important;
+    }
+    .customer h1, .customer h2, .customer h3{
+      font-size: 16px;
+    }
+    .message textarea, .message, .contactFieldContainer, .submit, .messageHeadingdiv{
+      width: 100% !important;
+    }
+    .submit input[type='submit']{
+      padding: 12px 50px !important;
+    }
+    .messageHeadingdiv .contactNumber{
+      justify-content: center;
+      width: 100% !important;
+    }
+    .messageHeadingdiv .messageHeading{
+      margin-bottom: 20px;
+      margin-top: 20px;
+      width: 100% !important;
+    }
+    .submit input[type='submit']{
+      justify-content: center;
+      width: 100% !important;
+    }
+            .accountMenu{
+            padding: 0;
+            gap: 0;
+            }
+            .customer.addresses .field input, .customer.addresses select{
+            font-size: 14px !important;
+            }
+            ul[role="list"] li button, .customer button{
+              width: 100%;
+              max-width: 100%;
+              padding: 12px 50px !important;
+              margin-right: 0;
+              margin-left: 0;
+            }
+            .customer h1, .customer h2, .customer h3{
+              margin-bottom: 20px;
+              margin-top: 20px;
+            }
+            #address_form_new button[type='reset']{
+              margin-top: 30px;
+            }
+        }
+  .customer button{
+    padding: 12px 50px !important;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #064E3B;
+    background-color: #49946D;
+    color: #fff;
+    text-align: center;
+    font-family: Poppins !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    box-shadow: 5px 5px 0 0px, 6px 4px 0 0px #064E3B, 4px 6px 0 0px #064E3B, 6px 6px 0 0px #064E3B;
+  }
+</style>
+<script src="{{ 'main_account.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "t:sections.main-account.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Padding on desktop"
+    },
+    {
+      "type": "range",
+      "id": "secTopBotPadding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Bottom Padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "leftRightPadding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Left and Right Padding",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "bottomLine",
+      "label": "Bottom Line Color",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Menu Text Options settings"
+    },
+    {
+      "type": "text",
+      "id": "viewAddressText",
+      "label": "Address Label",
+      "default": "Adresse"
+    },
+    {
+      "type": "text",
+      "id": "historyText",
+      "label": "History Label",
+      "default": "Commandes"
+    },
+    {
+      "type": "text",
+      "id": "infoText",
+      "label": "Information Label",
+      "default": "Informations personnelles"
+    },
+    {
+      "type": "text",
+      "id": "subscriptionText",
+      "label": "Subscription Label",
+      "default": "Abonnement"
+    },
+    {
+      "type": "text",
+      "id": "contactText",
+      "label": "Contact Label",
+      "default": "Service client"
+    },
+    {
+      "type": "color",
+      "id": "optionTxt",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "colorOnActive",
+      "label": "Color On Active",
+      "info": "Change the color of selected option",
+      "default": "#EA571D"
+    },
+    {
+      "type": "range",
+      "id": "optionSize",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "optionWeight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Text Weight",
+      "default": 500
+    },
+    {
+      "type": "header",
+      "content": "Section Headings Settings"
+    },
+    {
+      "type": "color",
+      "id": "headingColor",
+      "label": "Heading Color",
+      "default": "#000"
+    },
+    {
+      "type": "range",
+      "id": "headingText",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Size",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "headingWeight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Heading Weight",
+      "default": 700
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+     {
+      "type": "color",
+      "id": "btnBGColor",
+      "label": "Button Background Color",
+      "default": "#49946D"
+    },
+    {
+      "type": "header",
+      "content": "Button Text Settings"
+    },
+     {
+      "type": "color",
+      "id": "btnTextColor",
+      "label": "Button Color",
+      "default": "#fff"
+    },
+    {
+      "type": "range",
+      "id": "btnTextSize",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Text Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "btnWeight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Button Weight",
+      "default": 500
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,540 @@
+<div class="{{ section.id }}">
+  <div class="customImageWithText">
+    <div class="customImageWithTextContainer">
+      {% if section.settings.heading != blank %}
+        <div class="customImageWithTextHeading">
+          <h2>{{ section.settings.heading }}</h2>
+        </div>
+      {% endif %}
+      <div class="customfiftyBox">
+        <div class="customImageContainer">
+          <div class="customImageContainerBox">
+            {% if section.settings.left_image != blank %}
+              <img src="{{ section.settings.left_image | img_url: 'master' }}">
+            {% endif %}
+          </div>
+        </div>
+        <div class="customTextContainer">
+          <div class="customTextContainerInner">
+            <h3>{{ section.settings.right_heading }}</h3>
+            <h4>{{ section.settings.right_para }}</h4>
+          </div>
+          <div class="back_to_home_btn">
+            <a href="{{ section.settings.backhome_link }}">
+              {{ section.settings.backhome_text }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+   .{{ section.id }} .customImageWithText{
+     padding: {{ section.settings.top_padding }}px {{ section.settings.right_padding }}px {{ section.settings.bottom_padding }}px {{ section.settings.left_padding }}px;
+   }
+   .{{ section.id }} .customImageWithTextContainer{
+     width: 100%;
+     max-width: {{section.settings.page_size}}px;
+     margin: 0 auto;
+   }
+   .{{ section.id }} .customImageWithTextHeading h2 p strong{
+     color: {{section.settings.heading_fc_bold}};
+     font-weight: {{section.settings.heading_fw}};
+   }
+   .{{ section.id }} .customImageWithTextHeading h2 p{
+     color: {{section.settings.heading_fc}};
+     text-align: center;
+     font-family: Poppins;
+     font-size: {{ section.settings.heading_fz }}px;
+     font-style: normal;
+     font-weight: {{section.settings.heading_fw}};
+     line-height: 52px;
+   }
+   .{{ section.id }} .customfiftyBox{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     flex-direction: {{section.settings.image_text_position}};
+     column-gap: 60px;
+   }
+   .{{ section.id }} .customImageContainer, .{{ section.id }} .customTextContainer{
+     width: 50%;
+   }
+   .{{ section.id }} .customTextContainer h3 p{
+     color: {{section.settings.box_heading_fc}};
+     font-family: Poppins;
+     font-size: {{ section.settings.box_heading_fz }}px;
+     font-style: normal;
+     font-weight: {{section.settings.box_heading_fw}};
+     line-height: 48px;
+     margin-bottom: 30px;
+   }
+   .{{ section.id }} .customTextContainer h3 p strong{
+     color: {{section.settings.box_heading_fc}};
+     font-weight: {{section.settings.box_heading_fw}};
+     position: relative;
+   }
+   .{{ section.id }} .customTextContainer h3 p strong:after{
+     content: "";
+     background-image:url('{{ section.settings.box_heading_image | img_url: 'master' }}');
+     position: absolute;
+     left: 0;
+     bottom: -20px;
+     max-width: 100%;
+     width: 100%;
+     height: 100%;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: contain;
+  }
+  .{{ section.id }} .customTextContainer h4 p{
+    color: {{ section.settings.box_para_fc }};
+    font-family: Poppins;
+    font-size: {{ section.settings.box_para_fz }}px;
+    font-style: normal;
+    font-weight: {{ section.settings.box_para_fw }};
+    line-height: 26px;
+  }
+  .{{ section.id }} .customTextContainer h4 p Strong{
+    color: {{ section.settings.box_para_fc_bold }};
+  }
+  .{{ section.id }} .customTextContainerInner{
+    max-width: 100%;
+    width: 100%;
+    margin-left: auto;
+    position: relative;
+  }
+  .{{ section.id }} .customImageWithTextHeading{
+    margin-bottom: 60px;
+  }
+  .{{ section.id }} .customImageContainerBox{
+    box-shadow: 5px 5px 0 0px #FFC207, 6px 4px 0 0px #064E3B, 4px 6px 0 0px #064E3B, 6px 6px 0 0px #064E3B;
+    border-radius: 12px;
+    border: 1px solid #064E3B;
+    display: flex;
+    align-items: center;
+  }
+  .{{ section.id }} .customTextContainer h3 p:before{
+    content: "{{ section.settings.box_heading_before_text1 }}";
+    position: absolute;
+    left: -15%;
+    top: 0;
+    color: {{ section.settings.box_heading_fc_before }};
+    font-family: Poppins;
+    font-size: {{ section.settings.box_heading_fz_before }}px;
+    font-style: normal;
+    font-weight: {{ section.settings.box_heading_fw_before }};
+    line-height: 41.852px;
+  }
+  .customImageContainerBox{
+    border-radius: 12px !important;
+    border: 1px solid #064E3B !important;
+    background: #D1DCCE !important;
+    box-shadow: 0px 4.3515625px 4.3515625px 0px rgba(0, 0, 0, 0.25) !important;
+  }
+  .back_to_home_btn{
+    margin-top: 50px;
+  }
+  .back_to_home_btn a{
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.6px;
+    text-decoration-line: underline;
+  }
+
+   @media only screen and (max-width:1023px){
+      .{{ section.id }} .customfiftyBox{
+        flex-direction: {{section.settings.image_text_position_mb}};
+      }
+      .{{ section.id }} .customImageContainer, .{{ section.id }} .customTextContainer{
+        width: 100%;
+        text-align: center;
+      }
+      .{{ section.id }} .customTextContainerInner{
+        margin-right: auto;
+        text-align: center;
+      }
+      .{{ section.id }} .customTextContainer{
+        margin-top: 25px;
+      }
+      .{{section.id}} .customTextContainer h3 p{
+        margin-bottom: 20px;
+      }
+       .back_to_home_btn{
+         margin-top: 25px;
+       }
+   }
+   @media only screen and (max-width:767px){
+     .{{ section.id }} .customImageWithText{
+       padding: {{ section.settings.top_padding_mb }}px {{ section.settings.right_padding_mb }}px {{ section.settings.bottom_padding_mb }}px {{ section.settings.left_padding_mb }}px;
+     }
+     .{{ section.id }} .customImageWithTextHeading h2 p{
+       font-size: {{ section.settings.heading_fz_mb }}px;
+     }
+      .{{ section.id }} .customTextContainer h3 p{
+        font-size: {{ section.settings.box_heading_fz_mb }}px;
+        line-height: 1.5;
+      }
+      .{{ section.id }} .customTextContainer h4 p{
+        font-size: {{ section.settings.box_para_fz_mb }}px;
+      }
+      .{{ section.id }} .customTextContainer h3 p:before{
+        font-size: {{ section.settings.box_heading_fz_mb_before }}px;
+        left: 0%;
+      }
+      .back_to_home_btn a{
+        font-size: 14px;
+      }
+
+   }
+</style>
+
+{% schema %}
+{
+  "name": "Success Image With Text",
+  "settings": [
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1250
+    },
+   {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "range",
+      "id": "top_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "right_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding",
+      "default":20
+    },
+    {
+      "type": "range",
+      "id": "left_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Left Padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "top_padding_mb",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding_mb",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "right_padding_mb",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding Mobile",
+      "default":20
+    },
+    {
+      "type": "range",
+      "id": "left_padding_mb",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Left Padding Mobile",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "image_text_position",
+      "label": "Image & Text Position",
+      "options": [
+        {
+          "value": "row",
+          "label": "Image First"
+        },
+        {
+          "value": "row-reverse",
+          "label": "Text First"
+        }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "select",
+      "id": "image_text_position_mb",
+      "label": "Image & Text Position Mobile",
+      "options": [
+        {
+          "value": "column",
+          "label": "Image First"
+        },
+        {
+          "value": "column-reverse",
+          "label": "Text First"
+        }
+      ],
+      "default": "column"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Section Image"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_fz",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 33
+    },
+   {
+      "type": "range",
+      "id": "heading_fw",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 700
+    },
+    {
+       "type": "color",
+       "id": "heading_fc",
+       "label": "Color",
+       "default": "#1E2C21"
+    },
+    {
+       "type": "color",
+       "id": "heading_fc_bold",
+       "label": "Color On Bold",
+       "default": "#49946D"
+    },
+    {
+      "type": "range",
+      "id": "heading_fz_mb",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size Mobile",
+      "default": 24
+    },
+    {
+      "type": "richtext",
+      "id": "right_heading",
+      "label": "Box Heading"
+    },
+    {
+      "type": "range",
+      "id": "box_heading_fz",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 33
+    },
+   {
+      "type": "range",
+      "id": "box_heading_fw",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 700
+    },
+    {
+       "type": "color",
+       "id": "box_heading_fc",
+       "label": "Color",
+       "default": "#18181b"
+    },
+    {
+       "type": "color",
+       "id": "box_heading_fc_bold",
+       "label": "Color On Bold",
+       "default": "#18181b"
+    },
+    {
+      "type": "range",
+      "id": "box_heading_fz_mb",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size Mobile",
+      "default": 24
+    },
+    {
+      "type": "image_picker",
+      "id": "box_heading_image",
+      "label": "Bold Text Bottom Image"
+    },
+    {
+      "type": "text",
+      "id": "box_heading_before_text1",
+      "label": "Box Heading Before Text",
+      "default": "1."
+    },
+    {
+      "type": "range",
+      "id": "box_heading_fz_before",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 38
+    },
+   {
+      "type": "range",
+      "id": "box_heading_fw_before",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 700
+    },
+    {
+       "type": "color",
+       "id": "box_heading_fc_before",
+       "label": "Color",
+       "default": "#49946D"
+    },
+    {
+      "type": "range",
+      "id": "box_heading_fz_mb_before",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size Mobile",
+      "default": 24
+    },
+    {
+      "type": "richtext",
+      "id": "right_para",
+      "label": "Box Paragraph"
+    },
+    {
+      "type": "range",
+      "id": "box_para_fz",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 20
+    },
+   {
+      "type": "range",
+      "id": "box_para_fw",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 400
+    },
+    {
+       "type": "color",
+       "id": "box_para_fc",
+       "label": "Color",
+       "default": "#3F3F46"
+    },
+    {
+       "type": "color",
+       "id": "box_para_fc_bold",
+       "label": "Color On Bold",
+       "default": "#49946D"
+    },
+    {
+      "type": "range",
+      "id": "box_para_fz_mb",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size Mobile",
+      "default": 16
+    },
+    {
+      "type": "richtext",
+      "id": "backhome_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "backhome_link",
+      "label": "Button link"
+    }
+
+
+
+
+  ],
+  "presets": [
+    {
+      "name": "Success Image With Text"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

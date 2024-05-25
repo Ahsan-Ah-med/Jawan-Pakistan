@@ -1,0 +1,208 @@
+<div class="{{ section.id }}">
+  <div class="custom_tamato_image">
+    <div class="custom_tamato_image_container">
+      <div class="custom_tamato_front_image">
+        {% if section.settings.front_image != blank %}
+          <div class="custom_tamato_front_image_container">
+            <img src="{{ section.settings.front_image | img_url: 'master' }}">
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom_tamato_image_container{
+    max-width: {{section.settings.page_size}}px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .custom_tamato_image{
+    width: 100%;
+    padding: {{section.settings.top_padding}}px {{section.settings.right_padding}}px {{section.settings.bottom_padding}}px {{section.settings.left_padding}}px;
+  }
+  .custom_tamato_front_image{
+    background-image: url('{{ section.settings.back_image | img_url: 'master' }}');
+    padding-bottom: calc(100% / (1340 / 652));
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  .custom_tamato_front_image_container{
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @media only screen and (max-width:1023px){
+    .custom_tamato_front_image_container{
+      max-width: 500px;
+    }
+  }
+  @media only screen and (max-width:767px){
+    .custom_tamato_image{
+      padding: {{section.settings.top_padding_mb}}px {{section.settings.right_padding_mb}}px {{section.settings.bottom_padding_mb}}px {{section.settings.left_padding_mb}}px;
+    }
+    .custom_tamato_front_image_container{
+      max-width: 400px;
+    }
+  }
+     @media only screen and (max-width:600px){
+    {% if section.settings.hideSectionOnMobile %}
+    .custom_tamato_image{
+     display: none;
+    }
+    {% endif %}
+  }
+  @media only screen and (max-width:550px){
+    .custom_tamato_front_image_container{
+      max-width: 300px;
+    }
+  }
+  @media only screen and (max-width:450px){
+    .custom_tamato_front_image_container{
+      max-width: 250px;
+    }
+  }
+  @media only screen and (max-width:400px){
+    .custom_tamato_front_image_container{
+      max-width: 200px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Tomato Image",
+  "settings": [
+    {
+    "type": "number",
+    "id": "page_size",
+    "label": "Page Container",
+    "default": 1310
+  },
+ {
+    "type": "header",
+    "content": "Section Settings"
+  },
+  {
+    "type": "range",
+    "id": "top_padding",
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Top Padding",
+    "default": 60
+  },
+  {
+    "type": "range",
+    "id": "bottom_padding",
+    "min": 0,
+    "max": 150,
+    "step": 5,
+    "unit": "px",
+    "label": "Bottom Padding",
+    "default": 140
+  },
+  {
+    "type": "range",
+    "id": "right_padding",
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Right Padding",
+    "default":20
+  },
+  {
+    "type": "range",
+    "id": "left_padding",
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Left Padding",
+    "default": 20
+  },
+
+  {
+      "type": "checkbox",
+      "id": "hideSectionOnMobile",
+      "label": "Hide section",
+      "info": "hide section on all mobile screens",
+      "default": true
+    },
+  {
+    "type": "range",
+    "id": "top_padding_mb",
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Top Padding Mobile",
+    "default": 30
+  },
+  {
+    "type": "range",
+    "id": "bottom_padding_mb",
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Bottom Padding Mobile",
+    "default": 30
+  },
+  {
+    "type": "range",
+    "id": "right_padding_mb",
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Right Padding Mobile",
+    "default":20
+  },
+  {
+    "type": "range",
+    "id": "left_padding_mb",
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Left Padding Mobile",
+    "default": 20
+  },
+  {
+    "type": "image_picker",
+    "id": "back_image",
+    "label": "Background Image"
+  },
+  {
+    "type": "image_picker",
+    "id": "front_image",
+    "label": "Front Image"
+  }
+
+  ],
+  "presets": [
+    {
+      "name": "Tamato Image"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

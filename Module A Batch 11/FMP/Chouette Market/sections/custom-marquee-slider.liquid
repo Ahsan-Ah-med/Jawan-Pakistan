@@ -1,0 +1,362 @@
+<div class="custom_marquee">
+  <div class="custom_marquee_slider">
+    <div class="custom_marquee_slider_image_box">
+      {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | img_url: 'master' }}">
+      {% endif %}
+    </div>
+    <div class="custom_marquee_slider_box">
+      {% for block in section.blocks %}
+        <div class="custom_slider_inner">
+          {% if block.settings.slider_image != blank %}
+            <img src="{{ block.settings.slider_image | img_url: 'master' }}">
+          {% endif %}
+
+          <h3>{{ block.settings.slidetext1 }}</h3>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom_marquee_slider{
+    padding: {{ section.settings.top_padding }}px {{ section.settings.right_padding }}px {{ section.settings.bottom_padding }}px {{ section.settings.left_padding }}px;
+  }
+  .custom_marquee_slider_box{
+    max-width: {{ section.settings.page_size }}px;
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #49946D;
+    background: #FFF8F1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 29px 0px;
+    box-shadow: 5px 5px 0 0px #D1DCCE, 6px 4px 0 0px #064E3B, 4px 6px 0 0px #064E3B, 6px 6px 0 0px #064E3B;
+    box-shadow:
+    5px 5px 0 0px #D1DCCE,
+    6px 4px 0 0px #064E3B,
+    4px 6px 0 0px #064E3B,
+    6px 6px 0 0px #064E3B,
+    0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    margin-top: -{{ section.settings.container_position }}%;
+  }
+
+  .custom_marquee_slider_box img{
+    width: 70px;
+    height: auto;
+  }
+  .custom_marquee_slider_box h3{
+    color: #49946D;
+    text-align: center;
+    font-family: Fenwick !important;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17.111px;
+  }
+  .custom_slider_inner{
+    display: flex !important;
+    align-items: center;
+    justify-content: space-evenly;
+    width: fit-content !important;
+  }
+
+  @media only screen and (max-width:990px){
+    .custom_marquee_slider{
+      padding: {{ section.settings.top_padding_mobile }}px {{ section.settings.right_padding_mobile }}px {{ section.settings.bottom_padding_mobile }}px {{ section.settings.left_padding_mobile }}px;
+    }
+  }
+  @media only screen and (max-width:767px){
+    .custom_marquee_slider_box{
+      padding: 10px 0;
+    }
+    .custom_marquee_slider_box img{
+      width: 40px
+    }
+    .custom_marquee_slider_box h3{
+      font-size: 17px;
+    }
+  }
+     @media only screen and (max-width:600px){
+    {% if section.settings.hideSectionOnMobile %}
+    .custom_marquee{
+     display: none;
+    }
+    {% endif %}
+  }
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  $('.custom_marquee_slider_box').slick({
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: {{ section.settings.slick_autoplay }},
+    autoplaySpeed: 0,
+     dots: {{ section.settings.slick_dots }},
+     arrows: {{ section.settings.slick_arrow }},
+       speed: {{ section.settings.slick_autoplay_speed }},
+         cssEase: 'linear',
+         infinite: true,
+      initialSlide: 1,
+     centerPadding: '60px',
+     centerMode: true,
+     {% if section.settings.pre_arr != blank %}
+     prevArrow:'<img src="{{ section.settings.pre_arr | img_url: 'master' }}"/>',
+     {% endif %}
+     {% if section.settings.next_arr != blank %}
+     nextArrow:'<img src="{{ section.settings.next_arr | img_url: 'master' }}"/>',
+     {% endif %}
+
+     responsive: [
+       {
+        breakpoint: 1200,
+        settings: {
+          arrows: {{ section.settings.slick_arrow }},
+          centerMode: false,
+          centerPadding: '40px',
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          arrows: {{ section.settings.slick_arrow }},
+          centerMode: false,
+          centerPadding: '40px',
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          dots: false,
+          centerMode: false,
+          centerPadding: '40px',
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          arrows: false,
+          centerMode: false,
+          centerPadding: '40px',
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ]
+   });
+   });
+</script>
+
+{% schema %}
+{
+  "name": "Marquee slider",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Box Container",
+      "default": 1330
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f7f0e9"
+    },
+    {
+      "type": "range",
+      "id": "top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "right_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding",
+      "default":0
+    },
+    {
+      "type": "range",
+      "id": "left_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section Settings On Mobile"
+    },
+    {
+      "type": "checkbox",
+      "id": "hideSectionOnMobile",
+      "label": "Hide section",
+      "info": "hide section on all mobile screens",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "top_padding_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding On Mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding On Mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "right_padding_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding On Mobile",
+      "default":0
+    },
+    {
+      "type": "range",
+      "id": "left_padding_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding On Mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "container_position",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "label": "Container Top Position",
+      "default": 7
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+        {
+      "type": "checkbox",
+      "id": "slick_arrow",
+      "label": "Arrow Show/Hide",
+      "default": false
+    },
+        {
+      "type": "checkbox",
+      "id": "slick_dots",
+      "label": "Dots Show/Hide",
+      "default": false
+    },
+        {
+      "type": "checkbox",
+      "id": "slick_autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "slick_autoplay_speed",
+      "min": 1000,
+      "max": 9000,
+      "step": 1000,
+      "unit": "px",
+      "label": "Autoplay Speed",
+      "default": 9000
+    },
+    {
+      "type": "image_picker",
+      "id": "pre_arr",
+      "label": "Previous Arrow Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "next_arr",
+      "label": "Next Arrow Icon"
+    }
+  ],
+  "blocks":[
+  {
+      "name": "slider",
+    "type": "block",
+    "settings":[
+      {
+        "type": "image_picker",
+        "id": "slider_image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "slidetext1",
+        "label": "Slide Text"
+      }
+
+    ]
+  }
+],
+  "presets": [
+  {
+    "name": "Marquee Slider"
+
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

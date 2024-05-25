@@ -1,0 +1,111 @@
+<div class="mainContainer">
+  <div class="subContainer">
+    <div class="customerMenu">
+      <ul>
+        <li>
+          <div class="icon"><img src="{{ section.settings.icon1 | img_url: 'master' }}"></div>
+          <div class="optionTitle">{{ section.settings.text1 }}</div>
+        </li>
+        <li>
+          <div class="icon"><img src="{{ section.settings.icon2 | img_url: 'master' }}"></div>
+          <div class="optionTitle">{{ section.settings.text2 }}</div>
+        </li>
+        <li>
+          <div class="icon"><img src="{{ section.settings.icon3 | img_url: 'master' }}"></div>
+          <div class="optionTitle">{{ section.settings.text3 }}</div>
+        </li>
+        <li>
+          <div class="icon"><img src="{{ section.settings.icon4 | img_url: 'master' }}"></div>
+          <div class="optionTitle">{{ section.settings.text4 }}</div>
+        </li>
+        <li>
+          <div class="icon"><img src="{{ section.settings.icon5 | img_url: 'master' }}"></div>
+          <div class="optionTitle">{{ section.settings.text5 }}</div>
+        </li>
+        <li>
+          <div class="icon"><img src="{{ section.settings.icon6 | img_url: 'master' }}"></div>
+          <div class="optionTitle">{{ section.settings.text6 }}</div>
+        </li>
+        <li>
+          <div class="icon"><img src="{{ section.settings.icon7 | img_url: 'master' }}"></div>
+          <div class="optionTitle">{{ section.settings.text7 }}</div>
+        </li>
+        <li>
+          <div class="icon"><img src="{{ section.settings.icon8 | img_url: 'master' }}"></div>
+          <div class="optionTitle">{{ section.settings.text8 }}</div>
+        </li>
+        <li>
+          <div class="icon"><img src="{{ section.settings.icon9 | img_url: 'master' }}"></div>
+          <div class="optionTitle">{{ section.settings.text9 }}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+  .subContainer{
+    padding: {{ section.settings.secTopPad }}px {{ section.settings.secRightLeftPad }}px {{section.settings.secBottomPad}}px;
+  }
+</style>
+{% schema %}
+{
+  "name": "New Customer section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Paddings"
+    },
+    {
+      "type": "range",
+      "id": "secTopPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secRightLeftPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Left Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secBottomPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Option 1 Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon1",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "text1",
+      "label": "Image"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "New Customer section"
+    }
+  ]
+}
+{% endschema %}

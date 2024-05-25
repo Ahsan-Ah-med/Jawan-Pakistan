@@ -1,0 +1,155 @@
+<div class="customProductFooter">
+  <div class="productBuyOption">
+    <div class="productContainer">
+      <div class="productFooterInfo">
+        <div class="productFooterImg">
+          <img src="{{ product.featured_image | img_url: 'master' }}">
+        </div>
+        <div class="productdetails">
+          <div class="productName">
+            <p>{{ product.title }}</p>
+          </div>
+          <div class="productPrice price-item price-item--regular">
+            <span> {{ product.price | money }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="productBuyBtns">
+        <div class="productVariantOption"></div>
+        <div class="productAddtoCart product-form__buttons">
+          <product-form>
+            {% form 'product', product %}
+              <input
+                type="hidden"
+                name="id"
+                value="{{ product.selected_or_first_available_variant.id }}"
+                disabled
+              >
+              <button
+                id="{{ product_form_id }}-submit"
+                type="submit"
+                name="add"
+                class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
+                aria-haspopup="dialog"
+                aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                aria-live="polite"
+                data-sold-out-message="true"
+                {% if product.selected_or_first_available_variant.available == false %}
+                  disabled
+                {% endif %}
+              >
+                <span>
+                  {%- if product.selected_or_first_available_variant.available -%}
+                    AJOUTER AU PANIER
+                  {%- else -%}
+                    {{ 'products.product.sold_out' | t }}
+                  {%- endif -%}
+                </span>
+                <span class="sold-out-message hidden">
+                  {{ 'products.product.sold_out' | t }}
+                </span>
+                {%- if horizontal_quick_add -%}
+                  <span class="icon-wrap">{% render 'icon-plus' %}</span>
+                {%- endif -%}
+                <div class="loading-overlay__spinner hidden">
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    class="spinner"
+                    viewBox="0 0 66 66"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30">
+                    </circle>
+                  </svg>
+                </div>
+              </button>
+            {% endform %}
+          </product-form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+   .customProductFooter {
+    display: none;
+    width: 100%;
+    bottom: 0;
+    background-color: #f7f0e9;
+    padding: 10px;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+    margin: 0 auto;
+    left: 0;
+    position: absolute;
+    transform: translateY(100%);
+    transition: transform 0.5s, opacity 0.5s;
+  }
+
+  .productBuyOption {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .productContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .productFooterInfo {
+    display: flex;
+    width: 25%;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .productName p {
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  .productFooterImg {
+    width: 75px;
+    height: 75px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 25px;
+  }
+
+  .slide-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
+</style>
+
+<script>
+  window.addEventListener('scroll', function () {
+    const scrollDistance = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const stickyDiv = document.querySelector('.customProductFooter');
+
+    if (scrollDistance >= windowHeight / 2) {
+      stickyDiv.style.position = 'fixed';
+      setTimeout(() => {
+      stickyDiv.style.display = 'flex';
+      stickyDiv.style.opacity = 1;
+      }, 100)
+      stickyDiv.style.transform = 'translateY(0)';
+     stickyDiv.classList.add('slide-in');
+    } else {
+      stickyDiv.classList.remove('slide-in');
+      stickyDiv.style.position = 'absolute';
+      setTimeout(() => {
+      stickyDiv.style.display = 'none';
+      stickyDiv.style.opacity = 0;
+      }, 100)
+      stickyDiv.style.transform = 'translateY(100%)';
+    }
+  });
+</script>

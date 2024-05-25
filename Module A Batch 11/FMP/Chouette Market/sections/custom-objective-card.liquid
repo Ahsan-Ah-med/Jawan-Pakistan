@@ -1,0 +1,463 @@
+<div>
+  <div>
+    <div class="custom-objective-card-main">
+      <div class="custom-objective-card-card custom-card-negative">
+        <div class="custom-objective-card-box">
+          <div class="custom-objective-card-img">
+            <img src="{{ section.settings.img1 | img_url: 'master' }}">
+          </div>
+          <div class="custom-objective-card-headings-box">
+            <div class="custom-objective-card-heading custom-card-negative-heading">
+              {{ section.settings.heading1 }}
+            </div>
+            <div class="custom-objective-card-paragraph">{{ section.settings.paragraph1 }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="custom-objective-card-card custom-card-positive">
+        <div class="custom-objective-card-box">
+          <div class="custom-objective-card-img">
+            <img src="{{ section.settings.img2 | img_url: 'master' }}">
+          </div>
+          <div class="custom-objective-card-headings-box">
+            <div class="custom-objective-card-heading custom-card-positive-heading">
+              {{ section.settings.heading2 }}
+            </div>
+            <div class="custom-objective-card-paragraph">{{ section.settings.paragraph2 }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+   .custom-objective-card-main{
+          padding: {{  section.settings.top_padding }}px {{ section.settings.right_padding }}px {{ section.settings.bottom_padding }}px {{ section.settings.left_padding }}px;
+          max-width: {{ section.settings.page_size }}px;
+          width: 100%;
+          margin: 0 auto;
+          display: flex;
+         gap: 40px;
+   }
+   .custom-objective-card-card{
+     width: 50%;
+     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+     border-radius: 12px;
+     padding: 25px;
+   }
+   .custom-objective-card-box{
+     width: 100%;
+   }
+   .custom-objective-card-img{
+   margin-bottom: 20px;
+   }
+  .custom-card-negative{
+    background-color:{{ section.settings.background1 }};
+  }
+  .custom-card-positive{
+    background-color:{{ section.settings.background2 }};
+    border: 1px solid #49946D;
+  }
+   .custom-objective-card-heading p{
+     font-size: {{ section.settings.heading_font_size }}px;
+          font-weight: {{ section.settings.heading_font_weight }};
+          color: {{ section.settings.heading_color }};
+          margin: 0px 0px 25px 0px;
+          line-height: 30px;
+          letter-spacing: 0px;
+   }
+  .custom-objective-card-paragraph p{
+     font-size: {{ section.settings.paragraph_font_size }}px;
+          font-weight: {{ section.settings.paragraph_font_weight }};
+          color: {{ section.settings.paragraph_color }};
+          margin: 0;
+          line-height: 30px;
+          letter-spacing: 0px;
+  }
+  .custom-card-negative-heading strong{
+       font-size: 33px;
+       font-weight: 800;
+       line-height: 30px;
+       color: #CC1010;
+       text-decoration: line-through;
+  }
+   .custom-card-positive-heading em{
+      font-size: 33px;
+       font-weight: 800;
+       line-height: 30px;
+       color: #49946D;
+      font-style: normal;
+   }
+  .custom-card-positive-heading strong{
+       font-size: 33px;
+       font-weight: 800;
+       line-height: 30px;
+       color: #064E3B;
+      position: relative;
+  }
+  .custom-card-positive-heading p span strong:after{
+              content: none;
+
+       }
+  .custom-card-positive-heading p span{
+       text-decoration-color: #064E3B !important;
+
+       }
+  .custom-card-positive-heading strong:after{
+          content: "";
+          background-image:url('https://cdn.shopify.com/s/files/1/0789/9778/2834/files/emoji__flexed_biceps.png?v=1690456338');
+          position: absolute;
+          right: -44px;
+          bottom: 5px;
+          width: 38px;
+          height: 36px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+       }
+       @media only screen and (max-width:1100px){
+            .custom-objective-card-paragraph p {
+                font-size: 18px;
+                line-height: 22px;
+            }
+            .custom-objective-card-heading p {
+                font-size: 22px;
+                margin: 0px 0px 15px 0px;
+                line-height: 24px;
+            }
+            .custom-card-negative-heading strong {
+                font-size: 26px;
+            }
+            .custom-card-positive-heading em {
+                font-size: 26px;
+            }
+            .custom-card-positive-heading strong {
+                font-size: 26px;
+            }
+            .custom-card-positive-heading strong:after {
+                right: -32px;
+                bottom: 5px;
+                width: 30px;
+                height: 26px;
+            }
+         }
+    @media only screen and (max-width:900px){
+        .custom-objective-card-main{
+          padding: {{ section.settings.top_padding_mobile }}px {{ section.settings.right_padding_mobile }}px {{ section.settings.bottom_padding_mobile }}px {{ section.settings.left_padding_mobile }}px;
+        }
+        .custom-objective-card-heading p{
+          font-size: {{ section.settings.fonderHeading }}px;
+          line-height: 25px;
+          margin: 0px 0px 20px 0px;
+        }
+      .custom-objective-card-paragraph p{
+          font-size: {{ section.settings.paragraph_font_size_mobile }}px;
+          line-height: 18px;
+      }
+       .custom-card-negative-heading strong {
+                font-size: 21px;
+            }
+            .custom-card-positive-heading em {
+                font-size: 21px;
+            }
+            .custom-card-positive-heading strong {
+                font-size: 21px;
+            }
+            .custom-card-positive-heading strong:after {
+                right: -25px;
+                bottom: 5px;
+                width: 25px;
+                height: 23px;
+            }
+    }
+             @media only screen and (max-width:767px){
+            .custom-objective-card-main {
+                  gap: 25px;
+                  flex-wrap: wrap;
+              }
+            .custom-objective-card-card {
+                width: 100%;
+                padding: 20px 10px;
+            }
+              .custom-objective-card-img {
+                  margin-bottom: 0px;
+              }
+
+             .custom-objective-card-heading p{
+          font-size: 15px;
+          line-height: 20px;
+          margin: 0px 0px 5px 0px;
+        }
+      .custom-objective-card-paragraph p{
+          font-size: 12px;
+          line-height: 14px;
+      }
+       .custom-card-negative-heading strong {
+                font-size: 18px;
+            }
+            .custom-card-positive-heading em {
+                font-size: 18px;
+            }
+            .custom-card-positive-heading strong {
+                font-size: 18px;
+            }
+            .custom-card-positive-heading strong:after {
+                right: -20px;
+                bottom: 5px;
+                width: 20px;
+                height: 17px;
+            }
+             }
+</style>
+{% schema %}
+  {
+    "name": "Objective Card",
+    "settings": [
+{
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1060
+    },
+    {
+      "type": "color",
+      "id": "background_color_body",
+      "label": "Body Background Color",
+      "default": "#FFF8F1"
+    },
+
+    {
+      "type": "range",
+      "id": "top_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "right_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding",
+      "default":20
+    },
+    {
+      "type": "range",
+      "id": "left_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Left Padding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Box 1 Settings"
+    },
+    {
+      "type": "color",
+      "id": "background1",
+      "label": "Background Color",
+      "default": "#F6CFC3"
+    },
+
+    {
+       "type": "image_picker",
+       "id": "img1",
+       "label": "Main Image"
+     },
+      {
+      "type": "richtext",
+      "id": "heading1",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "paragraph1",
+      "label": "Paragraph"
+    },
+    {
+      "type": "header",
+      "content": "Box 2 Settings"
+    },
+    {
+      "type": "color",
+      "id": "background2",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+       "type": "image_picker",
+       "id": "img2",
+       "label": "Main Image"
+     },
+      {
+      "type": "richtext",
+      "id": "heading2",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "paragraph2",
+      "label": "Paragraph"
+    },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+
+     {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 55
+    },
+    {
+      "type": "range",
+      "id": "heading_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Heading Font Weight",
+      "default": 700
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#141414"
+    },
+    {
+      "type": "color",
+      "id": "heading_color_hover",
+      "label": "Heading Color Hover",
+      "default": "#fff"
+    },
+     {
+      "type": "header",
+      "content": "Paragraph Settings"
+    },
+     {
+      "type": "range",
+      "id": "paragraph_font_size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Paragraph Font Size",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "paragraph_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Paragraph Font Weight",
+      "default": 400
+    },
+    {
+      "type": "color",
+      "id": "paragraph_color",
+      "label": "Paragraph Color",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings On Mobile"
+    },
+    {
+      "type": "range",
+      "id": "top_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding On Mobile",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding On Mobile",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "right_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding On Mobile",
+      "default":20
+    },
+    {
+      "type": "range",
+      "id": "left_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding On Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "fonderHeading",
+      "min": 8,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Fonder Heading font size Mobile",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "paragraph_font_size_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Paragraph Font Size",
+      "default": 14
+    }
+    ],
+"presets": [
+{
+  "name": "Objective Card"
+
+}
+]
+  }
+{% endschema %}

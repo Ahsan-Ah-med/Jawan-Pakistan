@@ -1,0 +1,629 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+     #loginDrawer .field input{
+      background: transparent;
+    }
+     #loginDrawer .field{
+      display: flex;
+      padding: 12px 24px 12px 16.48px;
+      align-items: center;
+      gap: 7.52px;
+      border-radius: 12px;
+      border: 1px solid #064E3B;
+      background: #F7F0E9;
+    }
+    .loginContainer{
+      padding: 0;
+    }
+    .loginForm{
+      /* border: 1px solid #064E3B; */
+    }
+    .customer:not(.account):not(.order) {
+      padding: 0;
+      border-radius: 12px;
+    }
+    #recover, #login {
+      display: none;
+    }
+    #forgotPassword{
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .field input:after, .field:after{
+     box-shadow: none !important;
+    }
+  .loginDrawerHeader{
+      position: absolute;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      left: 0;
+      padding: 20px;
+      border-bottom: 1px solid rgba(0,0,0,.11);
+  }
+    .login-drawer-heading p{
+          line-height: 110%;
+        letter-spacing: 0px;
+    }
+  .login-info-body-heading{
+    text-align: center;
+    font-family: Poppins;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 31px;
+    color: #1E2C21;
+  }
+  .login-info-body-paragraph p{
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    color: #1E2C21;
+  }
+  .login-info-body-image{
+    width: 150px;
+    margin: 0 auto;
+
+  }
+  .loginsubmitBtn{
+    padding: 12px 100px !important;
+    border-radius: 12px;
+    border: 1px solid #064E3B;
+    background-color: #49946D;
+    color: #fff;
+    text-align: center;
+    font-family: Poppins !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    box-shadow: 5px 5px 0 0px, 6px 4px 0 0px #064E3B, 4px 6px 0 0px #064E3B, 6px 6px 0 0px #064E3B;
+  }
+  .loginsubmitBtn:before, .loginsubmitBtn:after{
+    content: none !important;
+  }
+  .loginsubmitBtn:hover{
+    box-shadow: 2px 2px 0 0px, 3px 1px 0 0px #064E3B, 2px 3px 0 0px #064E3B, 3px 3px 0 0px #064E3B;
+    transform: translateX(2px);
+    transform: translate(2px, 2px);
+  }
+    @media screen and (min-width: 750px) {
+
+    }
+{%- endstyle -%}
+
+<div class="login-drawer {{ section.id }}" id="loginDrawer">
+  <div class="loginDrawerHeader">
+    <div class="login-drawer-heading">{{ settings['login-drawer-heading'] }}</div>
+    <button id="closeDrawerBtn">
+      <img src="//chouette-market.myshopify.com/cdn/shop/files/cancel_1.png?v=1690711279" class="icon icon-close">
+    </button>
+  </div>
+  <div class="loginInformationContainer">
+    <div class="login-info-body-box">
+      <div class="login-info-body-image"><img src="{{ settings.login-info-img | img_url: 'master' }}"></div>
+      <div class="login-info-body-heading">{{ settings.login_body_heading }}</div>
+      <div class="login-info-body-paragraph">{{ settings.login_body_paragraph }}</div>
+    </div>
+
+    <div id="loginItems">
+      <div class="loginContainer section-{{ section.id }}-padding">
+        <div class="customer loginForm login">
+          <h1 id="recover" tabindex="-1">
+            {% comment %} {{ 'customer.recover_password.title' | t }} {% endcomment %}
+          </h1>
+          <div>
+            <p>
+              {{ 'customer.recover_password.subtext' | t }}
+            </p>
+
+            {%- form 'recover_customer_password' -%}
+              {% assign recover_success = form.posted_successfully? %}
+              <div class="field">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                  <path d="M4 20C3.6 20 3.25 19.85 2.95 19.55C2.65 19.25 2.5 18.9 2.5 18.5V5.5C2.5 5.1 2.65 4.75 2.95 4.45C3.25 4.15 3.6 4 4 4H21C21.4 4 21.75 4.15 22.05 4.45C22.35 4.75 22.5 5.1 22.5 5.5V18.5C22.5 18.9 22.35 19.25 22.05 19.55C21.75 19.85 21.4 20 21 20H4ZM12.5 12.45L4 6.875V18.5H21V6.875L12.5 12.45ZM12.5 10.95L20.9 5.5H4.125L12.5 10.95ZM4 6.875V5.5V18.5V6.875Z" fill="black"/>
+                </svg>
+                <input
+                  type="email"
+                  value=""
+                  name="email"
+                  id="RecoverEmail"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  autocomplete="email"
+                  placeholder="{{ 'customer.login_page.email' | t }}"
+                  {% if form.errors %}
+                    aria-invalid="true"
+                    aria-describedby="RecoverEmail-email-error"
+                    autofocus
+                  {% endif %}
+                >
+                {% comment %}
+                  <label for="RecoverEmail">
+                    {{ 'customer.login_page.email' | t }}
+                  </label>
+                {% endcomment %}
+              </div>
+              {%- if form.errors -%}
+                <small id="RecoverEmail-email-error" class="form__message">
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 13 13">
+                    <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                    <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                    <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                    <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                  </svg>
+                  {{ form.errors.messages.form }}
+                </small>
+              {%- endif -%}
+
+              <button class="custom_recover_btn">
+                {{ 'customer.login_page.submit' | t }}
+              </button>
+
+              <a href="#login">
+                {{ 'customer.login_page.cancel' | t }}
+              </a>
+            {%- endform -%}
+          </div>
+
+          <h1 id="login" tabindex="-1">
+            {% comment %}  {{ 'customer.login_page.title' | t }} {% endcomment %}
+          </h1>
+          <div class="loginContainer custom_login_drawer">
+            {%- if recover_success == true -%}
+              <h3 class="form__message" tabindex="-1" autofocus>
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 13 13">
+                  <path d="M6.5 12.35C9.73087 12.35 12.35 9.73086 12.35 6.5C12.35 3.26913 9.73087 0.65 6.5 0.65C3.26913 0.65 0.65 3.26913 0.65 6.5C0.65 9.73086 3.26913 12.35 6.5 12.35Z" fill="#428445" stroke="white" stroke-width="0.7"/>
+                  <path d="M5.53271 8.66357L9.25213 4.68197" stroke="white"/>
+                  <path d="M4.10645 6.7688L6.13766 8.62553" stroke="white">
+                </svg>
+                {{ 'customer.recover_password.success' | t }}
+              </h3>
+            {%- endif -%}
+            {%- form 'customer_login', novalidate: 'novalidate' -%}
+              {%- if form.errors -%}
+                <h2 class="form__message" tabindex="-1" autofocus>
+                  <span class="visually-hidden">{{ 'accessibility.error' | t }} </span>
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 13 13">
+                    <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                    <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                    <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                    <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                  </svg>
+                  {{ 'templates.contact.form.error_heading' | t }}
+                </h2>
+                {{ form.errors | default_errors }}
+              {%- endif -%}
+
+              <div class="field">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                  <path d="M4 20C3.6 20 3.25 19.85 2.95 19.55C2.65 19.25 2.5 18.9 2.5 18.5V5.5C2.5 5.1 2.65 4.75 2.95 4.45C3.25 4.15 3.6 4 4 4H21C21.4 4 21.75 4.15 22.05 4.45C22.35 4.75 22.5 5.1 22.5 5.5V18.5C22.5 18.9 22.35 19.25 22.05 19.55C21.75 19.85 21.4 20 21 20H4ZM12.5 12.45L4 6.875V18.5H21V6.875L12.5 12.45ZM12.5 10.95L20.9 5.5H4.125L12.5 10.95ZM4 6.875V5.5V18.5V6.875Z" fill="black"/>
+                </svg>
+                <input
+                  type="email"
+                  name="customer[email]"
+                  id="CustomerEmail"
+                  autocomplete="email"
+                  autocorrect="off"
+                  placeholder="Votre adresse email"
+                  autocapitalize="off"
+                  {% if form.errors contains 'form' %}
+                    aria-invalid="true"
+                  {% endif %}
+                >
+                {% comment %}
+                  <label for="CustomerEmail">
+                    {{ 'customer.login_page.email' | t }}
+                  </label>
+                {% endcomment %}
+              </div>
+
+              {%- if form.password_needed -%}
+                <div class="field">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                    <path d="M6 22C5.5875 22 5.23438 21.8531 4.94063 21.5594C4.64688 21.2656 4.5 20.9125 4.5 20.5V9.65C4.5 9.2375 4.64688 8.88438 4.94063 8.59063C5.23438 8.29688 5.5875 8.15 6 8.15H7.75V5.75C7.75 4.43583 8.21338 3.31562 9.14015 2.38937C10.0669 1.46312 11.1877 1 12.5027 1C13.8175 1 14.9375 1.46312 15.8625 2.38937C16.7875 3.31562 17.25 4.43583 17.25 5.75V8.15H19C19.4125 8.15 19.7656 8.29688 20.0594 8.59063C20.3531 8.88438 20.5 9.2375 20.5 9.65V20.5C20.5 20.9125 20.3531 21.2656 20.0594 21.5594C19.7656 21.8531 19.4125 22 19 22H6ZM6 20.5H19V9.65H6V20.5ZM12.5042 17C13.0347 17 13.4875 16.8164 13.8625 16.4492C14.2375 16.082 14.425 15.6406 14.425 15.125C14.425 14.625 14.2361 14.1708 13.8583 13.7625C13.4805 13.3542 13.0263 13.15 12.4958 13.15C11.9653 13.15 11.5125 13.3542 11.1375 13.7625C10.7625 14.1708 10.575 14.6292 10.575 15.1375C10.575 15.6458 10.7639 16.0833 11.1417 16.45C11.5195 16.8167 11.9737 17 12.5042 17ZM9.25 8.15H15.75V5.75C15.75 4.84722 15.4343 4.07986 14.8029 3.44793C14.1716 2.81598 13.4049 2.5 12.503 2.5C11.601 2.5 10.8333 2.81598 10.2 3.44793C9.56667 4.07986 9.25 4.84722 9.25 5.75V8.15Z" fill="black"/>
+                  </svg>
+                  <input
+                    type="password"
+                    value=""
+                    name="customer[password]"
+                    id="CustomerPassword"
+                    placeholder="Votre mot de passe"
+                    autocomplete="current-password"
+                    {% if form.errors contains 'form' %}
+                      aria-invalid="true"
+                    {% endif %}
+                  >
+                  {% comment %}
+                    <label for="CustomerPassword">
+                      {{ 'customer.login_page.password' | t }}
+                    </label>
+                  {% endcomment %}
+                </div>
+              {%- endif -%}
+              <!--
+                <input
+                  type="checkbox"
+                  name="customer[stayLogin]"
+                  id="stayLoggedIn"
+                  {% if form.errors contains 'form' %}
+                    aria-invalid="true"
+                  {% endif %}
+                >
+                <label for="stayLoggedIn">Rester connecté</label>
+              -->
+              <button class="loginsubmitBtn" disabled>
+                {% comment %}
+                  {{ 'customer.login_page.sign_in' | t }}
+                {% endcomment %}
+                Me connecter
+              </button>
+              <a href="#recover" id="forgotPassword"> J’ai oublie mon mot de passe </a>
+              {% comment %}
+                <a href="{{ routes.account_register_url }}" class="custom_register_btn"> M’inscrire </a>
+              {% endcomment %}
+              <button class="custom_register_btn">M’inscrire</button>
+            {%- endform -%}
+          </div>
+        </div>
+
+        {%- if shop.checkout.guest_login -%}
+          <div>
+            <hr>
+            <h2>{{ 'customer.login_page.guest_title' | t }}</h2>
+
+            {%- form 'guest_login' -%}
+              <button>
+                {{ 'customer.login_page.guest_continue' | t }}
+              </button>
+            {%- endform -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  <div class="customer register section-{{ section.id }}-padding" id="registrationForm" style="display: none;">
+    <svg style="display: none">
+      <symbol id="icon-error" viewBox="0 0 13 13">
+        <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2" />
+        <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7" />
+        <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white" />
+        <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+      </symbol>
+    </svg>
+    <h1 class="login-info-body-heading registrationHeading">Création de votre compte</h1>
+    {%- form 'create_customer', novalidate: 'novalidate' -%}
+      {%- if form.errors -%}
+        <h2 class="form__message" tabindex="-1" autofocus>
+          <svg aria-hidden="true" focusable="false">
+            <use href="#icon-error" />
+          </svg>
+          {{ 'templates.contact.form.error_heading' | t }}
+        </h2>
+        <ul>
+          {%- for field in form.errors -%}
+            <li>
+              {%- if field == 'form' -%}
+                {{ form.errors.messages[field] }}
+              {%- else -%}
+                <a href="#RegisterForm-{{ field }}">
+                  {{ form.errors.translated_fields[field] | capitalize }}
+                  {{ form.errors.messages[field] }}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+      <div class="field">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M20.1677 21H4.79569C4.7167 20.9998 4.63864 20.983 4.5665 20.9508C4.49436 20.9186 4.42974 20.8718 4.37678 20.8131C4.32382 20.7545 4.28369 20.6855 4.25896 20.6105C4.23424 20.5355 4.22546 20.4561 4.23319 20.3775C4.48444 17.814 7.15444 15 12.4809 15C17.8074 15 20.4774 17.814 20.7287 20.3775C20.7364 20.4561 20.7276 20.5355 20.7029 20.6105C20.6782 20.6855 20.6381 20.7545 20.5851 20.8131C20.5321 20.8718 20.4675 20.9186 20.3954 20.9508C20.3232 20.983 20.2452 20.9998 20.1662 21H20.1677ZM12.4809 13.5C10.0802 13.5 7.98319 11.4165 7.98319 8.0625C7.98319 5.175 9.79894 3 12.4809 3C15.1629 3 16.9787 5.175 16.9787 8.0625C16.9787 11.4165 14.8817 13.5 12.4809 13.5Z" fill="#404040"/>
+        </svg>
+        <input
+          type="text"
+          name="customer[first_name]"
+          id="RegisterForm-FirstName"
+          {% if form.first_name %}
+            value="{{ form.first_name }}"
+          {% endif %}
+          autocomplete="given-name"
+          placeholder="{{ 'customer.register.first_name' | t }}"
+        >
+      </div>
+      <div class="field">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M20.1677 21H4.79569C4.7167 20.9998 4.63864 20.983 4.5665 20.9508C4.49436 20.9186 4.42974 20.8718 4.37678 20.8131C4.32382 20.7545 4.28369 20.6855 4.25896 20.6105C4.23424 20.5355 4.22546 20.4561 4.23319 20.3775C4.48444 17.814 7.15444 15 12.4809 15C17.8074 15 20.4774 17.814 20.7287 20.3775C20.7364 20.4561 20.7276 20.5355 20.7029 20.6105C20.6782 20.6855 20.6381 20.7545 20.5851 20.8131C20.5321 20.8718 20.4675 20.9186 20.3954 20.9508C20.3232 20.983 20.2452 20.9998 20.1662 21H20.1677ZM12.4809 13.5C10.0802 13.5 7.98319 11.4165 7.98319 8.0625C7.98319 5.175 9.79894 3 12.4809 3C15.1629 3 16.9787 5.175 16.9787 8.0625C16.9787 11.4165 14.8817 13.5 12.4809 13.5Z" fill="#404040"/>
+        </svg>
+        <input
+          type="text"
+          name="customer[last_name]"
+          id="RegisterForm-LastName"
+          {% if form.last_name %}
+            value="{{ form.last_name }}"
+          {% endif %}
+          autocomplete="family-name"
+          placeholder="{{ 'customer.register.last_name' | t }}"
+        >
+      </div>
+      <div class="field">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+          <path d="M4 20C3.6 20 3.25 19.85 2.95 19.55C2.65 19.25 2.5 18.9 2.5 18.5V5.5C2.5 5.1 2.65 4.75 2.95 4.45C3.25 4.15 3.6 4 4 4H21C21.4 4 21.75 4.15 22.05 4.45C22.35 4.75 22.5 5.1 22.5 5.5V18.5C22.5 18.9 22.35 19.25 22.05 19.55C21.75 19.85 21.4 20 21 20H4ZM12.5 12.45L4 6.875V18.5H21V6.875L12.5 12.45ZM12.5 10.95L20.9 5.5H4.125L12.5 10.95ZM4 6.875V5.5V18.5V6.875Z" fill="black"/>
+        </svg>
+        <input
+          type="email"
+          name="customer[email]"
+          id="RegisterForm-email"
+          {% if form.email %}
+            value="{{ form.email }}"
+          {% endif %}
+          spellcheck="false"
+          autocapitalize="off"
+          autocomplete="email"
+          aria-required="true"
+          {% if form.errors contains 'email' %}
+            aria-invalid="true" aria-describedby="RegisterForm-email-error"
+          {% endif %}
+          placeholder="{{ 'customer.register.email' | t }}"
+        >
+      </div>
+      {%- if form.errors contains 'email' -%}
+        <span id="RegisterForm-email-error" class="form__message">
+          <svg aria-hidden="true" focusable="false">
+            <use href="#icon-error" />
+          </svg>
+          {{ form.errors.translated_fields.email | capitalize }}
+          {{ form.errors.messages.email }}.
+        </span>
+      {%- endif -%}
+      <div class="field">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+          <path d="M6 22C5.5875 22 5.23438 21.8531 4.94063 21.5594C4.64688 21.2656 4.5 20.9125 4.5 20.5V9.65C4.5 9.2375 4.64688 8.88438 4.94063 8.59063C5.23438 8.29688 5.5875 8.15 6 8.15H7.75V5.75C7.75 4.43583 8.21338 3.31562 9.14015 2.38937C10.0669 1.46312 11.1877 1 12.5027 1C13.8175 1 14.9375 1.46312 15.8625 2.38937C16.7875 3.31562 17.25 4.43583 17.25 5.75V8.15H19C19.4125 8.15 19.7656 8.29688 20.0594 8.59063C20.3531 8.88438 20.5 9.2375 20.5 9.65V20.5C20.5 20.9125 20.3531 21.2656 20.0594 21.5594C19.7656 21.8531 19.4125 22 19 22H6ZM6 20.5H19V9.65H6V20.5ZM12.5042 17C13.0347 17 13.4875 16.8164 13.8625 16.4492C14.2375 16.082 14.425 15.6406 14.425 15.125C14.425 14.625 14.2361 14.1708 13.8583 13.7625C13.4805 13.3542 13.0263 13.15 12.4958 13.15C11.9653 13.15 11.5125 13.3542 11.1375 13.7625C10.7625 14.1708 10.575 14.6292 10.575 15.1375C10.575 15.6458 10.7639 16.0833 11.1417 16.45C11.5195 16.8167 11.9737 17 12.5042 17ZM9.25 8.15H15.75V5.75C15.75 4.84722 15.4343 4.07986 14.8029 3.44793C14.1716 2.81598 13.4049 2.5 12.503 2.5C11.601 2.5 10.8333 2.81598 10.2 3.44793C9.56667 4.07986 9.25 4.84722 9.25 5.75V8.15Z" fill="black"/>
+        </svg>
+        <input
+          type="password"
+          name="customer[password]"
+          id="RegisterForm-password"
+          aria-required="true"
+          {% if form.errors contains 'password' %}
+            aria-invalid="true" aria-describedby="RegisterForm-password-error"
+          {% endif %}
+          placeholder="{{ 'customer.register.password' | t }}"
+        >
+      </div>
+      <div class="checkBoxfield">
+        <input
+          type="checkbox"
+          name="customer[agreedToTermsAndcondition]"
+          id="agreedToTermsAndcondition"
+          {% if form.errors contains 'form' %}
+            aria-invalid="true"
+          {% endif %}
+        >
+        <label for="agreedToTermsAndcondition">J’ai lu</label>
+      </div>
+      <div class="checkBoxfield">
+        <input
+          type="checkbox"
+          name="customer[confirmationToTerms]"
+          id="confrimedToTerms"
+          {% if form.errors contains 'form' %}
+            aria-invalid="true"
+          {% endif %}
+        >
+        <label for="confrimedToTerms">Je confirme</label>
+      </div>
+      {%- if form.errors contains 'password' -%}
+        <span id="RegisterForm-password-error" class="form__message">
+          <svg aria-hidden="true" focusable="false">
+            <use href="#icon-error" />
+          </svg>
+          {{ form.errors.translated_fields.password | capitalize }}
+          {{ form.errors.messages.password }}.
+        </span>
+      {%- endif -%}
+      <button class="submitBtn">S’inscrire</button>
+    {%- endform -%}
+    <div class="backToLogin">
+      <button class="backToLoginBtn">Déjà client ? Connectez-vous</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .login-drawer {
+    position: fixed;
+    top: 0;
+    right: -500px; /* Start the drawer off-screen */
+    width: 500px;
+    height: 100%;
+    background-color: #F7F0E9;
+    padding: 50px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+  }
+
+  .login-drawer.open {
+    right: 0;
+    z-index: 5;
+  }
+
+  .login-item {
+    margin-bottom: 10px;
+  }
+  .registrationHeading{
+    margin-top: 60px !important;
+  }
+  #openDrawerBtn {
+    display: block;
+    margin: 20px auto;
+  }
+
+  #closeDrawerBtn {
+    display: inline-block;
+    padding: 0;
+    min-width: 1px;
+    min-height: 1px;
+    width: 24px;
+    height: 24px;
+    box-shadow: 0 0 0 0.2rem rgba(var(--color-button),0);
+    color: rgb(var(--color-foreground));
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .shopify-section-group-header-group {
+    z-index: 1 !important;
+  }
+  .login-drawer-heading{
+    color: #000;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+  }
+  #closeDrawerBtn{
+    position: absolute;
+    right: 34px;
+  }
+  .field__input, .customer .field input{
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #loginDrawer .field{
+    border-radius: 12px;
+    border: 1px solid rgba(6, 78, 59, 0.15);
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    display: flex;
+    width: 100%;
+    padding: 12px 16px;
+  }
+  .field:before, .select:before, .customer .field:before, .customer select:before, .localization-form__select:before, .field:after, .select:after, .customer .field:after, .customer select:after, .localization-form__select:after{
+    content: none !important
+  }
+  .{{ section.id }} .loginsubmitBtn{
+    display: flex;
+    width: 100%;
+    padding: 11.368px 39.789px 11.368px 136.421px;
+    align-items: center;
+    gap: 22.737px;
+    border-radius: 11.368px;
+    border: 0.947px solid #064E3B;
+    background: #49946D;
+  }
+  .{{section.id}} #forgotPassword{
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    text-decoration-line: underline;
+    justify-content: center;
+    margin-bottom:24px;
+  }
+  .custom_register_btn, .custom_recover_btn{
+    color: #FFF !important;
+    text-align: center !important;
+    font-family: Poppins !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    line-height: normal !important;
+    letter-spacing: -0.48px !important;
+    border-radius: 10.737px !important;
+    border: 0.895px solid #064E3B !important;
+    background: #49946D !important;
+    display: flex !important;
+    width: 100% !important;
+    box-shadow: 4px 4px 0 0px, 5px 3px 0 0px #064e3b, 4px 5px 0 0px #064e3b, 5px 5px 0 0px #064e3b !important;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 100px;
+  }
+  .custom_register_btn:hover, .custom_recover_btn:hover{
+    box-shadow: 2px 2px 0 0px, 3px 1px 0 0px #064E3B, 2px 3px 0 0px #064E3B, 3px 3px 0 0px #064E3B;
+    transform: translateX(2px);
+    transform: translate(2px, 2px);
+  }
+  .button:before, .shopify-challenge__button:before, .customer button:before, .shopify-payment-button__button--unbranded:before, .shopify-payment-button [role=button]:before, .cart__dynamic-checkout-buttons [role=button]:before{
+    content: none !important;
+  }
+  .button:after, .shopify-challenge__button:after, .customer button:after, .shopify-payment-button__button--unbranded:after{
+    content: none !important;
+  }
+  .{{ section.id }} .customer .field input{
+    height: 100% !important;
+  }
+</style>
+
+<script>
+      const openDrawerBtn = document.querySelector('.header__icon--account');
+    const closeDrawerBtn = document.getElementById("closeDrawerBtn");
+    const loginDrawer = document.getElementById("loginDrawer");
+
+    openDrawerBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      loginDrawer.classList.add("open");
+    });
+
+    closeDrawerBtn.addEventListener("click", () => {
+      loginDrawer.classList.remove("open");
+    });
+
+  // Login Button Disabled code
+
+    const login_input_field = document.querySelectorAll('.custom_login_drawer .field input');
+  const login_submit_btn = document.querySelector('.loginsubmitBtn');
+
+  const check_condition = (inputs) => {
+      let filled = true;
+      inputs.forEach((input) => {
+          if (input.value.trim() === '') {  // Use trim() to remove whitespace
+              filled = false;
+          }
+      });
+      return filled;
+  };
+
+  login_input_field.forEach((input) => {
+      input.addEventListener('input', () => {
+          if (check_condition(login_input_field)) {
+              login_submit_btn.removeAttribute('disabled');
+          } else {
+              login_submit_btn.setAttribute('disabled', 'disabled'); // Use setAttribute
+          }
+      });
+  });
+
+    let loginFormVisible = true
+    const custom_register_btn = document.querySelector(".custom_register_btn");
+    const loginInformationContainer = document.querySelector(".loginInformationContainer");
+    const registrationForm = document.getElementById("registrationForm");
+    const backToLoginBtn = document.querySelector(".backToLoginBtn");
+      backToLoginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+            registrationForm.style.display = "none";
+            loginInformationContainer.style.display = "block";
+        if(!loginFormVisible){
+        }
+      });
+      custom_register_btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if(loginFormVisible){
+            registrationForm.style.display = "block";
+            loginInformationContainer.style.display = "none";
+        }
+      });
+</script>

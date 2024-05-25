@@ -1,0 +1,908 @@
+<div class="timeline-container {{ section.id }} comment_page">
+  <div class="timeline-box-1">
+    <div class="timeline-heading">{{ section.settings.main_timeline_heading }}</div>
+  </div>
+  <div class="timeline-box-2">
+    {% for block in section.blocks %}
+      <div class="steps-div-{{ forloop.index }} steps-div">
+        {% if block.settings.enable_circle %}
+          <div class="custom_flot_circle">
+            {% if block.settings.custom_flot_circle_image != blank %}
+              <img src="{{ block.settings.custom_flot_circle_image | img_url: 'master' }}">
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="image-box-container imageBorder">
+          <img src="{{ block.settings.step_logo | img_url: 'master' }}">
+        </div>
+        <div class="content-box-{{ forloop.index }} content-box">
+          <h2 class="content-h2">
+            <div class="stepTitle">
+              {{ block.settings.step_tittle -}}
+            </div>
+            <div class="stepName">
+              <a href="{{ section.settings.urlRedirect }}">
+                {{ block.settings.step_name }}
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="9"
+                  height="8"
+                  viewBox="0 0 9 8"
+                  fill="none"
+                  class="arrow"
+                >
+                  <path d="M4.69522 6.19651C4.43487 6.45684 4.43487 6.87897 4.69522 7.1393C4.95557 7.39963 5.37767 7.39963 5.63802 7.1393L8.30466 4.47267C8.56499 4.21232 8.56499 3.79022 8.30466 3.52987L5.63802 0.863227C5.37767 0.602883 4.95557 0.602883 4.69522 0.863227C4.43487 1.12358 4.43487 1.54568 4.69522 1.80603L6.22381 3.33461H1.16666C0.798477 3.33461 0.5 3.63308 0.5 4.00127C0.5 4.36945 0.798477 4.66793 1.16666 4.66793H6.22381L4.69522 6.19651Z" />
+                </svg>
+              </a>
+            </div>
+          </h2>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="butonContainer">
+    <a href="{{ section.settings.btnUrl }}" class="servove-btn threeDEffect">{{ section.settings.btnText }}</a>
+  </div>
+</div>
+<style>
+   .arrow path{
+   fill: #636363;
+  }
+  .stepName .arrow{
+    width: 10px;
+  }
+   .steps-div:hover .arrow path{
+    fill: #0C0C0C;
+
+  }
+                        .timeline-container{
+                        flex-wrap: wrap;
+                        width: 100%;
+
+                        margin: 0 auto;
+                        max-width: 1500px;
+                        justify-content: center;
+                        flex-direction: column;
+                        align-items: center;
+                        display: flex;
+
+                        align-self: stretch;
+                        background: {{section.settings.main_background}};
+                        padding: {{ section.settings.secTopPad }}px {{ section.settings.secRightLeftPad }}px {{section.settings.secBottomPad}}px;
+                        }
+                        .timeline-box-1{
+                          width: 100%;
+                          text-align: center;
+                          margin-bottom: 60px;
+                        }
+
+            {% comment %}         .threeDEffect{
+                      box-shadow: 4px 4px 0px {{ section.settings.shadowColor }};
+                      border-radius: 12px;
+                      border: 0.42px {{ section.settings.shadoBorderColor }} solid;
+                    }
+                    .threeDEffect:hover {
+                      box-shadow: 4px 4px 0px {{ section.settings.shodawColorOhHover }};
+                      border-radius: 12px;
+                      border: 0.42px {{ section.settings.shodowBorderColorOnHover }} solid;
+                      background-color: {{ section.settings.shadowBGcolor }};
+                  }
+                  .threeDEffect:active {
+                    box-shadow: 0px 0px 0px #FFF8F1;
+                    transform: translate(2px, 2px);
+                } {% endcomment %}
+                         .timeline-heading p{
+                         line-height: 39px;
+                          letter-spacing: -1px;
+                          font-size: {{ section.settings.mainFontSize }}px;
+                          color: {{section.settings.main_headingColor}};
+                          font-weight: {{ section.settings.main_headingWeight }};
+                           margin: 0px;
+                        }
+                        .timeline-heading strong{
+                          color: {{section.settings.main_heading_bold}};
+                          font-weight: {{ section.settings.main_headingWeight }};
+                          font-size: {{ section.settings.mainFontSize }}px;
+                          position: relative;
+                          margin-left: 10px;
+                        }
+
+                        .animate strong{
+                          color: #fff;
+                          position: relative;
+                        }
+
+                        .timeline-heading p strong:after{
+                          content: '';
+                          position: absolute;
+                        width: 175px;
+                        height: 45px;
+                        top: 3px;
+                        left: -7px;
+                          z-index: -1;
+                          opacity: 0;
+                          transition: opacity 1s ease,  background-position 1.5s ease;
+                          background: linear-gradient(to right,transparent 50%,#49946d 50%);
+                          background-size: 200% 100%;
+                          background-position: left bottom;
+                          transition: all .5s ease-out;
+                        }
+
+                        .animate p strong:after{
+                          background-position: right bottom;
+                           opacity: 1;
+                        }
+
+                        .timeline-box-2{
+                          width: 100%;
+                          gap: 40px;
+                          max-width: {{ section.settings.page_size }}px;
+                          display: inline-flex;
+                          align-items: flex-start;
+                          flex-shrink: 0;
+                          justify-content: space-between;
+
+                        }
+                        .timeline-box-3{
+                        display: flex;
+                          justify-content: space-evenly;
+                          width: 100%;
+                            text-align: center
+
+                        }
+
+                        .steps-div{
+                          display: flex;
+                          flex-direction: column;
+                          justify-content: flex-start;
+                          align-items: center;
+                          gap: 18px;
+                         width: 25%;
+                          position: relative;
+                        }
+
+                        .image-box-container{
+                          display: block;
+                        }
+                        .image-box-container img{
+                          width: 200px;
+                          background-color: {{ section.settings.imgBgColor }};
+                          border-radius: 50%;
+                          max-width: 200px;
+                          max-height: 200px;
+                          height: 200px;
+                          box-shadow: 0px 4px 4px 0px #6F2D0070;
+                        }
+                        .steps-div:hover .image-box-container img{
+                          background-color: {{ section.settings.imgBgColor_hover }};
+                        }
+
+                        .content-box{
+                          padding: 0px 10px;
+                          text-align: center;
+                        }
+                        .timeline-box-2 h3{
+                          margin: 8px 0px 0px 0px;
+                          color: {{section.settings.steps_color}};
+                          font-weight: 700;
+                          text-transform: none;
+                        }
+                        .content-h2{
+                         margin: 0px;
+                        }
+                        .content-h2 .stepTitle p{
+                          color: {{section.settings.steps_title_color}};
+                          font-weight: {{ section.settings.stepTitleWeight }};
+                          font-size: {{ section.settings.stepTitleSize }}px;
+                          line-height: 135%;
+                          letter-spacing: 0px;
+                          text-transform: uppercase;
+                        }
+                        .content-h2 .stepTitle p strong {
+                          font-weight: {{ section.settings.stepTitleWeight }};
+                          font-size: {{ section.settings.stepTitleSize }}px;
+                        }
+                        .content-h2 .stepName a{
+                          color: {{section.settings.steps_name_color}};
+                          font-weight: {{ section.settings.step_name_Weight }};
+                          font-size: {{ section.settings.step_nam_Size }}px;
+
+                        }
+        .content-h2 .stepName p{
+                          color: {{section.settings.steps_name_color}};
+                          font-weight: {{ section.settings.step_name_Weight }};
+                          font-size: {{ section.settings.step_nam_Size }}px;
+                        }
+  .steps-div:hover .content-h2 .stepName p{
+    color: #090909;
+    text-decoration: underline;
+  }
+            .content-h2 .stepName a{
+            display:flex;
+            align-items: center;
+            }
+                        .content-h2 p{
+                       margin: 0px 0px 0px 0px;
+                          letter-spacing: 0;
+                          text-transform: none;
+                        }
+
+                      /*    .timeline-box-2 p strong{
+                        color: yellow;
+                           font-weight: 700;
+                        } */
+
+                       .butonContainer{
+                          position: relative;
+                          width: 100%;
+                          display: flex;
+                          align-items: center;
+                         justify-content: center;
+                       }
+                        .servove-btn {
+                          padding: 10px 20px;
+                          width: 100%;
+                          max-width: 300px;
+                          font-size: {{ section.settings.btnSize }}px;
+                          font-weight: {{ section.settings.btnWeight }};
+                          margin: 0px 0 0 0;
+                          text-transform: none;
+                          text-decoration: none;
+                          color: {{section.settings.button_text}};
+                          background-color:  {{section.settings.button_background}};
+                          text-align: center;
+                          border-radius: 12px;
+                          border: 0.42px {{ section.settings.shadoBorderColor }} solid;
+                              box-shadow:
+                              5px 5px 0 0px {{ section.settings.shadowBgColor }},
+                              6px 4px 0 0px {{ section.settings.shadowBorderColor }},
+                              4px 6px 0 0px {{ section.settings.shadowBorderColor }},
+                              6px 6px 0 0px {{ section.settings.shadowBorderColor }};
+
+                      }
+
+                .servove-btn:hover {
+                   box-shadow:
+                              2px 2px 0 0px {{ section.settings.shadowBgColor }},
+                              3px 1px 0 0px {{ section.settings.shadowBorderColor }},
+                              2px 3px 0 0px {{ section.settings.shadowBorderColor }},
+                              3px 3px 0 0px {{ section.settings.shadowBorderColor }};
+             transform: translateX(2px);
+              transform: translate(2px, 2px);
+                background-color: #69B88F;
+          }
+
+        .stepName p{
+              margin-right: 5px;
+        }
+
+
+                        .imageBorder{
+                        border: 1px solid {{ section.settings.imgBorderColor }};
+                        border-radius: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 10px;
+                        box-shadow: 0px 1px 4px 0px #E5DFD9;
+                        }
+                        .bouncyBtn{
+                          font-style: normal;
+                          line-height: normal;
+                          letter-spacing: -0.598px;
+                        }
+  .steps-div:hover .stepTitle p strong{
+    background: #49946d;
+    color: #fff;
+    padding: 0 5px;
+  }
+                        .stepName{
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                        }
+                        .stepName img{
+                          width: 10px;
+                        }
+      .{{ section.id }} .stepTitle{
+        margin-bottom: 15px;
+      }
+      .custom_flot_circle{
+        position: absolute;
+        right: 17%;
+        width: 49px;
+        height: 49px;
+      }
+      .leftScroll p strong:after{
+        background-position: right bottom !important;
+        opacity: 1 !important;
+      }
+      .leftScroll strong{
+        color: #fff;
+      }
+
+                   @media only screen and (max-width: 1280px) {
+
+                      .image-box-container img {
+                        max-width: 180px;
+                        max-height: 180px;
+                        height: 180px;
+                        width: 180px;
+                    }
+                  .imageBorder {
+                      padding: 6px;
+                  }
+                     .timeline-box-2 {
+                           gap: 0px;
+                           height: auto;
+                        }
+                     .timeline-box-1{
+                                width: 100%;
+                          text-align: center;
+                         }
+                  }
+
+                       @media only screen and (max-width: 1023px) {
+      .custom_flot_circle{
+        right: 20%;
+        width: 40px;
+        height: 40px;
+      }
+                        .image-box-container img {
+                          max-width: 150px;
+                          max-height: 150px;
+                          height: 130px;
+                          width: 130px;
+                      }
+                         .steps-div {
+                            gap: 10px;
+                        }
+
+                         .stepName img {
+                              width: 6px;
+                          }
+                         .content-box {
+                            padding: 0px 0px;
+                            text-align: center;
+                        }
+                      }
+                      @media only screen and (max-width: 990px) {
+                        .steps-div{
+                          width:50%;
+                          margin-bottom: 20px;
+                        }
+                        .timeline-box-2{
+                          flex-wrap: wrap;
+                        }
+                        .custom_flot_circle{
+                          right: 35%;
+                          width: 40px;
+                          height: 40px;
+                        }
+                        .timeline-container{
+                           padding: {{ section.settings.secTopPadMob }}px {{ section.settings.secRightLeftPadMob }}px {{section.settings.secBottomPadMob}}px;
+                        }
+                      }
+
+                    @media only screen and (max-width: 767px) {
+                    .content-h2 .stepTitle p, .content-h2 .stepTitle p strong{
+                      font-size: {{ section.settings.stepTitleSize_mb }}px;
+                    }
+                    .content-h2 .stepName a{
+                      font-size: {{ section.settings.step_nam_Size_mb }}px;
+                    }
+                    .content-h2 .stepName p{
+                      font-size: {{ section.settings.step_nam_Size_mb }}px;
+                    }
+                       .timeline-box-2 {
+                        display: flex;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                      }
+                      .timeline-container {
+                            gap: 0px;
+                        }
+                  .timeline-box-1{
+                  margin-bottom: 30px;
+                  }
+                  .timeline-box-2{
+                  margin-bottom: 10px;
+                  }
+                     .steps-div {
+                          width: 100%;
+                          flex-wrap: wrap;
+                          margin-bottom: 20px;
+                      }
+                  .imageBorder {
+                      padding: 6px;
+                  }
+                     .image-box-container img {
+                        max-width: 120px;
+                        max-height: 120px;
+                        height: 130px;
+                        width: 130px;
+                    }
+    .custom_flot_circle {
+        right: 42%;
+        width: 30px;
+        height: 30px;
+    }
+      .{{ section.id }} .stepTitle{
+        margin-bottom: 5px;
+      }
+                    }
+  @media only screen and (max-width:600px){
+    {% if section.settings.hideSectionOnMobile %}
+    .timeline-container{
+     display: none !important;
+    }
+    {% endif %}
+    .custom_flot_circle {
+      right: 40%;
+      width: 30px;
+      height: 30px;
+  }
+  }
+
+  @media only screen and (max-width:500px){
+    .custom_flot_circle {
+      right: 37%;
+      width: 30px;
+      height: 30px;
+  }
+  }
+  @media only screen and (max-width:400px){
+    .custom_flot_circle {
+      right: 34%;
+      width: 30px;
+      height: 30px;
+  }
+  }
+</style>
+<script>
+  {% comment %}
+  function isElementInViewport(el) {
+    var rect = el.getBoundingClientRect();
+      return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+
+    function animateOnScroll() {
+      var section = document.querySelector('.custom_side_image');
+
+      if (isElementInViewport(section)) {
+        section.classList.add('leftScroll');
+      }
+    }
+
+    // Attach the animateOnScroll function to the scroll event after the DOM is loaded
+    window.addEventListener('DOMContentLoaded', function () {
+      window.addEventListener('scroll', animateOnScroll);
+    });
+    {% endcomment %}
+
+  window.addEventListener('scroll', function() {
+    var section = document.querySelector('.timeline-container');
+    var customImage = document.querySelector('.timeline-heading');
+
+    // Yahan pe aap class ka naam change kar sakte hain agar kuch aur naam rakhna hai to
+    var classNameToAdd = 'leftScroll';
+
+    if (section.getBoundingClientRect().top < window.innerHeight) {
+      // Jab window scroll karke section ke top pe aa jaye, class add karenge
+      customImage.classList.add(classNameToAdd);
+    } else {
+      // Agar window section ke top se bahar jaata hai, class hata denge
+      customImage.classList.remove(classNameToAdd);
+    }
+  });
+</script>
+
+{% schema %}
+ {
+   "name": "Icons With Text",
+   "settings": [
+     {
+      "type": "header",
+      "content": "Desktop Settings",
+      "info": "The settings below work above 900px screens"
+    },
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1250
+    },
+    {
+      "type": "header",
+      "content": "Section Paddings"
+    },
+    {
+      "type": "range",
+      "id": "secTopPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secRightLeftPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Left Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secBottomPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+     {
+       "type": "header",
+       "content": "Heading Settings"
+     },
+     {
+       "type": "richtext",
+       "id": "main_timeline_heading",
+       "label": "Main Heading"
+     },
+     {
+      "type": "range",
+      "id": "main_headingWeight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Main Heading Font Weight",
+      "default": 500
+    },
+     {
+      "type": "range",
+      "id": "mainFontSize",
+      "min": 8,
+      "max": 48,
+      "step": 1,
+      "label": "Main Heading Font size",
+      "default": 26
+    },
+     {
+       "type": "color",
+       "id": "main_headingColor",
+       "label": "Main Heading Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "main_heading_bold",
+       "label": "Main Heading Bold Color",
+       "default": "#49946D"
+     },
+     {
+       "type": "color",
+       "id": "main_background",
+       "label": "Section Background Color",
+       "default": "#000000"
+     },
+     {
+       "type": "header",
+       "content": "block Images setting"
+     },
+     {
+     "type": "color",
+     "id": "imgBorderColor",
+     "label": "Image Border Color",
+     "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "form-heading-color",
+       "label": "Form Heading Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "dots_color",
+       "label": "Line Dots Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "steps_color",
+       "label": "Steps Tittle Color",
+       "default": "#000000"
+     },
+     {
+       "type": "header",
+       "content": "title settings"
+     },
+     {
+       "type": "color",
+       "id": "steps_title_color",
+       "label": "Steps Name Color",
+       "default": "#000000"
+     },
+     {
+        "type": "range",
+        "id": "stepTitleSize",
+        "min": 12,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Name Size",
+        "default": 16
+      },
+     {
+        "type": "range",
+        "id": "stepTitleSize_mb",
+        "min": 12,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Name Size Mobile",
+        "default": 16
+      },
+     {
+        "type": "range",
+        "id": "stepTitleWeight",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "label": "Step Name Weight",
+        "default": 700
+      },
+     {
+       "type": "header",
+       "content": "name settings"
+     },
+     {
+       "type": "color",
+       "id": "steps_name_color",
+       "label": "Steps Name Color",
+       "default": "#000000"
+     },
+     {
+       "type": "image_picker",
+       "id": "arrowImg",
+       "label": "Steps Arrow After"
+     },
+     {
+        "type": "range",
+        "id": "step_nam_Size",
+        "min": 12,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Name Size",
+        "default": 16
+      },
+     {
+        "type": "range",
+        "id": "step_nam_Size_mb",
+        "min": 12,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Name Size Mobile",
+        "default": 14
+      },
+     {
+        "type": "range",
+        "id": "step_name_Weight",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "label": "Step Name Weight",
+        "default": 700
+      },
+     {
+       "type": "color",
+       "id": "imgBgColor",
+       "label": "Image Background Color"
+     },
+     {
+       "type": "color",
+       "id": "imgBgColor_hover",
+       "label": "Image Background Color On Hover"
+     },
+     {
+       "type": "header",
+       "content": "Button Settings"
+     },
+     {
+       "type": "text",
+       "id": "btnText",
+       "label": "Button Text",
+       "default": "View All"
+     },
+     {
+       "type": "url",
+       "id": "btnUrl",
+       "label": "Button URL"
+     },
+     {
+       "type": "range",
+       "id": "btnSize",
+       "min": 8,
+       "max": 48,
+       "step": 1,
+       "unit": "px",
+       "label": "Button Text Size",
+       "default": 15
+     },
+     {
+       "type": "range",
+       "id": "btnWeight",
+       "min": 100,
+       "max": 900,
+       "step": 100,
+       "label": "Button Text Size",
+       "default": 500
+     },
+     {
+       "type": "color",
+       "id": "button_text",
+       "label": "Button Text Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "button_background",
+       "label": "Button Background Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "button_hover_text",
+       "label": "Hover Button Text Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "button_hover_background",
+       "label": "Hover Button Background Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "shadowColor",
+       "label": "Shadow background Color",
+       "default": "#064E3B"
+     },
+     {
+       "type": "color",
+       "id": "shodawColorOhHover",
+       "label": "Button Color on hover",
+       "default": "#FFF8F1"
+     },
+     {
+       "type": "color",
+       "id": "shodowBorderColorOnHover",
+       "label": "Shadow Border Color on hover",
+       "default": "#064E3B"
+     },
+     {
+       "type": "color",
+       "id": "shadowBGcolor",
+       "label": "Shadow Background Color",
+       "default": "#fff"
+     },
+     {
+       "type": "color",
+       "id": "shadowBorderColor",
+       "label": "Shadow Border Color",
+       "default": "#000"
+     },
+     {
+       "type": "color",
+       "id": "shadoBorderColor",
+       "label": "Button Border Color",
+       "default": "#064E3B"
+     },
+     {
+       "type": "header",
+       "content": "Mobile settings",
+       "info": "This setting will work on 1280 screen sizes"
+     },
+{
+        "type": "checkbox",
+        "id": "hideSectionOnMobile",
+        "label": "Hide section",
+        "info": "hide section on all mobile screens",
+        "default": true
+    },
+     {
+        "type": "range",
+        "id": "secTopPadMob",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Top padding on mobile",
+        "default": 30
+      },
+     {
+        "type": "range",
+        "id": "secRightLeftPadMob",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Right Left Padding on Mobile",
+        "default": 30
+      },
+     {
+        "type": "range",
+        "id": "secBottomPadMob",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Bottom Padding Mobile",
+        "default": 30
+      }
+
+     ],
+     "blocks":[
+            {
+          "name": "slider",
+           "type": "block",
+           "settings": [
+             {
+             "type": "image_picker",
+             "id": "step_logo",
+             "label": "Step logo"
+             },
+             {
+             "type": "richtext",
+             "id": "step_tittle",
+             "label": "Step Tittle"
+             },
+             {
+             "type": "richtext",
+             "id": "step_name",
+             "label": "Step Name"
+             },
+             {
+             "type": "url",
+             "id": "urlRedirect",
+             "label": "Url"
+             },
+             {
+                "type": "checkbox",
+                "id": "enable_circle",
+                "label": "Show Circle",
+                "default": false
+              },
+             {
+                "type": "image_picker",
+                "id": "custom_flot_circle_image",
+                "label": "Circle Image"
+              }
+
+
+     ]
+     }
+     ],
+"presets": [
+    {
+      "name": "Icons With Text"
+
+    }
+  ]
+ }
+{% endschema %}

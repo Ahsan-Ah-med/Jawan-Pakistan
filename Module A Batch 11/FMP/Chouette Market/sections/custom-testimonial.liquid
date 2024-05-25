@@ -1,0 +1,563 @@
+<div>
+  <div>
+    <div class="testimonial-main-container">
+      <div class="testimonial-main-container-headings">
+        <div class="testimonial-main-heading">{{ section.settings.heading }}</div>
+      </div>
+      <div class="testimonial-main-container-box">
+        {% for block in section.blocks %}
+          <div class="testimonial-box">
+            <div class="testimonial-reviews">{{ block.settings.review }}</div>
+            <div class="testimonial-sub-box">
+              <img src="{{ block.settings.avatar | img_url: 'master' }}">
+              <div>
+                <div class="testimonial-name">{{ block.settings.name }}</div>
+                <div class="testimonial-company">{{ block.settings.company }}</div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+    .testimonial-main-container{
+      padding: {{  section.settings.top_padding }}px {{ section.settings.right_padding }}px {{ section.settings.bottom_padding }}px {{ section.settings.left_padding }}px;
+    }
+    .testimonial-reviews p{
+          font-size: {{ section.settings.review_font_size }}px;
+           font-weight: {{ section.settings.review_font_weight }};
+           color: {{ section.settings.review_color }};
+           line-height: 24px;
+    }
+    .testimonial-name{
+       font-size: {{ section.settings.name_font_size }}px;
+       font-weight: {{ section.settings.name_font_weight }};
+       color: {{ section.settings.name_color }};
+       line-height: 18px;
+    }
+    .testimonial-company{
+       font-size: {{ section.settings.company_font_size }}px;
+       font-weight: {{ section.settings.company_font_weight }};
+       color: {{ section.settings.company_color }};
+       line-height: 18px;
+    }
+     .testimonial-main-heading p{
+       font-size: 33px;
+       font-weight: 700;
+       color: #1E2C21;
+            text-align: center;
+            margin-bottom: 40px;
+      }
+      .testimonial-main-heading p strong{
+       color: #fff;
+       position: relative;
+       padding: 0px 5px;
+      }
+             .testimonial-main-heading p strong:after{
+                         content: '';
+                         position: absolute;
+                        width: 100%;
+                        height: 35px;
+                        top: 5px;
+                        left: 0px;
+                         z-index: -1;
+                         opacity: 0;
+                         transition: opacity 1s ease,  background-position 1.5s ease;
+                         background: linear-gradient(to right,transparent 50%,#49946d 50%);
+                         background-size: 200% 100%;
+                         background-position: left bottom;
+                         transition: all .5s ease-out;
+                       }
+                   .testimonial-animate p strong:after{
+                         background-position: right bottom;
+                          opacity: 1;
+                       }
+    .testimonial-box{
+      display: flex;
+      flex-direction: column;
+      padding: 30px 40px;
+      border: {{ section.settings.borderThick }}px solid {{ section.settings.borderColor }};
+      margin-right: 40px;
+      border-radius: {{ section.settings.borderRadius }}px;
+      background-color: {{ section.settings.bgColor }};
+            box-shadow: 0px 4px 12px rgba(78.63, 78.63, 78.63, 0.22);
+    }
+    .testimonial-sub-box {
+         display: flex;
+        align-items: center;
+        margin-top: 20px;
+      }
+    .testimonial-sub-box img{
+         width: 48px;
+          height: 48px;
+          margin-right: 15px;
+          }
+     @media only screen and (max-width:900px){
+         .testimonial-main-container{
+           padding: {{ section.settings.top_padding_mobile }}px {{ section.settings.right_padding_mobile }}px {{ section.settings.bottom_padding_mobile }}px {{ section.settings.left_padding_mobile }}px;
+         }
+       .testimonial-box{
+          padding: 15px 20px;
+          border: 1px solid #000;
+          margin-right: 20px;
+          border-radius: 12px;
+        }
+    .testimonial-reviews p{
+        font-size: {{ section.settings.review_font_size_mob }}px;
+    }
+     .testimonial-name{
+       font-size: {{ section.settings.name_font_size_mob }}px;
+    }
+    .testimonial-company{
+       font-size: {{ section.settings.company_font_size_mob }}px;
+    }
+       .testimonial-main-heading p {
+      font-size: 24px;
+      line-height: 20px;
+      margin-bottom: 20px;
+  }
+            .testimonial-main-heading p strong {
+      color: #fff;
+      position: relative;
+      padding: 0px 5px;
+  }
+            .testimonial-main-heading p strong:after {
+      height: 25px;
+  }
+     }
+   @media only screen and (max-width: 600px) {
+              .testimonial-main-heading p strong:after{
+               content: none;
+             }
+             .testimonial-main-heading p strong{
+              background: #49946d;
+              padding: 0px 0px 0 4px;
+             }
+           }
+</style>
+<script type="text/javascript">
+  $(document).ready(function() {
+  $('.testimonial-main-container-box').slick({
+    slidesToShow: 3,
+   slidesToScroll: 1,
+   autoplay: {{ section.settings.slick_autoplay }},
+   autoplaySpeed: 0,
+    dots: {{ section.settings.slick_dots }},
+    arrows: {{ section.settings.slick_arrow }},
+      speed: {{ section.settings.slick_autoplay_speed }},
+        cssEase: 'linear',
+        infinite: true,
+     initialSlide: 1,
+    centerPadding: '60px',
+    centerMode: true,
+    {% if section.settings.pre_arr != blank %}
+    prevArrow:'<img src="{{ section.settings.pre_arr | img_url: 'master' }}"/>',
+    {% endif %}
+    {% if section.settings.next_arr != blank %}
+    nextArrow:'<img src="{{ section.settings.next_arr | img_url: 'master' }}"/>',
+    {% endif %}
+
+    responsive: [
+      {
+       breakpoint: 1200,
+       settings: {
+         arrows: {{ section.settings.slick_arrow }},
+         centerMode: false,
+         centerPadding: '40px',
+         slidesToShow: 3,
+         slidesToScroll: 1,
+       }
+     },
+     {
+       breakpoint: 899,
+       settings: {
+         arrows: {{ section.settings.slick_arrow }},
+         centerMode: false,
+         centerPadding: '40px',
+         slidesToShow: 3,
+         slidesToScroll: 1,
+       }
+     },
+     {
+       breakpoint: 768,
+       settings: {
+         arrows: false,
+         dots: false,
+         centerMode: false,
+         centerPadding: '40px',
+         slidesToShow: 2,
+         slidesToScroll: 1,
+       }
+     },
+     {
+       breakpoint: 600,
+       settings: {
+         arrows: false,
+         centerMode: false,
+         centerPadding: '40px',
+         slidesToShow: 1,
+         slidesToScroll: 1,
+       }
+     }
+   ]
+  });
+  });
+</script>
+<script>
+            window.addEventListener('scroll', function() {
+    var section = document.querySelector('.testimonial-main-container');
+    var customImage = document.querySelector('.testimonial-main-heading');
+
+    // Yahan pe aap class ka naam change kar sakte hain agar kuch aur naam rakhna hai to
+    var classNameToAdd = 'testimonial-animate';
+
+    if (section.getBoundingClientRect().top < window.innerHeight) {
+      // Jab window scroll karke section ke top pe aa jaye, class add karenge
+      customImage.classList.add(classNameToAdd);
+    } else {
+      // Agar window section ke top se bahar jaata hai, class hata denge
+      customImage.classList.remove(classNameToAdd);
+    }
+  });
+</script>
+{% schema %}
+  {
+    "name": "Testimonials",
+    "settings": [
+      {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+        {
+      "type": "checkbox",
+      "id": "slick_arrow",
+      "label": "Arrow Show/Hide",
+      "default": false
+    },
+        {
+      "type": "checkbox",
+      "id": "slick_dots",
+      "label": "Dots Show/Hide",
+      "default": false
+    },
+        {
+      "type": "checkbox",
+      "id": "slick_autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "slick_autoplay_speed",
+      "min": 1000,
+      "max": 5000,
+      "step": 500,
+      "unit": "px",
+      "label": "Autoplay Speed",
+      "default": 2000
+    },
+    {
+      "type": "image_picker",
+      "id": "pre_arr",
+      "label": "Previous Arrow Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "next_arr",
+      "label": "Next Arrow Icon"
+    },
+        {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "range",
+      "id": "top_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "right_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding",
+      "default":20
+    },
+    {
+      "type": "range",
+      "id": "left_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Review Settings"
+    },
+      {
+          "type": "richtext",
+          "id": "heading",
+          "label": "Heading Color"
+        },
+      {
+      "type": "range",
+      "id": "review_font_size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Review Font Size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "review_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Review Font Weight",
+      "default": 400
+    },
+    {
+      "type": "color",
+      "id": "review_color",
+      "label": "Review Color",
+      "default": "#5A606B"
+    },
+    {
+      "type": "header",
+      "content": "Name Settings"
+    },
+      {
+      "type": "range",
+      "id": "name_font_size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Name Font Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "name_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Name Font Weight",
+      "default": 600
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Name Color",
+      "default": "#171717"
+    },
+    {
+      "type": "header",
+      "content": "Company Settings"
+    },
+    {
+      "type": "range",
+      "id": "company_font_size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Company Font Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "company_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Company Font Weight",
+      "default": 600
+    },
+    {
+      "type": "color",
+      "id": "company_color",
+      "label": "Company Color",
+      "default": "#171717"
+    },
+    {
+      "type": "header",
+      "content": "Border settings"
+    },
+    {
+      "type": "color",
+      "id": "borderColor",
+      "label": "Company Color",
+      "default": "#064E3B"
+    },
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background Color",
+      "default": "#FCE39E"
+    },
+    {
+      "type": "range",
+      "id": "borderThick",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Border Thickness",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "borderRadius",
+      "min": 0,
+      "max": 25,
+      "step": 1,
+      "unit": "px",
+      "label": "Border Radius",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Section Settings On Mobile"
+    },
+    {
+      "type": "range",
+      "id": "top_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding On Mobile",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding On Mobile",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "right_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding On Mobile",
+      "default":20
+    },
+    {
+      "type": "range",
+      "id": "left_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding On Mobile",
+      "default": 20
+    },
+    {
+     "type": "header",
+      "content": "Mobile Fonts"
+    },
+    {
+    "type": "range",
+    "id": "review_font_size_mob",
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Review Font Size",
+    "default": 16
+    },
+    {
+    "type": "range",
+    "id": "company_font_size_mob",
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Company Font Size",
+    "default": 14
+  },
+  {
+    "type": "range",
+    "id": "name_font_size_mob",
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Name Font Size",
+    "default": 14
+  }
+
+    ],
+  "blocks":[
+  {
+    "name": "Founders Image 1",
+    "type": "image_1",
+    "settings":[
+        {
+          "type": "richtext",
+          "id": "review",
+          "label": "Review"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Reviewer name",
+          "default": "Éloïse Martin"
+        },
+        {
+          "type": "text",
+          "id": "company",
+          "label": "Reviewer Company",
+          "default": "Innovatronix"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Reviewer Avatar"
+        }
+    ]
+  }
+],
+"presets": [
+{
+  "name": "Testimonials"
+
+}
+]
+  }
+{% endschema %}

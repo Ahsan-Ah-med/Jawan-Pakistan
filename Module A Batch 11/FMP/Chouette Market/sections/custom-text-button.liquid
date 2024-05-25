@@ -1,0 +1,620 @@
+<div class="{{ section.id }}">
+  <div class="custom_text_button">
+    <div class="custom_text_button_container">
+      <div class="custom_text_button_text_div">
+        <h2>{{ section.settings.heading }}</h2>
+        {% if section.settings.logo_image != blank %}
+          <div class="custom_logo_image">
+            <img src="{{ section.settings.logo_image | img_url: 'master' }}">
+          </div>
+        {% endif %}
+        <h3>{{ section.settings.para }}</h3>
+      </div>
+      {% if section.settings.logo_image != blank %}
+        <div class="dotsContainer">
+          <span class="dotPoint"></span>
+          <span class="dotPoint"></span>
+          <span class="dotPoint"></span>
+          <span class="dotPoint"></span>
+          <span class="dotPoint"></span>
+        </div>
+      {% endif %}
+      <div class="custom_text_button_btn_div">
+        {% if section.settings.btn_text != blank %}
+          {% if section.settings.hands_btn %}
+            <a href="{{ section.settings.btn_link }}" class="banner-btn">
+              {{ section.settings.btn_text }}
+              <img
+                src="https://cdn.shopify.com/s/files/1/0789/9778/2834/files/Vector_9.png?v=1689779299"
+                class="button-img"
+              >
+            </a>
+          {% endif %}
+          {% if section.settings.press_btn %}
+            <a href="{{ section.settings.btn_link }}" class="custom_press_btn">{{ section.settings.btn_text }}</a>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+    {% if section.settings.animated_image != blank %}
+      <div class="custom_animated_image">
+        <img src="{{ section.settings.animated_image | img_url: 'master' }}">
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+    .custom_text_button_container{
+      max-width: {{section.settings.page_size}}px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .custom_text_button{
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+      margin: 0 auto;
+      overflow: hidden;
+      padding: {{ section.settings.top_padding }}px {{ section.settings.right_padding }}px {{ section.settings.bottom_padding }}px {{ section.settings.left_padding }}px;
+    }
+    .custom_animated_image{
+      position: absolute;
+      right: 0;
+      bottom: -105%;
+      transition: 1s;
+    }
+    .bottomTotop{
+      bottom: -35%;
+    }
+    .custom_text_button_text_div h2 p{
+      color: {{ section.settings.heading_fc }};
+      text-align: center;
+      font-family: Poppins;
+      font-size: {{ section.settings.heading_fz }}px;
+      font-style: normal;
+      font-weight: {{ section.settings.heading_fw }};
+      line-height: 1.5;
+    }
+    .custom_text_button_text_div h2 p strong{
+      color: {{ section.settings.heading_fc_bold }};
+      font-weight: {{ section.settings.heading_fw_bold }};
+      position: relative;
+    }
+
+    .dotsContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 10px;
+      gap: 24px;
+      margin: 24px 0 50px 0;
+    }
+    .dotPoint {
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 6px;
+      background: {{ section.settings.dotColor }};
+  }
+    .custom_text_button_text_div h2 p strong:after{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 80%;
+      top: 5px;
+      left: -4px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 1s ease, background-position 1.5s ease;
+      background: linear-gradient(to right,transparent 50%,#49946d 50%);
+      background-size: 200% 100%;
+      background-position: left bottom;
+      transition: all .5s ease-out;
+    }
+    .rightToleft p strong{
+      color: #fff !important;
+      padding: 0 5px;
+    }
+    .rightToleft p strong:after{
+      background-position: right bottom !important;
+      opacity: 1 !important;
+    }
+    .custom_text_button_text_div h3 p{
+      color: {{ section.settings.para_fc }};
+      text-align: center;
+      font-family: Poppins;
+      font-size: {{ section.settings.para_fz }}px;
+      font-style: normal;
+      font-weight: {{ section.settings.para_fw }};
+      line-height: 32px;
+    }
+    .custom_text_button_btn_div{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 33px;
+    }
+    .custom_text_button_text_div h3{
+      margin: 25px 0 0 0;
+    }
+    .custom_text_button_text_div h2{
+      margin-bottom: {{ section.settings.heading_bottom_spacing }}px;
+    }
+    .custom_press_btn {
+      display: inline-flex;
+      padding: 12px 42px;
+      align-items: center;
+      gap: 24px;
+      border-radius: 12px;
+      border: 1px solid {{ section.settings.btn_fc_bor }};
+      background: {{ section.settings.btn_fc_back }};
+      font-size: {{ section.settings.btn_fz }}px;
+      font-weight: {{ section.settings.btn_fw }};
+      color: {{ section.settings.btn_fc }};
+      box-shadow: 2px 2px 0 0px #fff, 3px 1px 0 0px #064E3B, 1px 3px 0 0px #064E3B, 3px 3px 0 0px #064E3B;
+    }
+    .custom_press_btn:hover{
+      box-shadow: 1px 1px 0 0px #fff, 2px 0px 0 0px #064E3B, 1px 2px 0 0px #064E3B, 2px 2px 0 0px #064E3B;
+      transform: translateX(2px);
+      transform: translate(2px, 2px);
+      background-color: #69b88f;
+    }
+    .custom_animated_image img{
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+    }
+    .custom_logo_image{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .custom_logo_image img{
+      max-width: 110px;
+    }
+
+    @media only screen and (max-width:1023px){
+      .custom_animated_image img{
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+      }
+    }
+
+    @media only screen and (max-width:767px){
+      .custom_press_btn {
+        font-size: {{ section.settings.btn_fz_mb }}px;
+      }
+      .custom_text_button_text_div h2{
+        margin-bottom: {{ section.settings.heading_bottom_spacing_mb }}px;
+      }
+      .custom_text_button{
+        width: 100%;
+        padding: {{ section.settings.top_padding_mb }}px {{ section.settings.right_padding_mb }}px {{ section.settings.bottom_padding_mb }}px {{ section.settings.left_padding_mb }}px;
+      }
+      .banner-btn {
+        max-width: 190px !important;
+        font-size: {{ section.settings.btn_fz_mb }}px !important;
+      }
+      .banner-btn:hover {
+        max-width: 220px !important;
+      }
+      .custom_text_button_text_div h2 p{
+        font-size: {{ section.settings.heading_fz_mb }}px;
+        line-height: 1.5;
+      }
+      .custom_text_button_text_div h3 p{
+        font-size: {{ section.settings.para_fz_mb }}px;
+        line-height: 1.5;
+      }
+      .custom_animated_image img{
+        width: 100%;
+        max-width: 100px;
+        height: auto;
+      }
+    }
+    .banner-btn {
+        padding: 15px 20px;
+        width: 100%;
+        max-width: 230px;
+        font-size: {{ section.settings.btn_fz }}px;
+        font-weight: {{ section.settings.btn_fw }};
+        margin: 0px 0 0 0;
+        text-transform: none;
+        text-decoration: none;
+        color: {{ section.settings.btn_fc }};
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: {{ section.settings.btn_fc_back }};
+        text-align: center;
+        border-radius: 12px;
+        transition: all 0.5s ease-out;
+        border: 0.42px {{ section.settings.btn_fc_bor }} solid;
+        box-shadow: 2px 2px 0 0px, 3px 1px 0 0px #000000, 2px 3px 0 0px #000000, 3px 3px 0 0px #000000;
+        position: relative; /* Add position relative to the button container */
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.598px;
+      }
+
+      .button-img {
+        display: none;
+        margin-left: 5px;
+        opacity: 0;
+        transition: all 1s ease-out;
+        transform: rotate(330deg);
+      }
+
+      .banner-btn:hover .button-img {
+        display: block;
+        width: 25px;
+        position: absolute;
+        right: 16px;
+        transform: rotate(-50deg);
+      animation: mymove 1.5s;
+        opacity: 1; /* Show the image with full opacity on hover */
+      }
+     @keyframes mymove {
+      from {transform: rotate(-30deg);}
+      to {transform: rotate(0deg);}
+    }
+      .banner-btn:hover {
+        max-width: 260px;
+        background-color: #69B88F;
+        justify-content: flex-start;
+      }
+</style>
+<script>
+    window.addEventListener('scroll', function() {
+      var section = document.querySelector('.custom_text_button');
+      var customImage = document.querySelector('.custom_text_button_text_div h2');
+
+      // Yahan pe aap class ka naam change kar sakte hain agar kuch aur naam rakhna hai to
+      var classNameToAdd = 'rightToleft';
+
+      if (section.getBoundingClientRect().top < window.innerHeight) {
+        // Jab window scroll karke section ke top pe aa jaye, class add karenge
+        customImage.classList.add(classNameToAdd);
+      } else {
+        // Agar window section ke top se bahar jaata hai, class hata denge
+        customImage.classList.remove(classNameToAdd);
+      }
+    });
+
+  {% if section.settings.animated_image != blank %}
+    window.addEventListener('scroll', function() {
+      var section = document.querySelector('.custom_text_button');
+      var customImage = document.querySelector('.custom_animated_image');
+
+      // Yahan pe aap class ka naam change kar sakte hain agar kuch aur naam rakhna hai to
+      var classNameToAdd = 'bottomTotop';
+
+      if (section.getBoundingClientRect().top < window.innerHeight) {
+        // Jab window scroll karke section ke top pe aa jaye, class add karenge
+        customImage.classList.add(classNameToAdd);
+      } else {
+        // Agar window section ke top se bahar jaata hai, class hata denge
+        customImage.classList.remove(classNameToAdd);
+      }
+    });
+    {% endif %}
+</script>
+{% schema %}
+{
+  "name": "Text With Button",
+  "settings": [
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 590
+    },
+   {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "range",
+      "id": "top_padding",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 140
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "right_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding",
+      "default":0
+    },
+    {
+      "type": "range",
+      "id": "left_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Left Padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "top_padding_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding Mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding Mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "right_padding_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding Mobile",
+      "default":0
+    },
+    {
+      "type": "range",
+      "id": "left_padding_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Left Padding Mobile",
+      "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "animated_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_fz",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 36
+    },
+   {
+      "type": "range",
+      "id": "heading_fw",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 600
+    },
+   {
+      "type": "range",
+      "id": "heading_fw_bold",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight On Bold",
+      "default": 800
+    },
+    {
+       "type": "color",
+       "id": "heading_fc",
+       "label": "Color",
+       "default": "#353F47"
+    },
+    {
+       "type": "color",
+       "id": "heading_fc_bold",
+       "label": "Color On Bold",
+       "default": "#49946D"
+    },
+    {
+      "type": "range",
+      "id": "heading_fz_mb",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size Mobile",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_bottom_spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Bottom Spacing",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "heading_bottom_spacing_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Bottom Spacing Mobile",
+      "default": 0
+    },
+    {
+      "type": "richtext",
+      "id": "para",
+      "label": "Paragraph"
+    },
+    {
+      "type": "range",
+      "id": "para_fz",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 24
+    },
+   {
+      "type": "range",
+      "id": "para_fw",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 300
+    },
+    {
+       "type": "color",
+       "id": "para_fc",
+       "label": "Color",
+       "default": "#353F47"
+    },
+    {
+       "type": "color",
+       "id": "para_fc_bold",
+       "label": "Color On Bold",
+       "default": "#49946D"
+    },
+    {
+      "type": "range",
+      "id": "para_fz_mb",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size Mobile",
+      "default": 16
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Image"
+    },
+    {
+      "type": "color",
+      "id": "dotColor",
+      "label": "Dot Color",
+      "default": "#000"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button link"
+    },
+    {
+      "type": "range",
+      "id": "btn_fz",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 20
+    },
+   {
+      "type": "range",
+      "id": "btn_fw",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 500
+    },
+    {
+       "type": "color",
+       "id": "btn_fc",
+       "label": "Color",
+       "default": "#ffffff"
+    },
+    {
+       "type": "color",
+       "id": "btn_fc_back",
+       "label": "Background Color",
+       "default": "#49946d"
+    },
+    {
+       "type": "color",
+       "id": "btn_fc_bor",
+       "label": "Border Color",
+       "default": "#064e3b "
+    },
+    {
+      "type": "range",
+      "id": "btn_fz_mb",
+      "min": 6,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size Mobile",
+      "default": 16
+    },
+    {
+      "type": "checkbox",
+      "id": "press_btn",
+      "label": "Press Button",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "hands_btn",
+      "label": "Hand Animation Button",
+      "default": false
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Text With Button"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

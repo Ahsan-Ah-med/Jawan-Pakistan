@@ -1,0 +1,674 @@
+<div class="{{ section.id }}">
+  <div class="custom_fruits_form">
+    <div class="custom_fruits_form_container">
+      <div class="custom_fruits_form_main_heading">
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      <div class="custom_fruits_form_sub_heading">
+        <h2>{{ section.settings.sub_heading }}</h2>
+        <h3>{{ section.settings.sub_para }}</h3>
+        <div class="custom_section_back_button">
+          <a href="{{ section.settings.section_back_link }}">
+            <img src="https://cdn.shopify.com/s/files/1/0789/9778/2834/files/Arrow_back.svg?v=1690809320">
+            {{ section.settings.section_back_text }}
+          </a>
+        </div>
+      </div>
+      <div class="custom_fruits_form_contain">
+        {% form 'contact' %}
+          {{ form.errors | default_errors }}
+
+          <select id="main_dropDown1" class="hidden" name="contact[Nom_de_l'entreprises]">
+            <option selected disabled>Select Options</option>
+          </select>
+          <div class="formDropBoxDropDown1">
+            <div class="custom_main_dropdown1">
+              <h2>{{ section.settings.main_drop_text }}</h2>
+            </div>
+            <div class="custom_popup_dropdown1" data-visible="0">
+              <h2>
+                {{ section.settings.dropdown_popup }}
+              </h2>
+            </div>
+          </div>
+          <select id="main_dropDown2" class="hidden" name="contact[Votre_nom_prénom]">
+            <option selected disabled>Select Options</option>
+          </select>
+          <div class="formDropBoxDropDown2">
+            <div class="custom_main_dropdown2">
+              <h2>{{ section.settings.main_drop_text1 }}</h2>
+            </div>
+            <div class="custom_popup_dropdown2" data-visible="0">
+              <h2>
+                {{ section.settings.dropdown_popup1 }}
+              </h2>
+            </div>
+          </div>
+
+          <div class="email">
+            <input type="email" name="contact[email]" id="email" placeholder="Votre email">
+          </div>
+
+          <div class="phone">
+            <input type="tel" name="contact[phone]" id="phone" placeholder="Téléphone">
+          </div>
+
+          <div class="submit">
+            <input type="submit" value="TERMINER">
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .email, .phone{
+    z-index: 2;
+    position: relative;
+  }
+  .custom_fruits_form_container{
+    max-width:{{section.settings.page_size}}px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .custom_fruits_form{
+    width: 100%;
+    background-color: {{section.settings.background_color}};
+    padding: {{section.settings.top_padding}}px {{section.settings.right_padding}}px {{section.settings.bottom_padding}}px {{section.settings.left_padding}}px;
+  }
+  .custom_fruits_form_main_heading h2 p{
+    color: {{section.settings.heading_fc}};
+    text-align: center;
+    font-family: Helvetica;
+    font-size: {{section.settings.heading_fz}}px;
+    font-style: normal;
+    font-weight: {{section.settings.heading_fw}};
+    line-height: 52px;
+  }
+  .custom_fruits_form_main_heading h2 p strong{
+    color: {{section.settings.heading_fc_bold}};
+    font-weight: {{section.settings.heading_fw}};
+  }
+  .custom_fruits_form_main_heading{
+    margin-bottom: {{section.settings.heading_bottom_spacing}}px;
+  }
+  .custom_fruits_form_sub_heading h2 p{
+    color: {{section.settings.sub_heading_fc}};
+    text-align: center;
+    font-family: Helvetica;
+    font-size: {{section.settings.sub_heading_fz}}px;
+    font-style: normal;
+    font-weight: {{section.settings.sub_heading_fw}};
+    line-height: 24px;
+  }
+  .custom_fruits_form_sub_heading h2 p strong{
+    color: {{section.settings.sub_heading_fc_bold}};
+    font-weight: {{section.settings.sub_heading_fw}};
+  }
+  .custom_fruits_form_sub_heading h2{
+    margin-bottom: {{section.settings.sub_heading_bottom_spacing}}px;
+  }
+  .custom_fruits_form_sub_heading h3 p{
+    color: {{section.settings.sub_para_fc}};
+    text-align: center;
+    font-family: Helvetica;
+    font-size: {{section.settings.sub_para_fz}}px;
+    font-style: normal;
+    font-weight: {{section.settings.sub_para_fw}};
+    line-height: 24px;
+  }
+  .custom_fruits_form_sub_heading h3 p strong{
+    color: {{section.settings.sub_para_fc_bold}};
+    font-weight: {{section.settings.sub_para_fw}};
+  }
+  .custom_fruits_form_sub_heading h3{
+    margin-bottom: {{section.settings.sub_para_bottom_spacing}}px;
+  }
+  .formDropBoxDropDown1, .formDropBoxDropDown2{
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+  }
+  .custom_main_dropdown1, .custom_main_dropdown2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    gap: 8px;
+    border: 1px solid #064E3B;
+    background: #FFF;
+    cursor: pointer;
+  }
+  .custom_popup_dropdown1, .custom_popup_dropdown2{
+    border: 1px solid #064E3B;
+    background: #FFF;
+    box-shadow: 0px 4px 6px -2px rgba(16, 24, 40, 0.03), 0px 12px 16px -4px rgba(16, 24, 40, 0.08);
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 14px;
+    position: absolute;
+      /* margin-top: 10px; */
+    width: 100%;
+    transition: 1s;
+    opacity: 0;
+  }
+  .custom_fruits_form_contain{
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .custom_fruits_form_contain .email input, .custom_fruits_form_contain .phone input{
+    border: 1px solid #064E3B;
+    background: #fff;
+    width: 100%;
+    display: flex;
+    padding: 10px 14px;
+    align-items: center;
+    gap: 8px;
+  }
+  .custom_fruits_form_contain form div{
+    margin-bottom: 12px;
+  }
+  .custom_main_dropdown1 h2 p, .custom_main_dropdown2 h2 p, .email input::placeholder, .phone input::placeholder{
+    color: #101828;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    opacity: 0.5;
+  }
+  .submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .submit input{
+    display: inline-flex;
+    padding: 12px 42px;
+    align-items: center;
+    gap: 24px;
+    border-radius: 12px;
+    border: 1px solid #064E3B;
+    background: #49946D;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    box-shadow: 4px 4px 0 0px #fff, 5px 3px 0 0px #064E3B, 3px 5px 0 0px #064E3B, 5px 5px 0 0px #064E3B;
+  }
+  .submit input:hover {
+    box-shadow: 3px 3px 0 0px #fff, 4px 0px 0 0px #064E3B, 3px 4px 0 0px #064E3B, 4px 4px 0 0px #064E3B;
+    transform: translateX(2px);
+    transform: translate(2px, 2px);
+  }
+  .custom_popup_dropdown1 h2 p, .custom_popup_dropdown2 h2 p{
+    color: #000;
+    font-family: Helvetica;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  .custom_popup_dropdown1 h2 p strong, .custom_popup_dropdown2 h2 p strong{
+    color: #EA571D;
+  }
+  .custom_section_back_button a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .custom_section_back_button a img{
+    width: 25px;
+    height: 25px;
+  }
+  .custom_section_back_button a p{
+    color: #000;
+    font-family: Helvetica;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.6px;
+    text-decoration-line: underline;
+    margin-left: 12px;
+  }
+  .custom_fruits_form_sub_heading{
+    position: relative;
+  }
+  .custom_section_back_button{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  @media only screen and (max-width:767px){
+    .custom_fruits_form{
+      padding: {{section.settings.top_padding_mb}}px {{section.settings.right_padding_mb}}px {{section.settings.bottom_padding_mb}}px {{section.settings.left_padding_mb}}px;
+    }
+    .custom_fruits_form_main_heading h2 p{
+      font-size: {{section.settings.heading_fz_mb}}px;
+      line-height: 1;
+    }
+    .custom_fruits_form_main_heading{
+      margin-bottom: {{section.settings.heading_bottom_spacing_mb}}px;
+    }
+    .custom_fruits_form_sub_heading h2 p{
+      font-size: {{section.settings.sub_heading_fz_mb}}px;
+      line-height: 1;
+    }
+    .custom_fruits_form_sub_heading h2{
+      margin-bottom: {{section.settings.sub_heading_bottom_spacing_mb}}px;
+    }
+    .custom_fruits_form_sub_heading h3 p{
+      font-size: {{section.settings.sub_para_fz_mb}}px;
+      line-height: 1;
+    }
+    .custom_fruits_form_sub_heading h3{
+      margin-bottom: {{section.settings.sub_para_bottom_spacing_mb}}px;
+    }
+    .custom_section_back_button a img {
+      width: 20px;
+      height: 20px;
+    }
+    .custom_section_back_button a p{
+      font-size: 14px;
+    }
+  }
+  @media only screen and (max-width:600px){
+    .custom_section_back_button{
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const formDrop = document.querySelectorAll('.formDropBoxDropDown1 .custom_main_dropdown1');
+
+    formDrop.forEach((i) => {
+      i.addEventListener('click', () => {
+        formDrop.forEach((btn) => {
+          btn.nextElementSibling.style.opacity = "0";
+          // btn.nextElementSibling.dataset.visible = '0'
+        });
+
+        if (i.nextElementSibling.dataset.visible === "0") {
+          i.nextElementSibling.style.opacity = "1";
+          i.nextElementSibling.style.zIndex = "3";
+          i.nextElementSibling.dataset.visible = '1'
+        } else {
+          i.nextElementSibling.style.opacity = "0";
+          i.nextElementSibling.style.zIndex = "-1";
+          i.nextElementSibling.dataset.visible = '0'
+        }
+      });
+    });
+
+  const formDrop2 = document.querySelectorAll('.formDropBoxDropDown2 .custom_main_dropdown2');
+
+    formDrop2.forEach((i) => {
+      i.addEventListener('click', () => {
+        formDrop2.forEach((btn) => {
+          btn.nextElementSibling.style.opacity = "0";
+          // btn.nextElementSibling.dataset.visible = '0'
+        });
+
+        if (i.nextElementSibling.dataset.visible === "0") {
+          i.nextElementSibling.style.opacity = "1";
+          i.nextElementSibling.style.zIndex = "3";
+          i.nextElementSibling.dataset.visible = '1'
+        } else {
+          i.nextElementSibling.style.opacity = "0";
+          i.nextElementSibling.style.zIndex = "-1";
+          i.nextElementSibling.dataset.visible = '0'
+        }
+      });
+    });
+</script>
+<script src="{{ 'fruitsForm.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "Fruits Form",
+  "settings": [
+    {
+  "type": "header",
+  "content": "Section Settings"
+},
+{
+  "type": "number",
+  "id": "page_size",
+  "label": "Section Container Size",
+  "default": 1200
+},
+{
+  "type": "color",
+  "id": "background_color",
+  "label": "Background Color"
+},
+{
+  "type": "range",
+  "id": "top_padding",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Top Padding",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "bottom_padding",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Bottom Padding",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "right_padding",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Right Padding",
+  "default":20
+},
+{
+  "type": "range",
+  "id": "left_padding",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Left Padding",
+  "default": 20
+},
+{
+  "type": "range",
+  "id": "top_padding_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Top Padding Mobile",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "bottom_padding_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Bottom Padding Mobile",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "right_padding_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Right Padding Mobile",
+  "default":20
+},
+{
+  "type": "range",
+  "id": "left_padding_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Left Padding Mobile",
+  "default": 20
+},
+{
+  "type": "richtext",
+  "id": "heading",
+  "label": "Heading"
+},
+{
+  "type": "range",
+  "id": "heading_fz",
+  "min": 6,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Font size",
+  "default": 40
+},
+{
+  "type": "range",
+  "id": "heading_fw",
+  "min": 100,
+  "max": 900,
+  "step": 100,
+  "unit": "px",
+  "label": "Font Weight",
+  "default": 700
+},
+{
+  "type": "color",
+  "id": "heading_fc",
+  "label": "Color",
+  "default": "#1E2C21"
+},
+{
+  "type": "color",
+  "id": "heading_fc_bold",
+  "label": "Color On Bold",
+  "default": "#1E2C21"
+},
+{
+  "type": "range",
+  "id": "heading_fz_mb",
+  "min": 6,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Font size Mobile",
+  "default": 20
+},
+{
+  "type": "range",
+  "id": "heading_bottom_spacing",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Heading Bottom Spacing",
+  "default": 60
+},
+{
+  "type": "range",
+  "id": "heading_bottom_spacing_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Heading Bottom Spacing Mobile",
+  "default": 40
+},
+{
+  "type": "richtext",
+  "id": "sub_heading",
+  "label": "Sub Heading"
+},
+{
+  "type": "range",
+  "id": "sub_heading_fz",
+  "min": 6,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Font size",
+  "default": 20
+},
+{
+  "type": "range",
+  "id": "sub_heading_fw",
+  "min": 100,
+  "max": 900,
+  "step": 100,
+  "unit": "px",
+  "label": "Font Weight",
+  "default": 700
+},
+{
+  "type": "color",
+  "id": "sub_heading_fc",
+  "label": "Color",
+  "default": "#101828"
+},
+{
+  "type": "color",
+  "id": "sub_heading_fc_bold",
+  "label": "Color On Bold",
+  "default": "#101828"
+},
+{
+  "type": "range",
+  "id": "sub_heading_fz_mb",
+  "min": 6,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Font size Mobile",
+  "default": 16
+},
+{
+  "type": "range",
+  "id": "sub_heading_bottom_spacing",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Sub Heading Bottom Spacing",
+  "default": 12
+},
+{
+  "type": "range",
+  "id": "sub_heading_bottom_spacing_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Sub Heading Bottom Spacing Mobile",
+  "default": 10
+},
+{
+  "type": "richtext",
+  "id": "sub_para",
+  "label": "Paragraph"
+},
+{
+  "type": "range",
+  "id": "sub_para_fz",
+  "min": 6,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Font size",
+  "default": 18
+},
+{
+  "type": "range",
+  "id": "sub_para_fw",
+  "min": 100,
+  "max": 900,
+  "step": 100,
+  "unit": "px",
+  "label": "Font Weight",
+  "default": 400
+},
+{
+  "type": "color",
+  "id": "sub_para_fc",
+  "label": "Color",
+  "default": "#101828"
+},
+{
+  "type": "color",
+  "id": "sub_para_fc_bold",
+  "label": "Color On Bold",
+  "default": "#101828"
+},
+{
+  "type": "range",
+  "id": "sub_para_fz_mb",
+  "min": 6,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Font size Mobile",
+  "default": 14
+},
+{
+  "type": "range",
+  "id": "sub_para_bottom_spacing",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Paragraph Bottom Spacing",
+  "default": 24
+},
+{
+  "type": "range",
+  "id": "sub_para_bottom_spacing_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Paragraph Bottom Spacing Mobile",
+  "default": 24
+},
+{
+  "type": "richtext",
+  "id": "main_drop_text",
+  "label": "First DropDown Heading"
+},
+{
+  "type": "richtext",
+  "id": "dropdown_popup",
+  "label": "First DropDown Text"
+},
+{
+  "type": "richtext",
+  "id": "main_drop_text1",
+  "label": "Second DropDown Heading"
+},
+{
+  "type": "richtext",
+  "id": "dropdown_popup1",
+  "label": "Second DropDown Text"
+},
+{
+  "type": "richtext",
+  "id": "section_back_text",
+  "label": "Back Button Text"
+},
+{
+  "type": "url",
+  "id": "section_back_link",
+  "label": "Back Button link"
+}
+
+
+  ],
+  "presets":[
+    {
+      "name": "Fruits Form"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

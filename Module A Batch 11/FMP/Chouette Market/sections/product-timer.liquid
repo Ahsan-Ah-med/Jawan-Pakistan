@@ -1,0 +1,256 @@
+<div class="dead-stock-time ">
+  <img src="{{ section.settings.bg_img |img_url: 'master' }}">
+
+  <div class="before_text">{{ section.settings.be_text }}</div>
+  <div class="timer">
+    <div class="days">
+      <h4 id="countdown"></h4>
+    </div>
+  </div>
+  <div class="after_text">{{ section.settings.af_text }}</div>
+</div>
+
+<style>
+     {% if template == 'product' %}
+      .sticky{
+    position: absolute !important;
+      }
+    {% endif %}
+    .banner_sticky {
+    position: fixed !important;
+    width: 100%;
+    background-color: #f7f0e9;
+    {% comment %} top: 75px; {% endcomment %}
+    max-width: 100% !important;
+    z-index: 2;
+  }
+
+        .dead-stock-time img{
+          width: 30px;
+          margin-right: 10px;
+        }
+        .dead-stock-time{
+        max-width: 100%;
+        width: 100%;
+        display: flex;
+        justify-items: center;
+        position: relative;
+        padding: 0 40px;
+          justify-content: center;
+          align-items: center;
+          background-color: #D1DCCE;
+          border-bottom: 1px solid #064E3B;
+          border-top: 1px solid #064E3B;
+          padding: 10px 20px;
+           box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.12);
+        }
+        .position_div{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        height: 100%;
+        }
+        .before_text, .after_text{
+        color: {{ section.settings.body_text }};
+        font-size:{{ section.settings.af_bf_fz }}px;
+          font-weight: 500;
+          line-height: 10px;
+          paragraph-spacing: 8px;
+          letter-spacing: 0px;
+        }
+        h4{
+        color:#EA571D;
+        font-size: {{ section.settings.time_fz }}px;
+           font-weight: 600;
+          line-height: 10px;
+          paragraph-spacing: 8px;
+          letter-spacing: 0px;
+          padding: 0px 5px;
+        }
+        .timer{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        }
+        @media screen and (max-width: 991px){
+        .dead-stock-time {
+        padding: 5px 20px
+        }
+          .dead_btn a button{
+          padding: 10px 30px;
+          }
+        }
+        @media screen and (max-width: 767px){
+        h4 {
+        font-size: {{ section.settings.time_fz_mb }}px;
+        }
+        .before_text, .after_text{
+        font-size:{{ section.settings.af_bf_fz_mb }}px;
+        }
+          .dead-stock-time img {
+          width: 20px;
+          margin-right: 10px;
+      }
+        .dead-stock-time {
+        gap: 5px;
+        flex-direction: column;
+    }
+        }
+</style>
+<script>
+    window.addEventListener('scroll', function() {
+      var collectionBanner = document.querySelector('.dead-stock-time');
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var collectionTop = collectionBanner.offsetTop;
+
+      if (scrollTop >= collectionTop) {
+          collectionBanner.classList.add('banner_sticky');
+      } else {
+          collectionBanner.classList.remove('banner_sticky');
+      }
+  });
+    // Set the target date and time
+      var targetDate = new Date("{{ section.settings.time_down }}");
+
+      // Update the count down every 1 second
+      var x = setInterval(function() {
+
+        // Get the current date and time
+        var currentDate = new Date();
+
+        // Calculate the time remaining until the target date and time
+        var timeRemaining = targetDate - currentDate;
+
+        // Calculate the number of days, hours, minutes, and seconds remaining
+        var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        // Display the time remaining in the "countdown" element
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // If the countdown has reached the target date and time, stop the countdown
+        if (timeRemaining < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "{{ section.settings.end_time_down }}";
+          document.querySelector('.dead_btn').style.display = "block"
+        }
+      }, 1000);
+</script>
+{% schema %}
+{
+  "name": "Product Timer",
+  "settings": [
+    {
+  "type": "header",
+  "content": "Timer setting"
+},
+    {
+  "type": "text",
+  "id": "time_down",
+  "label": "Set Time",
+  "default": "2023-02-09T24:00:00",
+  "info": "Timer Format: Month/Date like: 2023-02-09T24:00:00"
+},
+    {
+  "type": "text",
+  "id": "end_time_down",
+  "label": "Set Time End Text",
+  "default": "EXPIRED"
+},
+    {
+  "type": "image_picker",
+  "id": "bg_img",
+  "label": "Background Image"
+},
+    {
+  "type": "text",
+  "id": "be_text",
+  "label": "Before Text",
+  "default": "Next dead stock dropping"
+},
+    {
+  "type": "text",
+  "id": "af_text",
+  "label": "After Text",
+  "default": "only on @goodsquish!"
+},
+    {
+  "type": "color",
+  "id": "body_text",
+  "label": "Text Color",
+  "default": "#fff"
+},
+    {
+  "type": "range",
+  "id": "af_bf_fz",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Before/After Text Font size",
+  "default": 14
+},
+    {
+  "type": "range",
+  "id": "time_fz",
+  "min": 8,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Timer Font size",
+  "default": 40
+},
+    {
+  "type": "header",
+  "content": "Mobile setting"
+},
+    {
+  "type": "range",
+  "id": "af_bf_fz_mb",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Before/After Text Font size",
+  "default": 14
+},
+    {
+  "type": "range",
+  "id": "time_fz_mb",
+  "min": 8,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Timer Font size",
+  "default": 20
+},
+    {
+  "type": "text",
+  "id": "dead_btn",
+  "label": "Button Text",
+  "default": "Collection"
+},
+    {
+  "type": "url",
+  "id": "dead_btn_link",
+  "label": "Button Text"
+}
+
+
+
+  ],
+
+  "presets": [
+  {
+    "name": "Product Timer"
+
+  }
+  ]
+}
+{% endschema %}

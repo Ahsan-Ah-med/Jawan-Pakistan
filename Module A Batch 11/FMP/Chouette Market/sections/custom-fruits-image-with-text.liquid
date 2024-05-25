@@ -1,0 +1,373 @@
+<div class="{{ section.id }}">
+  <div class="custom_fruits_image_with_text">
+    <div class="custom_fruits_image_with_text_container">
+      <div class="custom_fruits_image_with_text_main">
+        <div class="custom_fruits_image_with_text_main_left">
+          <div class="custom_left_image">
+            <img src="{{ section.settings.custom_left_image1 | img_url: 'master' }}">
+          </div>
+          <div class="custom_left_lump_image"></div>
+          <div class="custom_left_para">
+            <h2>{{ section.settings.left_para }}</h2>
+          </div>
+        </div>
+        <div class="custom_fruits_image_with_text_main_right">
+          <div class="custom_right_image">
+            {% comment %}
+              <img src="{{ section.settings.custom_right_image | img_url: 'master' }}">
+            {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom_fruits_image_with_text_container{
+    width: 100%;
+    max-width: {{section.settings.page_size}}px;
+    margin: 0 auto;
+  }
+  .custom_fruits_image_with_text{
+    width: 100%;
+    padding: {{section.settings.top_padding}}px {{section.settings.right_padding}}px {{section.settings.bottom_padding}}px {{section.settings.left_padding}}px;
+  }
+  .custom_left_lump_image{
+    background-image: url('{{ section.settings.custom_left_image2 | img_url: 'master' }}');
+    display: block !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top: -3%;
+    right: 14%;
+    transition: 1s;
+  }
+  .custom_fruits_image_with_text_main{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 32px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+    padding: 70px;
+    background-color:{{section.settings.background_color}};
+  }
+  .custom_fruits_image_with_text_main_left{
+    border-radius: 0px 12px 12px 12px;
+    border: 1px solid #49946D;
+    padding: 40px;
+    position: relative;
+  }
+  .custom_fruits_image_with_text_main_left, .custom_fruits_image_with_text_main_right{
+    width: 50%;
+  }
+  .custom_fruits_image_with_text_main_right:after{
+    content: url('https://cdn.shopify.com/s/files/1/0789/9778/2834/files/border.png?v=1692170526');
+      position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .custom_left_image{
+    width: 100%;
+    max-width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    top: -10%;
+    left: -1%;
+    padding-left: 30px;
+    background: {{section.settings.background_color}};
+  }
+  .custom_left_image img{
+    max-width: 240px;
+    width: 100%
+  }
+  .custom_left_para h2 p{
+    color: {{section.settings.heading_fc}};
+    font-family: Poppins;
+    font-size: {{ section.settings.heading_fz }}px;
+    font-style: normal;
+    font-weight: {{ section.settings.heading_fw }};
+    line-height: 30.5px;
+  }
+  .custom_left_para h2 p strong{
+    color: {{ section.settings.heading_fc_bold }};
+    font-weight: {{ section.settings.heading_fw_bold }};
+  }
+  .custom_left_para{
+    margin-top: 25%;
+  }
+  .custom_right_image{
+    border-radius: 0px 12px 12px 0px;
+    border: 8px solid #ffffff38;
+    background: url('{{ section.settings.custom_right_image | img_url: 'master' }}'), lightgray 50% / cover no-repeat;
+    box-shadow: 0px 4.1745734214782715px 4.1745734214782715px 0px rgba(0, 0, 0, 0.11);
+    padding: 60px;
+  }
+  .custom_fruits_image_with_text_main_right{
+    /* border-radius: 0px 12px 12px 0px;
+    border-top: 1px solid #49946D;
+    border-right: 1px solid #49946D;
+    border-bottom: 1px solid #49946D; */
+    padding: 20px 20px 25px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .custom_fruits_image_with_text_container:hover .custom_left_lump_image{
+    background-image: url('{{ section.settings.custom_left_image3 | img_url: 'master' }}');
+  }
+
+  @media only screen and (max-width:1023px) {
+    .custom_fruits_image_with_text_main{
+      flex-direction: column;
+    }
+    .custom_fruits_image_with_text_main_left, .custom_fruits_image_with_text_main_right{
+      width: 100%;
+    }
+    .custom_fruits_image_with_text_main_right {
+      border-radius: 12px 12px 12px 12px;
+      padding: 20px 20px 25px 20px;
+      border-left: 1px solid #49946D;
+      margin-top: 20px;
+    }
+    .custom_right_image{
+      border-radius: 12px 12px 12px 12px;
+    }
+
+  }
+  @media only screen and (max-width:767px) {
+    .custom_fruits_image_with_text{
+      padding: {{section.settings.top_padding_mb}}px {{section.settings.right_padding_mb}}px {{section.settings.bottom_padding_mb}}px {{section.settings.left_padding_mb}}px;
+    }
+    .custom_fruits_image_with_text_main{
+      padding: 15px;
+    }
+    .custom_fruits_image_with_text_main_left{
+      padding: 15px;
+    }
+    .custom_left_image img{
+      width: 100%;
+      max-width: 150px;
+    }
+    .custom_left_lump_image{
+      width: 100px;
+      height: 100px;
+      right: 20%;
+    }
+    .custom_left_image{
+      top: -1%;
+      max-width: 80%;
+    }
+    .custom_left_para h2 p{
+      font-size: {{ section.settings.heading_fz_mb }}px;
+    }
+  }
+  @media only screen and (max-width:500px) {
+    .custom_left_image img {
+      width: 100%;
+      max-width: 100px;
+    }
+    .custom_left_lump_image {
+      width: 70px;
+      height: 70px;
+      top: -1%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Fruite Image With Text",
+  "settings": [
+    {
+  "type": "header",
+  "content": "Section Settings"
+},
+{
+  "type": "number",
+  "id": "page_size",
+  "label": "Section Container Size",
+  "default": 1200
+},
+{
+  "type": "color",
+  "id": "background_color",
+  "label": "Background Color"
+},
+{
+  "type": "range",
+  "id": "top_padding",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Top Padding",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "bottom_padding",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Bottom Padding",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "right_padding",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Right Padding",
+  "default":20
+},
+{
+  "type": "range",
+  "id": "left_padding",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Left Padding",
+  "default": 20
+},
+{
+  "type": "range",
+  "id": "top_padding_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Top Padding Mobile",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "bottom_padding_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Bottom Padding Mobile",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "right_padding_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Right Padding Mobile",
+  "default":20
+},
+{
+  "type": "range",
+  "id": "left_padding_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Left Padding Mobile",
+  "default": 20
+},
+{
+  "type": "image_picker",
+  "id": "custom_left_image1",
+  "label": "First Image"
+},
+{
+  "type": "image_picker",
+  "id": "custom_left_image2",
+  "label": "Lump Image"
+},
+{
+  "type": "image_picker",
+  "id": "custom_left_image3",
+  "label": "On Hover Lump Image"
+},
+{
+  "type": "richtext",
+  "id": "left_para",
+  "label": "Paragraph"
+},
+{
+  "type": "image_picker",
+  "id": "custom_right_image",
+  "label": "Right Image"
+},
+{
+  "type": "range",
+  "id": "heading_fz",
+  "min": 6,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Font size",
+  "default": 22
+},
+{
+  "type": "range",
+  "id": "heading_fw",
+  "min": 100,
+  "max": 900,
+  "step": 100,
+  "unit": "px",
+  "label": "Font Weight",
+  "default": 400
+},
+{
+  "type": "color",
+  "id": "heading_fc",
+  "label": "Color",
+  "default": "#03261D"
+},
+{
+  "type": "color",
+  "id": "heading_fc_bold",
+  "label": "Color On Bold",
+  "default": "#49946D"
+},
+{
+  "type": "range",
+  "id": "heading_fw_bold",
+  "min": 100,
+  "max": 900,
+  "step": 100,
+  "unit": "px",
+  "label": "Font Weight On Bold",
+  "default": 700
+},
+{
+  "type": "range",
+  "id": "heading_fz_mb",
+  "min": 6,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Font size Mobile",
+  "default": 14
+}
+
+  ],
+  "presets": [
+  {
+    "name": "Fruits Image With Text"
+
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

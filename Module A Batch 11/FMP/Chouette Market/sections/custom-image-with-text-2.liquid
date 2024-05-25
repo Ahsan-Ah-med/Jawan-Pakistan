@@ -1,0 +1,418 @@
+<div>
+  <div class="custom-image-with-text-2-container">
+    <div class="custom-image-with-text-2-main">
+      <div class="custom-image-with-text-2-heading">{{ section.settings.heading }}</div>
+      <div class="custom-image-with-text-2-block">
+        {% for block in section.blocks %}
+          <div class="custom-image-with-text-2-block-container">
+            <img src="{{ block.settings.img | img_url: 'master'}}">
+            <div class="custom-image-with-text-2-paragraph-box">
+              <div class="custom-image-with-text-2-box-heading">{{ block.settings.heading1 }}</div>
+              <div class="custom-image-with-text-2-paragraph">{{ block.settings.paragraph }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+    .custom-image-with-text-2-container{
+      background-color: {{ section.settings.background_color_body }};
+      max-width: 100%;
+      width: 100%;
+    }
+    .custom-image-with-text-2-main{
+           padding: {{  section.settings.top_padding }}px {{ section.settings.right_padding }}px {{ section.settings.bottom_padding }}px {{ section.settings.left_padding }}px;
+           max-width: {{ section.settings.page_size }}px;
+           width: 100%;
+           margin: 0 auto;
+    }
+    .custom-image-with-text-2-heading p{
+           font-size: {{ section.settings.heading_font_size }}px;
+           font-weight: {{ section.settings.heading_font_weight }};
+           color: {{ section.settings.heading_color }};
+           margin: 0px;
+           line-height: 45px;
+           letter-spacing: -1px;
+           text-align: center;
+         }
+        .custom-image-with-text-2-heading p strong{
+           color: {{ section.settings.heading_color_hover }};
+         }
+    .custom-image-with-text-2-paragraph p{
+           font-size: {{ section.settings.paragraph_font_size }}px;
+           font-weight: {{ section.settings.paragraph_font_weight }};
+           color: {{ section.settings.paragraph_color }};
+           margin: 0;
+           line-height: 30px;
+           letter-spacing: 0px;
+           text-align: LEFT;
+          max-width: 670px;
+          padding: 20px 0px 0px;
+          margin: 0 auto;
+         }
+    .custom-image-with-text-2-paragraph p strong{
+           color: {{ section.settings.paragraph_color_hover }};
+         }
+      .custom-image-with-text-2-box-heading p{
+           font-size: {{ section.settings.block_heading_font_size }}px;
+           font-weight: {{ section.settings.block_heading_font_weight }};
+           color: {{ section.settings.block_heading_color }};
+           margin: 0;
+           line-height: 35px;
+           letter-spacing: 0px;
+           text-align: left;
+        }
+          .custom-image-with-text-2-block{
+           padding-top: 60px;
+          }
+         .custom-image-with-text-2-paragraph-box{
+          max-width: 500px;
+         }
+        .custom-image-with-text-2-block-container{
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+          padding-top: 120px;
+         }
+          .custom-image-with-text-2-block-container img{
+           max-width: 210px;
+           width: 100%
+         }
+          custom-image-with-text-2-paragraph-box{
+           max-width: 500px;
+           width: 100%
+          }
+           @media only screen and (max-width:900px){
+         .custom-image-with-text-2-main{
+           padding: {{ section.settings.top_padding_mobile }}px {{ section.settings.right_padding_mobile }}px {{ section.settings.bottom_padding_mobile }}px {{ section.settings.left_padding_mobile }}px;
+         }
+         .custom-image-with-text-2-heading p{
+           font-size: {{ section.settings.fonderHeading }}px;
+           line-height: 30px;
+           margin: 0px;
+         }
+          .custom-image-with-text-2-block-container img {
+      max-width: 140px;
+      width:22%;
+  }
+          .custom-image-with-text-2-paragraph-box {
+      max-width: 550px;
+  width: 75%;
+  }
+          .custom-image-with-text-2-block-container {
+      padding-top: 30px;
+  }
+          .custom-image-with-text-2-block {
+      padding-top: 30px;
+  }
+       .custom-image-with-text-2-paragraph p{
+           font-size: {{ section.settings.paragraph_font_size_mobile }}px;
+           line-height: 18px;
+           padding: 30px 0px;
+       }
+      .custom-image-with-text-2-box-heading p{
+          font-size: {{ section.settings.list_font_size_mobile }}px;
+           line-height: 18px;
+          }
+
+     }
+           @media only screen and (max-width:600px){
+          .custom-image-with-text-2-block-container {
+              justify-content: center;
+              align-items: center;
+              flex-wrap: wrap;
+          }
+         .custom-image-with-text-2-box-heading p{
+            text-align: center;
+          }
+          .custom-image-with-text-2-block-container img {
+              max-width: 140px;
+              width: 100%;
+              margin-bottom: 20px;
+          }
+          .custom-image-with-text-2-paragraph-box {
+              max-width: 550px;
+              width: 100%;
+          }
+          .custom-image-with-text-2-paragraph p {
+              font-size: 14px;
+              line-height: 18px;
+              padding: 15px 0px;
+             text-align: center;
+          }
+           }
+</style>
+{% schema %}
+  {
+    "name": "Image With Text 2",
+    "settings": [
+        {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1190
+    },
+    {
+      "type": "color",
+      "id": "background_color_body",
+      "label": "Body Background Color",
+      "default": "#FFF8F1"
+    },
+    {
+      "type": "range",
+      "id": "top_padding",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "right_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding",
+      "default":20
+    },
+    {
+      "type": "range",
+      "id": "left_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Left Padding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+     {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 55
+    },
+    {
+      "type": "range",
+      "id": "heading_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Heading Font Weight",
+      "default": 700
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#141414"
+    },
+    {
+      "type": "color",
+      "id": "heading_color_hover",
+      "label": "Heading Color Hover",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Block Heading Settings"
+    },
+
+     {
+      "type": "range",
+      "id": "block_heading_font_size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Block Heading Font Size",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "block_heading_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Block Heading Font Weight",
+      "default": 400
+    },
+    {
+      "type": "color",
+      "id": "block_heading_color",
+      "label": "Block Heading Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "block_heading_color_hover",
+      "label": "Block Heading Color Hover",
+      "default": "#000"
+    },
+     {
+      "type": "header",
+      "content": "Paragraph Settings"
+    },
+
+     {
+      "type": "range",
+      "id": "paragraph_font_size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Paragraph Font Size",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "paragraph_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Paragraph Font Weight",
+      "default": 400
+    },
+    {
+      "type": "color",
+      "id": "paragraph_color",
+      "label": "Paragraph Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "paragraph_color_hover",
+      "label": "Paragraph Color Hover",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings On Mobile"
+    },
+    {
+      "type": "range",
+      "id": "top_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding On Mobile",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding On Mobile",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "right_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding On Mobile",
+      "default":20
+    },
+    {
+      "type": "range",
+      "id": "left_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding On Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "fonderHeading",
+      "min": 8,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Fonder Heading font size Mobile",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "paragraph_font_size_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Paragraph Font Size",
+      "default": 14
+    }
+    ],
+  "blocks":[
+  {
+    "name": "Image With Text",
+    "type": "block",
+    "settings":[
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "heading1",
+          "label": "Block Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph",
+          "label": "Block Paragraph"
+        }
+
+    ]
+  }
+],
+"presets": [
+{
+  "name": "Image With Text 2"
+
+}
+]
+  }
+{% endschema %}

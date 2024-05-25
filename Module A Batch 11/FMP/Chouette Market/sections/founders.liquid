@@ -1,0 +1,712 @@
+<div>
+  <div class="founders-main">
+    <div class="founders-main-container">
+      <div class="founders-main-sub-container">
+        <div class="founders-box-container-1">
+          <div class="founders-text-container">
+            <div class="founders-headings">{{ section.settings.heading_1 }}</div>
+            <div class="founders-paragraph">{{ section.settings.paragraph_1 }}</div>
+          </div>
+          <div class="founders-image_1">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'image_1' %}
+                  <div class="image-container-box image-box-{{ forloop.index }}">
+                    <img src="{{ block.settings.image_1 | img_url: 'master' }}">
+                  </div>
+              {% endcase %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="founders-box-container-2">
+          <div class="founders-text-container">
+            <div class="founders-headings">{{ section.settings.heading_2 }}</div>
+            <div class="founders-paragraph">{{ section.settings.paragraph_2 }}</div>
+          </div>
+          <div class="founders-image_2" dir="rtl">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'image_2' %}
+                  <div class="image-container-box image-box-{{ forloop.index }}">
+                    <img src="{{ block.settings.image_2 | img_url: 'master' }}">
+                  </div>
+              {% endcase %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+       .founders-main{
+         padding: {{  section.settings.top_padding }}px {{ section.settings.right_padding }}px {{ section.settings.bottom_padding }}px {{ section.settings.left_padding }}px;
+         max-width: {{ section.settings.page_size }}px;
+         width: 100%;
+         margin: 0 auto;
+       }
+       .founders-main-container{
+         padding: 20px;
+         border: 1px solid {{ section.settings.border_body }};
+         border-radius: 100px;
+       }
+       .founders-main-sub-container{
+          background-color: {{ section.settings.background_color_body }};
+           border-radius: 100px;
+         padding: 60px 0px;
+         box-shadow: 0px 4px 22px rgba(142.38, 138.82, 138.82, 0.22);
+       }
+       .founders-headings p{
+         font-size: {{ section.settings.heading_font_size }}px;
+         font-weight: {{ section.settings.heading_font_weight }};
+         color: {{ section.settings.heading_color }};
+         margin: 0;
+         max-width: 410px;
+         line-height: 52px;
+         letter-spacing: 0px;
+       }
+       .founders-paragraph p{
+         font-size: {{ section.settings.paragraph_font_size }}px;
+         font-weight: {{ section.settings.paragraph_font_weight }};
+         color: {{ section.settings.paragraph_color }};
+         margin: 0;
+         line-height: 24px;
+         max-width: 340px;
+           letter-spacing: 0px;
+       }
+       .founders-paragraph{
+           text-align: start;
+           width: 100%;
+           max-width: 403px;
+        }
+       .founders-box-container-1{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+       }
+      .founders-box-container-2{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          flex-direction: row-reverse;
+          padding-top: 60px;
+       }
+      .founders-box-container-2 .founders-text-container{
+        width: 50%;
+        padding: 0px 70px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+            .founders-box-container-2 .founders-paragraph p {
+      max-width: 365px;
+  }
+       .founders-image_1{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+       }
+  .founders-image_2{
+              width: 50%;
+              display: flex;
+          align-items: center;
+          justify-content: center;
+              }
+       .founders-text-container{
+             width: 50%;
+             padding: 0px 50px;
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: flex-end;
+       }
+       .founders-image_1{
+             width: 50%;
+       }
+
+       .image-container-box{
+          border: 1px solid #064E3B;
+         border-radius: 100%;
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         align-items: center;
+         padding: 10px;
+         margin-right: 8px;
+       }
+       .founders-headings p strong{
+          position: relative;
+       }
+       .founders-headings p strong:after{
+          content: "";
+          background-image:url('https://cdn.shopify.com/s/files/1/0789/9778/2834/files/cNkcef.png?v=1689602005');
+          position: absolute;
+          left: 0;
+          bottom: -20px;
+          max-width: 160px;
+          width: 100%;
+          height: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+       }
+      {% for block in section.blocks %}
+                   {% case block.type %}
+                     {% when 'image_1' %}
+       .image-box-{{ forloop.index }} img{
+         background-color:{{ block.settings.image_bg }};
+         border-radius: 100%;
+         box-shadow: 0px 2.3470280170440674px 4.694056034088135px {{ block.settings.image_bg }};
+       }
+                      {% endcase %}
+                 {% endfor %}
+        .founders-box-container-2 .image-container-box img{
+              box-shadow: 0px 2.3470280170440674px 4.694056034088135px #FFCF96;
+              border-radius: 50%;
+         }
+
+        @media only screen and (max-width:1180px){
+       .founders-text-container {
+         padding: 0px 30px 0px 40px;
+        }
+        .founders-box-container-2 .founders-text-container {
+            padding: 0px 40px 0px 30px;
+        }
+        .founders-headings p {
+         font-size: {{ section.settings.heading_font_size_desktop }}px;
+         max-width: 340px;
+        }
+       .founders-paragraph p {
+         font-size: {{ section.settings.paragraph_font_size_desktop }}px;
+         max-width: 300px;
+       }
+       .founders-paragraph {
+         max-width: 300px;
+      }
+        }
+        @media only screen and (max-width:900px){
+       .founders-main{
+         padding: {{ section.settings.top_padding_mobile }}px {{ section.settings.right_padding_mobile }}px {{ section.settings.bottom_padding_mobile }}px {{ section.settings.left_padding_mobile }}px;
+       }
+      .founders-box-container-2 .founders-text-container{
+         width: 100%;
+      }
+      .founders-image_2{
+        width: 100%;
+      }
+       .founders-text-container {
+         padding: 0px 10px 15px 10px;
+        }
+        .founders-box-container-2 .founders-text-container {
+            padding: 0px 10px 15px 10px;
+        }
+      .founders-paragraph {
+          max-width: 300px;
+      }
+      .founders-main-container {
+      padding: 10px;
+      }
+    .founders-main-sub-container {
+      padding: 30px 0px;
+    }
+          .founders-text-container {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+       .founders-image_1 {
+        width: 100%;
+    }
+              .founders-box-container-2{
+          padding-top: 30px;
+       }
+    .image-container-box{
+                padding: 6px;
+    }
+                  }
+     @media only screen and (max-width:767px){
+    .founders-main-container {
+      border-radius: 50px;
+    }
+    .founders-main-sub-container {
+      border-radius: 50px;
+    }
+      .founders-headings p{
+         font-size: {{ section.settings.fonderHeading }}px;
+       }
+       .founders-paragraph p {
+            font-size: {{ section.settings.founderPara }}px;
+        }
+       .founders-paragraph p {
+            max-width: 260px;
+            margin: 0 auto;
+        }
+        .founders-headings p strong::after {
+          bottom: -15px;
+        }
+        .founders-box-container-2 .founders-paragraph{
+         max-width: 100%;
+       }
+        .founders-paragraph{
+         max-width: 100%;
+       }
+       .founders-box-container-2 .founders-paragraph p {
+          max-width: 260px;
+      }
+     }
+</style>
+
+<script type="text/javascript">
+   $(document).ready(function() {
+   $('.founders-image_1').slick({
+     slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: {{ section.settings.slick_autoplay }},
+    autoplaySpeed: 0,
+     dots: {{ section.settings.slick_dots }},
+     arrows: {{ section.settings.slick_arrow }},
+       speed: {{ section.settings.slick_autoplay_speed }},
+         cssEase: 'linear',
+         infinite: true,
+      initialSlide: 1,
+     centerPadding: '60px',
+     centerMode: true,
+     {% if section.settings.pre_arr != blank %}
+     prevArrow:'<img src="{{ section.settings.pre_arr | img_url: 'master' }}"/>',
+     {% endif %}
+     {% if section.settings.next_arr != blank %}
+     nextArrow:'<img src="{{ section.settings.next_arr | img_url: 'master' }}"/>',
+     {% endif %}
+
+     responsive: [
+       {
+        breakpoint: 1200,
+        settings: {
+          arrows: {{ section.settings.slick_arrow }},
+          centerMode: false,
+          centerPadding: '40px',
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 899,
+        settings: {
+          arrows: {{ section.settings.slick_arrow }},
+          centerMode: false,
+          centerPadding: '40px',
+          slidesToShow: 5,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          dots: false,
+          centerMode: false,
+          centerPadding: '40px',
+          slidesToShow: 5,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          arrows: false,
+          centerMode: false,
+          centerPadding: '40px',
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      }
+    ]
+   });
+   });
+  $(document).ready(function() {
+   $('.founders-image_2').slick({
+     slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: {{ section.settings.slick_autoplay }},
+    autoplaySpeed: 0,
+     rtl: true,
+     dots: {{ section.settings.slick_dots }},
+     arrows: {{ section.settings.slick_arrow }},
+       speed: {{ section.settings.slick_autoplay_speed }},
+         cssEase: 'linear',
+         infinite: true,
+      initialSlide: 1,
+     centerPadding: '60px',
+     centerMode: true,
+     {% if section.settings.pre_arr != blank %}
+     prevArrow:'<img src="{{ section.settings.pre_arr | img_url: 'master' }}"/>',
+     {% endif %}
+     {% if section.settings.next_arr != blank %}
+     nextArrow:'<img src="{{ section.settings.next_arr | img_url: 'master' }}"/>',
+     {% endif %}
+
+     responsive: [
+       {
+        breakpoint: 1200,
+        settings: {
+          arrows: {{ section.settings.slick_arrow }},
+          centerMode: false,
+          centerPadding: '40px',
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 899,
+        settings: {
+          arrows: {{ section.settings.slick_arrow }},
+          centerMode: false,
+          centerPadding: '40px',
+          slidesToShow: 5,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          dots: false,
+          centerMode: false,
+          centerPadding: '40px',
+          slidesToShow: 5,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          arrows: false,
+          centerMode: false,
+          centerPadding: '40px',
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      }
+    ]
+   });
+   });
+</script>
+{% schema %}
+{
+  "name": "Founders",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+        {
+      "type": "checkbox",
+      "id": "slick_arrow",
+      "label": "Arrow Show/Hide",
+      "default": false
+    },
+        {
+      "type": "checkbox",
+      "id": "slick_dots",
+      "label": "Dots Show/Hide",
+      "default": false
+    },
+        {
+      "type": "checkbox",
+      "id": "slick_autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "slick_autoplay_speed",
+      "min": 1000,
+      "max": 5000,
+      "step": 500,
+      "unit": "px",
+      "label": "Autoplay Speed",
+      "default": 2000
+    },
+    {
+      "type": "image_picker",
+      "id": "pre_arr",
+      "label": "Previous Arrow Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "next_arr",
+      "label": "Next Arrow Icon"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1270
+    },
+    {
+      "type": "color",
+      "id": "background_color_body",
+      "label": "Body Background Color",
+      "default": "#FFF8F1"
+    },
+    {
+      "type": "color",
+      "id": "border_body",
+      "label": "Body border Color",
+      "default": "#49946D"
+    },
+    {
+      "type": "range",
+      "id": "top_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "right_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding",
+      "default":20
+    },
+    {
+      "type": "range",
+      "id": "left_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Left Padding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "heading_1",
+      "label": "Heading 1"
+    },
+    {
+      "type": "richtext",
+      "id": "heading_2",
+      "label": "Heading 2"
+    },
+     {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 33
+    },
+    {
+      "type": "range",
+      "id": "heading_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Heading Font Weight",
+      "default": 700
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#1E2C21"
+    },
+    {
+      "type": "header",
+      "content": "Paragraph Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "paragraph_1",
+      "label": "Paragraph 1"
+    },
+    {
+      "type": "richtext",
+      "id": "paragraph_2",
+      "label": "Paragraph 2"
+    },
+     {
+      "type": "range",
+      "id": "paragraph_font_size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Paragraph Font Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "paragraph_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "unit": "px",
+      "label": "Paragraph Font Weight",
+      "default": 400
+    },
+    {
+      "type": "color",
+      "id": "paragraph_color",
+      "label": "Paragraph Color",
+      "default": "#1E2C21"
+    },
+    {
+      "type": "header",
+      "content": "Font-size Settings On 1100px"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Font Size 1100",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "paragraph_font_size_desktop",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Paragraph Font Size 1100",
+      "default": 14
+    },
+
+    {
+      "type": "header",
+      "content": "Section Settings On Mobile"
+    },
+    {
+      "type": "range",
+      "id": "top_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding On Mobile",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding On Mobile",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "right_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding On Mobile",
+      "default":20
+    },
+    {
+      "type": "range",
+      "id": "left_padding_mobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding On Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "fonderHeading",
+      "min": 8,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Fonder Heading font size Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "founderPara",
+      "min": 8,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Fonder Para font size Mobile",
+      "default": 12
+    }
+
+  ],
+  "blocks":[
+  {
+    "name": "Founders Image 1",
+    "type": "image_1",
+    "settings":[
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image"
+        },
+        {
+          "type": "color",
+          "id": "image_bg",
+          "label": "Paragraph Color",
+          "default": "#1E2C21"
+        }
+    ]
+  },
+        {
+      "name": "Founders Image 2",
+    "type": "image_2",
+    "settings":[
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image"
+        }
+    ]
+  }
+],
+"presets": [
+{
+  "name": "Founders"
+
+}
+]
+}
+{% endschema %}

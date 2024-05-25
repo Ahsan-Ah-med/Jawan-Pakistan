@@ -1,0 +1,547 @@
+<div class="custom_news">
+  <div class="custom_news_letter">
+    <div class="custom_news_images">
+      <img src="{{ section.settings.img | img_url: 'master' }}">
+    </div>
+    <div class="custom_news_main">
+      <div class="before_input">
+        <h2>{{ section.settings.heading }}</h2>
+        <h3>{{ section.settings.paragraph }}</h3>
+      </div>
+      <div class="news_input">
+        {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="newsletter-form__field-wrapper">
+            <div class="field">
+              <input
+                id="NewsletterForm--{{ section.id }}"
+                type="email"
+                name="contact[email]"
+                class="field__input"
+                value="{{ form.email }}"
+                aria-required="true"
+                autocorrect="off"
+                autocapitalize="off"
+                autocomplete="email"
+                {% if form.errors %}
+                  autofocus
+                  aria-invalid="true"
+                  aria-describedby="ContactFooter-error"
+                {% elsif form.posted_successfully? %}
+                  aria-describedby="ContactFooter-success"
+                {% endif %}
+                placeholder="Enter your email"
+                required
+              >
+
+              <button
+                type="submit"
+                class="newsletter-form_button field_button"
+                name="commit"
+                id="Subscribe"
+                aria-label="{{ 'newsletter.button_label' | t }}"
+              >
+                {{ section.settings.btn_link }}
+                {% comment %}
+                  {% render 'icon-arrow' %}
+                {% endcomment %}
+              </button>
+            </div>
+            {%- if form.errors -%}
+              <small class="newsletter-form_message form_message" id="ContactFooter-error">
+                {%- render 'icon-error' -%}
+                {{- form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email -}}
+              </small>
+            {%- endif -%}
+          </div>
+          {%- if form.posted_successfully? -%}
+            <h3
+              class="newsletter-form_message newsletter-formmessage--success form_message"
+              id="ContactFooter-success"
+              tabindex="-1"
+              autofocus
+            >
+              {% render 'icon-success' -%}
+              {{- 'newsletter.success' | t }}
+            </h3>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+      <div class="after_input">
+        <h4>{{ section.settings.para1 }}</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .custom_news p, .custom_news h1, .custom_news h2, .custom_news h3, .custom_news h4, .custom_news h5{
+    margin:0;
+  }
+  .custom_news{
+    width:100%;
+    background-color: {{section.settings.back_color}};
+    padding: {{section.settings.padding_tb}}px {{section.settings.padding_lr}}px;
+  }
+  .custom_news_letter{
+    max-width: {{section.settings.container_size}}px;
+    width:100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #064E3B;
+    border-radius: 12px;
+    background: #fff8f1;
+  }
+  .before_input h2 p{
+    color: {{section.settings.heading_fc}};
+    text-align: left;
+    font-size: {{ section.settings.heading_fz }}px;
+    font-family: Libre Franklin;
+    font-weight: {{section.settings.heading_fw}};
+    line-height: 43px;
+
+  }
+   .before_input h3 p{
+    color: {{section.settings.para_fc}};
+    text-align: left;
+    font-size: {{ section.settings.para_fz }}px;
+    font-family: Work Sans;
+    line-height: 43px;
+    font-weight: {{section.settings.para_fw}};
+        letter-spacing: 0px;
+  }
+  .after_input h4 p{
+    color: {{section.settings.para1_fc}};
+    text-align: left;
+    font-size: {{section.settings.para1_fz}}px;
+    font-family: Helvetica;
+    line-height: 150%;
+    font-weight: {{section.settings.para1_fw}};
+  }
+  .custom_news .field__input{
+    background: #fff;
+    border: 1px solid #064E3B;
+    border-radius: 12px;
+  }
+  .custom_news_images{
+    width: 35%;
+    background-color: #FCE39E;
+       border-radius: 12px 0px 0px 12px;
+  }
+  .custom_news_images img{
+        padding: 20px;
+  }
+  .custom_news_main{
+        width: 65%;
+        padding: 50px 40px;
+  }
+  .custom_news_main .field__input:not(:placeholder-shown){
+      padding: 1rem 1.5rem 1rem 2rem !important;
+  }
+  .custom_news_main .field__input{
+      padding: 1rem 1.5rem 1rem 2rem !important;
+  }
+    .custom_news_main .field__input:placeholder-shown{
+      color: #fff;
+       padding: 1rem 1.5rem 1rem 2rem !important;
+  }
+  .custom_news input::placeholder {
+    opacity: 1;
+  }
+  .custom_news .field:before, .custom_news .field:after{
+    content: none;
+  }
+  .custom_news .newsletter-form, .custom_news .newsletter-form__field-wrapper{
+    width: 100%;
+    max-width: 100%;
+  }
+  .newsletter-form__field-wrapper .field{
+    max-width: 90%;
+  }
+  .custom_news .newsletter-form__button{
+    display: flex;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: {{ section.settings.btn_bor }}px;
+    background-color: {{section.settings.btn_bg_fc}} !important;
+    color: {{section.settings.btn_fc}};
+    font-size: {{ section.settings.btn_fz }}px;
+    font-weight: {{section.settings.btn_fw}};
+    font-family: Work Sans;
+    line-height: 150%;
+    width: auto;
+    position: relative;
+    margin-left: 15px;
+  }
+        .custom_news .field__input:focus-visible{
+           box-shadow: none;
+           outline: 0;
+        }
+  .custom_news .news_input{
+    margin: 10px 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+      .custom_news .field__input{
+         height: 55px;
+        margin-right: 8px;
+        }
+        .newsletter-form_button{
+        width: 110px;
+        height: 55px;
+        background-color: #49946D;
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-size: 20px;
+          margin-left: 30px;
+        font-weight:700;
+           box-shadow:
+                             5px 5px 0 0px #064E3B,
+                             6px 4px 0 0px #064E3B,
+                             4px 6px 0 0px #064E3B,
+                             6px 6px 0 0px #064E3B;
+        }
+        .newsletter-form_button:hover {
+   background-color:#69B88F;
+                 box-shadow:
+                             2px 2px 0 0px #064E3B,
+                             3px 1px 0 0px #064E3B,
+                             2px 3px 0 0px #064E3B,
+                             3px 3px 0 0px #064E3B;
+            transform: translateX(2px);
+             transform: translate(2px, 2px);
+  }
+  .field__input:focus{
+    padding: 1.5rem;
+    box-shadow: none;
+    outline: none;
+  }
+  .before_input h2 p strong{
+    color: #49946D;
+     font-weight: {{section.settings.heading_fw}};
+  }
+    @media only screen and (max-width:1220px){
+        .custom_news_main {
+           width: 65%;
+          padding: 20px 40px;
+       }
+        .before_input h3 p {
+          line-height: 100%;
+       }
+    }
+        @media only screen and (max-width:990px){
+        .custom_news_images{
+        display: none
+        }
+        .custom_news_main {
+          width: 100%;
+          padding: 20px 20px;
+         }
+        }
+    @media only screen and (max-width:767px){
+      .custom_news{
+        padding: {{section.settings.padding_tb_mb}}px {{section.settings.padding_lr_mb}}px;
+      }
+      .before_input h2 p{
+        font-size: {{ section.settings.heading_fz_mb }}px;
+        line-height: 20px;
+        margin-bottom: 10px;
+      }
+       .before_input h3 p{
+        font-size: {{ section.settings.para_fz_mb }}px;
+       }
+      .after_input h4 p{
+        text-align: center;
+        font-size: {{section.settings.para1_fz_mb}}px;
+      }
+        .custom_news .field__input {
+            height: 40px;
+            margin-right: 8px;
+        }
+        .newsletter-form_button {
+          width: 85px;
+          height: 40px;
+          font-size: 14px;
+      }
+        .custom_news .field__input {
+          font-size: 12px;
+        }
+    }
+</style>
+
+{% schema %}
+{
+  "name": "News Letter",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "number",
+      "id": "container_size",
+      "label": "Container Size",
+      "default": 1440
+    },
+    {
+      "type": "color",
+      "id": "back_color",
+      "label": "Background Color",
+      "default": "#F3F0E7"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_tb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top-Bottom",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_lr",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left-Right",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_tb_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top-Bottom",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_lr_mb",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left-Right",
+      "default": 20
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Image"
+    },
+
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+        "type": "range",
+        "id": "heading_fz",
+        "min": 6,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "heading_fw",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "unit": "px",
+        "label": "Font Weight",
+        "default": 900
+      },
+      {
+        "type": "color",
+        "id": "heading_fc",
+        "label": "Font Color",
+        "default": "#0F025E"
+      },
+      {
+        "type": "range",
+        "id": "heading_fz_mb",
+        "min": 6,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size Mobile",
+        "default": 30
+      },
+    {
+      "type": "richtext",
+      "id": "paragraph",
+      "label": "Paragraph"
+    },
+    {
+        "type": "range",
+        "id": "para_fz",
+        "min": 6,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 18
+      },
+      {
+        "type": "range",
+        "id": "para_fw",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "unit": "px",
+        "label": "Font Weight",
+        "default": 500
+      },
+      {
+        "type": "color",
+        "id": "para_fc",
+        "label": "Font Color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "para_fz_mb",
+        "min": 6,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size Mobile",
+        "default": 12
+      },
+    {
+      "type": "richtext",
+      "id": "para1",
+      "label": "Paragraph"
+    },
+    {
+        "type": "range",
+        "id": "para1_fz",
+        "min": 6,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "para1_fw",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "unit": "px",
+        "label": "Font Weight",
+        "default": 500
+      },
+      {
+        "type": "color",
+        "id": "para1_fc",
+        "label": "Font Color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "para1_fz_mb",
+        "min": 6,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size Mobile",
+        "default": 10
+      },
+      {
+        "type": "header",
+        "content": "Button Settings"
+      },
+      {
+        "type": "text",
+        "id": "btn_link",
+        "label": "Button Text",
+        "default": "Subscribe"
+      },
+      {
+        "type": "range",
+        "id": "btn_fz",
+        "min": 6,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "btn_fw",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "unit": "px",
+        "label": "Font Weight",
+        "default": 500
+      },
+      {
+        "type": "color",
+        "id": "btn_fc",
+        "label": "Font Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "range",
+        "id": "btn_fz_mb",
+        "min": 6,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size Mobile",
+        "default": 14
+      },
+      {
+        "type": "color",
+        "id": "btn_bg_fc",
+        "label": "Background Color",
+        "default": "#0F025E"
+      },
+      {
+        "type": "range",
+        "id": "btn_bor",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Border Radius",
+        "default": 48
+      }
+
+  ],
+  "presets": [
+    {
+      "name": "Custom News Letter"
+
+    }
+  ]
+
+}
+{% endschema %}

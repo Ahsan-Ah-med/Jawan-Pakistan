@@ -1,0 +1,279 @@
+<div id="collection_banner">
+  <div class="collection-banner-collection_timer">
+    <img src="{{ section.settings.bg_img |img_url: 'master' }}">
+
+    <div class="collection_before_text">{{ section.settings.be_text }}</div>
+    <div class="collection_timer">
+      <div class="collection_days">
+        <h4 id="collection_countdown"></h4>
+      </div>
+    </div>
+    <div class="collection_after_text">{{ section.settings.af_text }}</div>
+  </div>
+</div>
+<style>
+  #collection_banner{
+    padding: 0px 20px;
+    max-width: 1270px;
+    margin: 0 auto;
+  }
+      .collection-banner-collection_timer img{
+        width: 20px;
+        margin-right: 7px;
+      }
+      .collection-banner-collection_timer{
+      max-width: 1250px;
+      width: 100%;
+      display: flex;
+      justify-items: center;
+      position: relative;
+      padding: 0 40px;
+        justify-content: center;
+        align-items: center;
+        background-color: #D1DCCE;
+        border: 1px solid #064E3B;
+        border-radius: 12px;
+        padding: 10px 20px;
+        margin: 30px auto 30px;
+        box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.25);
+      }
+      .position_div{
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      align-content: center;
+      height: 100%;
+      }
+      .collection_before_text, .collection_after_text{
+      color: {{ section.settings.body_text }};
+      font-size:{{ section.settings.af_bf_fz }}px;
+        font-weight: 500;
+        line-height: 10px;
+        paragraph-spacing: 8px;
+        letter-spacing: -1px;
+      }
+      h4{
+         color:#EA571D;
+         font-size: {{ section.settings.time_fz }}px;
+         font-weight: 600;
+         line-height: 10px;
+         paragraph-spacing: 8px;
+         letter-spacing: -1px;
+         padding: 0px 5px;
+      }
+      .collection_timer{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      }
+      .banner_sticky{
+        position: fixed;
+        width: 100%;
+        background-color: transparent;
+        top: 75px;
+        max-width: 100% !important;
+        z-index: 2;
+      }
+      .banner_sticky .collection-banner-collection_timer{
+        margin: 10px auto;
+      }
+
+      @media screen and (max-width: 1100px){
+        .banner_sticky{
+          top: 70px
+        }
+      }
+      @media screen and (max-width: 990px){
+        .banner_sticky{
+          top: 67px
+        }
+      }
+      @media screen and (max-width: 991px){
+      .collection-banner-collection_timer {
+      padding: 5px 20px
+      }
+        .dead_btn a button{
+        padding: 10px 30px;
+        }
+      }
+      @media screen and (max-width: 767px){
+      h4 {
+      font-size: {{ section.settings.time_fz_mb }}px;
+      }
+      .collection_before_text, .collection_after_text{
+      font-size:{{ section.settings.af_bf_fz_mb }}px;
+      }
+        .collection-banner-collection_timer img {
+        width: 20px;
+        margin-right: 10px;
+    }
+      .collection-banner-collection_timer {
+      gap: 5px;
+      flex-direction: column;
+  }
+      }
+      @media screen and (max-width: 350px){
+        .banner_sticky{
+          top: 61px
+        }
+      }
+</style>
+<script>
+    // Set the target date and time
+      var targetDate = new Date("{{ section.settings.time_down }}");
+
+      // Update the count down every 1 second
+      var x = setInterval(function() {
+
+        // Get the current date and time
+        var currentDate = new Date();
+
+        // Calculate the time remaining until the target date and time
+        var collection_timeremaining = targetDate - currentDate;
+
+        // Calculate the number of days, hours, minutes, and seconds remaining
+        var collection_days = Math.floor(collection_timeremaining / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((collection_timeremaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((collection_timeremaining % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((collection_timeremaining % (1000 * 60)) / 1000);
+
+        // Display the time remaining in the "collection_countdown" element
+        document.getElementById("collection_countdown").innerHTML = collection_days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // If the collection_countdown has reached the target date and time, stop the collection_countdown
+        if (collection_timeremaining < 0) {
+          clearInterval(x);
+          document.getElementById("collection_countdown").innerHTML = "{{ section.settings.end_time_down }}";
+          document.querySelector('.dead_btn').style.display = "block"
+        }
+      }, 1000);
+
+
+    // JavaScript code
+  // window.addEventListener('scroll', function() {
+  //     var collectionBanner = document.getElementById('collection_banner');
+  //     var scrollTop = window.scrollY || document.documentElement.scrollTop;
+  //     var collectionTop = collectionBanner.offsetTop;
+
+  //     if (scrollTop >= collectionTop) {
+  //         collectionBanner.classList.add('banner_sticky');
+  //     } else {
+  //         collectionBanner.classList.remove('banner_sticky');
+  //     }
+  // });
+</script>
+{% schema %}
+{
+  "name": "Collection Timer",
+  "settings": [
+    {
+  "type": "header",
+  "content": "timer setting"
+},
+    {
+  "type": "text",
+  "id": "time_down",
+  "label": "Set Time",
+  "default": "2023-02-09T24:00:00",
+  "info": "timer Format: Month/Date like: 2023-02-09T24:00:00"
+},
+    {
+  "type": "text",
+  "id": "end_time_down",
+  "label": "Set Time End Text",
+  "default": "EXPIRED"
+},
+    {
+  "type": "image_picker",
+  "id": "bg_img",
+  "label": "Background Image"
+},
+    {
+  "type": "text",
+  "id": "be_text",
+  "label": "Before Text",
+  "default": "Next dead stock dropping"
+},
+    {
+  "type": "text",
+  "id": "af_text",
+  "label": "After Text",
+  "default": "only on @goodsquish!"
+},
+    {
+  "type": "color",
+  "id": "body_text",
+  "label": "Text Color",
+  "default": "#fff"
+},
+    {
+  "type": "range",
+  "id": "af_bf_fz",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Before/After Text Font size",
+  "default": 14
+},
+    {
+  "type": "range",
+  "id": "time_fz",
+  "min": 8,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Timer Font size",
+  "default": 40
+},
+    {
+  "type": "header",
+  "content": "Mobile setting"
+},
+    {
+  "type": "range",
+  "id": "af_bf_fz_mb",
+  "min": 8,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "label": "Before/After Text Font size",
+  "default": 14
+},
+    {
+  "type": "range",
+  "id": "time_fz_mb",
+  "min": 8,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "collection_timer Font size",
+  "default": 20
+},
+    {
+  "type": "text",
+  "id": "dead_btn",
+  "label": "Button Text",
+  "default": "Collection"
+},
+    {
+  "type": "url",
+  "id": "dead_btn_link",
+  "label": "Button Text"
+}
+
+
+
+  ],
+
+  "presets": [
+  {
+    "name": "Collection Timer"
+
+  }
+  ]
+}
+{% endschema %}

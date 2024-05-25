@@ -1,0 +1,316 @@
+<div class="{{ section.id }}">
+  <div class="custom_image_toggle">
+    <div class="custom_image_toggle_div">
+      <div class="custom_image_toggle_contain">
+        <h2 class="first_text">
+          {{ section.settings.first_text }}
+        </h2>
+        <h2 class="second_text">
+          {{ section.settings.second_text }}
+        </h2>
+      </div>
+      <div class="button_circle">
+        <span class="first_circle circle_active"></span>
+        <span class="second_circle"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    .custom_image_toggle_contain {
+      background-image: url('{{ section.settings.background_image | img_url: 'master' }}');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: calc(100% / (1222 / 275));
+    position: relative;
+    display: flex; /* Use flexbox to center the content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    border-radius: 100px;
+  }
+
+  .first_text,
+  .second_text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    text-align: center; /* Center the text inside the h2 element */
+  }
+
+  .first_text p,
+  .second_text p {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    /* Add any additional styling for the <p> tags if needed */
+  }
+  .custom_image_toggle{
+    padding: {{ section.settings.top_padding }}px {{ section.settings.right_padding }}px {{ section.settings.bottom_padding }}px {{ section.settings.left_padding }}px;
+  }
+    .custom_image_toggle_div{
+      padding: 20px;
+      max-width: {{ section.settings.page_size }}px;
+      width: 100%;
+      margin: 0 auto;
+      border: 1px solid #49946d;
+      border-radius: 120px;
+      position: relative;
+    }
+    .second_text{
+      display: none;
+    }
+    .button_circle{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .button_circle span{
+      padding: 7px;
+      background: #ffffff;
+      border: 0.5px solid #fff;
+      display: block;
+      border-radius: 50%;
+      width: 10px;
+      margin-right: 10px;
+    }
+    .button_circle .circle_active{
+      background: #49946d;
+    }
+    .custom_image_toggle_contain h2 p{
+      color: #FFF;
+      font-family: Poppins;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 132.49%;
+      letter-spacing: -1.44px;
+    }
+
+
+  @media only screen and (max-width:767px){
+    .custom_image_toggle{
+      padding: {{ section.settings.top_padding_mb }}px {{ section.settings.right_padding_mb }}px {{ section.settings.bottom_padding_mb }}px {{ section.settings.left_padding_mb }}px;
+    }
+    .custom_image_toggle_contain h2 p{
+      font-size: 20px;
+    }
+    .custom_image_toggle_div{
+      padding: 7px;
+    }
+    .button_circle span {
+      padding: 5px;
+      width: 5px;
+      margin-right: 5px;
+    }
+    .custom_image_toggle{
+      padding: 20px;
+    }
+  }
+  @media only screen and (max-width:600px){
+    {% if section.settings.hideSectionOnMobile %}
+    .custom_image_toggle{
+     display: none;
+    }
+    {% endif %}
+  }
+</style>
+
+<script>
+       document.querySelector('.first_circle').addEventListener("click", (event) => {
+        event.target.classList.add("circle_active");
+        document.querySelector('.first_text').style.display = "block";
+        document.querySelector('.second_text').style.display = "none";
+
+        document.querySelector('.custom_image_toggle_contain').style.backgroundImage = "url('{{ section.settings.background_image | img_url: 'master' }}')";
+
+        document.querySelector('.second_circle').classList.remove("circle_active");
+    });
+
+    document.querySelector('.second_circle').addEventListener("click", (event) => {
+        event.target.classList.add("circle_active");
+        document.querySelector('.first_text').style.display = "none";
+        document.querySelector('.second_text').style.display = "block";
+
+    document.querySelector('.custom_image_toggle_contain').style.backgroundImage = "url('{{ section.settings.background_image2 | img_url: 'master' }}')";
+        document.querySelector('.first_circle').classList.remove("circle_active");
+    });
+
+    // Define the click function
+  function performClick() {
+    // Replace 'target-element' with the ID or class name of the element you want to click
+    var firstCircle = document.querySelector('.first_circle');
+    var secondCircle = document.querySelector('.second_circle');
+
+    // Check if the elements exist before attempting to click them
+    if (firstCircle && secondCircle) {
+      if (firstCircle.classList.contains('clicked')) {
+        // If 'first_circle' was clicked, click 'second_circle' now
+        secondCircle.click();
+        firstCircle.classList.remove('clicked');
+        secondCircle.classList.add('clicked');
+      } else {
+        // If 'first_circle' was not clicked or it's time to click it again, click 'first_circle'
+        firstCircle.click();
+        firstCircle.classList.add('clicked');
+        secondCircle.classList.remove('clicked');
+      }
+    }
+  }
+
+  // Call the click function every 4 seconds
+  setInterval(performClick, 4000); // 4000 milliseconds = 4 seconds
+</script>
+{% schema %}
+  {
+    "name": "Image Toggle",
+    "settings": [
+      {
+  "type": "header",
+  "content": "Section Settings"
+},
+{
+  "type": "number",
+  "id": "page_size",
+  "label": "Section Container Size",
+  "default": 1200
+},
+{
+  "type": "color",
+  "id": "background_color",
+  "label": "Background Color"
+},
+{
+  "type": "checkbox",
+  "id": "hideSectionOnMobile",
+  "label": "Hide section",
+  "info": "hide section on all mobile screens",
+  "default": true
+},
+{
+  "type": "range",
+  "id": "top_padding",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Top Padding",
+  "default": 60
+},
+{
+  "type": "range",
+  "id": "bottom_padding",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Bottom Padding",
+  "default": 60
+},
+{
+  "type": "range",
+  "id": "right_padding",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Right Padding",
+  "default":20
+},
+{
+  "type": "range",
+  "id": "left_padding",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Left Padding",
+  "default": 20
+},
+{
+  "type": "range",
+  "id": "top_padding_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Top Padding Mobile",
+  "default": 30
+},
+{
+  "type": "range",
+  "id": "bottom_padding_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Bottom Padding Mobile",
+  "default": 30
+},
+{
+  "type": "range",
+  "id": "right_padding_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Right Padding Mobile",
+  "default":20
+},
+{
+  "type": "range",
+  "id": "left_padding_mb",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "label": "Left Padding Mobile",
+  "default": 20
+},
+      {
+  "type": "image_picker",
+  "id": "background_image",
+  "label": "Background Image"
+},
+      {
+  "type": "image_picker",
+  "id": "background_image2",
+  "label": "Background Image 2"
+},
+      {
+  "type": "richtext",
+  "id": "first_text",
+  "label": "First Text"
+},
+      {
+  "type": "richtext",
+  "id": "second_text",
+  "label": "Second Text"
+}
+
+
+    ],
+    "presets": [
+{
+  "name": "Image Toggle"
+
+}
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

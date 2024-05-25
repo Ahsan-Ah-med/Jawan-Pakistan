@@ -1,0 +1,800 @@
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js" async></script>
+
+<div class="add-on-deals-wrapper custom-container">
+  {% assign related_products = product.metafields.custom.add_on_deals.value %}
+  {% if related_products %}
+    <h2>Dont miss add on <strong>deals:</strong></h2>
+    <div class="add-on-deal-list grid-overflow-wrapper">
+      <div class="product-slider-style-with">
+        {% for related_product in related_products %}
+          <div class="add-on-deal-details">
+            <div class="add-on-deal">
+              <div class="add-on-deal-image">
+                <img
+                  src="{% if related_product.variants.first.image  %}  {{related_product.variants.first.image | img_url: '800x800', crop: 'center' }} {% else %} {{related_product.featured_image | img_url: '800x800', crop: 'center' }} {% endif %}"
+                  class="featuredImage"
+                >
+                {% for variant in related_product.variants %}
+                  <img
+                    src="{{ variant.image | img_url: 'original' }}"
+                    alt="Image"
+                    class="image_{{ forloop.index }} variantImage hidden"
+                  >
+                {% endfor %}
+              </div>
+              <div class="add-on-detail-product-content-box">
+                <div class="add-on-deal-name product_title">{{ related_product.title }}</div>
+                <hr>
+                <div class="add-on-detail-custom-button-price-box">
+                  <div class="add-on-deal-price">{{ related_product.price | money }}</div>
+                  <div class="add-on-detail-related-buttons">
+                    {% comment %}
+                      <form
+                        method="post"
+                        action="/cart/add"
+                        class="add-on-deal-button-box mainAddtoCart"
+                        id="customAddToCart"
+                      >
+                        <input type="hidden" name="id" value="{{ related_product.variants.first.id }}">
+                        <input type="submit" value="Buy Now" class="custom-button">
+                      </form>
+                    {% endcomment %}
+                    <product-form>
+                      {% form 'product', related_product %}
+                        <input
+                          type="hidden"
+                          name="id"
+                          value="{{ related_product.selected_or_first_available_variant.id }}"
+                          disabled
+                        >
+
+                        <div
+                          class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
+                          {{ block.shopify_attributes }}
+                        >
+                          <button
+                            id="{{ product_form_id }}-submit"
+                            type="submit"
+                            name="add"
+                            class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
+                            aria-haspopup="dialog"
+                            aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ related_product.id }}"
+                            aria-live="polite"
+                            data-sold-out-message="true"
+                            {% if related_product.selected_or_first_available_variant.available == false %}
+                              disabled
+                            {% endif %}
+                          >
+                            <span>
+                              {%- if related_product.selected_or_first_available_variant.available -%}
+                                Shop Now
+                              {%- else -%}
+                                {{ 'products.product.sold_out' | t }}
+                              {%- endif -%}
+                            </span>
+                            <span class="sold-out-message hidden">
+                              {{ 'products.product.sold_out' | t }}
+                            </span>
+                            {%- if horizontal_quick_add -%}
+                              <span class="icon-wrap">{% render 'icon-plus' %}</span>
+                            {%- endif -%}
+                            <div class="loading-overlay__spinner hidden">
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                class="spinner"
+                                viewBox="0 0 66 66"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                              </svg>
+                            </div>
+                          </button>
+                          <quantity-input class="quantity">
+                            <button class="quantity__button no-js-hidden" name="minus" type="button">
+                              <span class="visually-hidden">
+                                {{-
+                                  'products.product.quantity.decrease'
+                                  | t: product: related_product.title
+                                  | escape
+                                -}}
+                              </span>
+                              {% render 'icon-minus' %}
+                            </button>
+                            <input
+                              class="quantity__input"
+                              type="number"
+                              name="quantity"
+                              id="Quantity-{{ section.id }}"
+                              min="1"
+                              value="1"
+                            >
+                            <button class="quantity__button no-js-hidden" name="plus" type="button">
+                              <span class="visually-hidden">
+                                {{-
+                                  'products.product.quantity.increase'
+                                  | t: product: related_product.title
+                                  | escape
+                                -}}
+                              </span>
+                              {% render 'icon-plus' %}
+                            </button>
+                          </quantity-input>
+                        </div>
+                      {% endform %}
+                    </product-form>
+
+                    {% comment %}
+                      <button
+                        class="addToCartBtn"
+                        data-product-id="{{ related_product.selected_or_first_available_variant.id }}"
+                      >
+                        add to cart
+                      </button>
+                      {%- assign product_form_id = 'product-form-' | append: section.id -%}
+                      <quantity-input class="quantity">
+                        <button class="quantity__button no-js-hidden" name="minus" type="button">
+                          <span class="visually-hidden">
+                            {{- 'products.product.quantity.decrease' | t: product: related_product.title | escape -}}
+                          </span>
+                          {% render 'icon-minus' %}
+                        </button>
+                        <input
+                          class="quantity__input"
+                          type="number"
+                          name="quantity"
+                          id="Quantity-{{ section.id }}"
+                          min="1"
+                          value="1"
+                          form="{{ product_form_id }}"
+                        >
+                        <button class="quantity__button no-js-hidden" name="plus" type="button">
+                          <span class="visually-hidden">
+                            {{- 'products.product.quantity.increase' | t: product: related_product.title | escape -}}
+                          </span>
+                          {% render 'icon-plus' %}
+                        </button>
+                      </quantity-input>
+                    {% endcomment %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {% comment %}
+              <div class="customOptions btn{{ forloop.index }}">
+                {% assign keys = 'Color,color,Colour,colour,Set Option,Set Options' | split: ',' %}
+                {% for key in keys %}
+                  {% if related_product.options contains key %}
+                    <div class="product_tile_color_holder">
+                      {% for variant in related_product.variants %}
+                        {% for color_option in related_product.options_by_name[key].values %}
+                          {% if variant.options contains color_option %}
+                            {% if variant.image.src %}
+                              {% assign background_style = 'url(' | append: variant.image.src | append: ')' %}
+                            {% endif %}
+                            {% if variant.image %}
+                              {% assign background_style = color_option %}
+                            {% endif %}
+                            {% if variant.metafields.custom.color %}
+                              {% assign background_style = variant.metafields.custom.color %}
+                            {% elsif variant.image %}
+                              {% assign background_style = color_option %}
+                            {% else %}
+                              {% assign background_style = '#484848' %}
+                            {% endif %}
+                            {% if variant.image %}
+                              {% assign background_style = 'url('
+                                | append: variant.image
+                                | img_url: 'small'
+                                | append: ')'
+                              %}
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                        <label class="variantSelector">
+                          <img
+                            src="{{ variant.image | img_url: 'orignal', crop: 'center' }}"
+                            alt="Image"
+                            class="image_{{ forloop.index }}"
+                          >
+                          <input
+                            type="radio"
+                            name="{{ related_product.id }}_card_color"
+                            id="{{ related_product.id }}color_{{ forloop.index }}"
+                          >
+                        </label>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+
+                <a class="yotpo-config" href="{{shop.url | append: "/products/" | append: related_product.handle }}">
+                  <div class="yotpo bottomLine" data-product-id="{{ related_product.id }}"></div>
+                </a>
+              </div>
+            {% endcomment %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+<div class="add-on-deals-dummy"></div>
+
+<script>
+    const allAddToCartBoxes = document.querySelectorAll('.add-on-detail-related-buttons')
+
+  allAddToCartBoxes.forEach((eachBox) => {
+      const addToCartBtn = eachBox.querySelector('.addToCartBtn')
+      const quantity__input = eachBox.querySelector('.quantity__input')
+      addToCartBtn.addEventListener("click", () => {
+          addToCart(addToCartBtn.dataset.productId, +quantity__input.value)
+      })
+  })
+
+  function addToCart(id, quantity) {
+      $.ajax({
+          type: 'POST',
+          url: '/cart/add.js',
+          data: {
+              quantity,
+              id
+          },
+          dataType: 'json',
+          success: function (data) {
+              window.location.href = '/cart'
+              console.log(data)
+              alert('product added')
+
+          }
+      });
+  }
+</script>
+<style>
+                 .selected{
+                   border: 2px solid #000;
+                    border-radius: 50%;
+                 }
+                 .show{
+                   display: block;
+                 }
+                 .hidden{
+                   display: none;
+                 }
+                 .variantUrls{
+                   display: flex;
+                   width: 20px;
+                   height: 20px;
+                   border-radius: 50%;
+                   align-items: center;
+                   justify-content: center;
+                   margin-right: 10px;
+                 }
+                 .add-on-deals-wrapper input[type=radio]{
+                   margin: 0;
+                 }
+             .add-on-deal-details{
+               width: 100%;
+               padding: 0px 0px;
+               margin-bottom:10px;
+             }
+       .add-on-deal-list .product-slider-style-with{
+         width: 100%;
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+       }
+                   .add-on-deals-wrapper{
+                     padding:40px 0px;
+                       margin:0px auto;
+                   }
+                     .related-carousel {
+                       width:100%;
+
+                       display: block;
+                       padding-top:20px;
+                       margin:0px auto;
+                     }
+                     .carousel-cell_related {
+                         width: 19%;
+                         counter-increment: carousel-cell;
+                         padding: 0 10px;
+                         display: flex;
+                         flex-direction: column;
+                         align-items: flex-end;
+
+                     }
+                     .carousel-cell_related a{
+                       text-decoration: none;
+                     }
+     .add-on-deals-wrapper h2{
+       margin-bottom: 0px;
+     }
+                     .venderName{
+                       text-decoration: underline;
+                     }
+                     .related-carousel .flickity-slider{
+                       display: flex;
+                       align-items: flex-start;
+                     }
+                 /*   .flickity-button{
+                     background-color: #016487;
+                     color: #fff;
+
+                   } */
+                   .add-on-deal-image img{
+                     width: 100%;
+                   }
+                   .add-on-deal hr{
+                     margin: 5px 10px;
+                   }
+                   .customOptions{
+                      padding: 10px 10px;
+                     height: 70px
+                   }
+                   input[type=radio][name$=_card_color]{
+                     width: 20px;
+                     height: 20px;
+                     border-radius: 50%;
+                     border: 1px solid black;
+                     appearance: none;
+                     background-size: 9px 9px;
+                     background-image: repeating-linear-gradient(45deg, #000 0, #000 1px, #ebebeb 0, #ebebeb 50%);
+                     cursor: pointer
+                     }
+                   .product_tile_color_holder{
+                     display: flex;
+                     align-items: center;
+                     justify-content: flex-start;
+                   }
+                   .add-on-deals-wrapper {
+                     display: flex;
+                     flex-direction: column;
+                     align-items: left;
+                   }
+                   .related-carousel .flickity-prev-next-button.next {
+                     right: 35px;
+                 }
+                   .related-carousel .flickity-prev-next-button.previous {
+                     left: 35px;
+                 }
+                   .related-carousel .flickity-button {
+                     background: hsl(203deg 43% 20%);
+                 }
+                   .related-carousel .flickity-button-icon {
+                     fill: #fff;
+                 }
+                 .variantSelector{
+                   position: relative;
+                   display: flex;
+                   width: 25px;
+                   height: 25px;
+                   margin-right: 10px;
+                 }
+                 .customOptions .variantSelector img{
+                   border-radius: 50%;
+                 }
+                 .carousel-cell_related .add-on-deal-name{
+                   color: #000;
+                   font-size: 12px;
+                   font-weight: 600;
+                   letter-spacing: 0px;
+                   margin: 5px 0;
+                   text-align: left;
+                   text-decoration: none;
+
+                 }
+                 .carousel-cell_related .add-on-deal-name:hover{
+                   text-decoration: underline;
+
+                 }
+       .add-on-deals-wrapper h2{
+         font-size: 18px;
+         font-weight: 600;
+         color: #000;
+         letter-spacing: 0;
+         margin: 0;
+         padding-bottom: 10px;
+       }
+       .add-on-deals-wrapper h2 strong{
+         font-weight: 600;
+         color: #197bbd;
+         letter-spacing: 0;
+       }
+       .add-on-deal{
+         display: flex;
+         flex-direction: row;
+         width: 100%;
+         background-color: #fff;
+         border: 1px solid #CDD8DF;
+         border-radius: 12px;
+         border-radius: 6px;
+         padding: 5px 10px;
+         margin-bottom: 0px;
+       }
+       .add-on-deal-image{
+         max-width: 60px;
+         line-height: 100%;
+       }
+       .add-on-detail-product-content-box{
+             width: 100%;
+             margin-left: 10px;
+            display: flex;
+            justify-content: space-between;
+       }
+       .add-on-deal-name.product_title{
+         font-size: 14px;
+         line-height: 1.15;
+         font-weight: 400;
+         color: #4d4d4d;
+         letter-spacing: 0;
+         text-decoration: none;
+         display: flex;
+         align-items: center;
+       }
+       .add-on-deals-wrapper{
+         background-color: #f9f9f9;
+         border: 1px solid #EAE7EF;
+         border-radius: 7px;
+         margin-top: 20px;
+         padding: 10px 10px;
+       }
+       .add-on-deal-details a{
+         text-decoration: none;
+       }
+       .add-on-detail-custom-button-price-box {
+         display: flex;
+         justify-content: space-evenly;
+         flex-direction: column;
+         align-items: flex-end;
+     }
+       .add-on-deal-price{
+         color: #213038;
+         font-weight: bold;
+         font-size: 14px;
+       }
+                 .customOptions .variantSelector input{
+                   display: none;
+                 }
+                 .carousel-cell_related:hover .add-on-deal-image{
+                   transform: scale(1.05);
+                 }
+                 .add-on-detail-related-buttons *{
+                   border: none;
+                   background: transparent;
+                   cursor: pointer;
+                   line-height: 100%;
+                   display: flex;
+                   justify-content: center;
+                   align-items: center;
+                 }
+                 .add-on-detail-related-buttons{
+
+               padding: 5px 2px;
+               border-radius: 6px;
+                 cursor: pointer;
+                 }
+     .add-on-detail-related-buttons .quantity{
+       min-height: 1px;
+       max-width: 65px;
+       width: 100%;
+     }
+   .add-on-detail-related-buttons .product-form__input{
+     margin: 0px;
+     margin: 0px;
+     display: flex;
+     justify-content: space-between;
+     align-items: flex-end;
+     width: 150px;
+     flex-direction: row-reverse;
+   }
+   .add-on-detail-related-buttons .quick-add__submit{
+     min-width: 1px;
+     min-height: 1px;
+     font-size: 12px;
+     padding: 5px 5px;
+     margin-left: 10px;
+     border-radius: 5px;
+   }
+
+     .add-on-detail-related-buttons .quantity:before{
+       border: none;
+       outline: none;
+       box-shadow: none;
+     }
+     .add-on-detail-related-buttons .quantity:after{
+       border: none;
+       outline: none;
+       box-shadow: none;
+     }
+   .add-on-detail-related-buttons .quantity__button{
+     width: 20px;
+     height: 20px;
+     padding: 3px;
+     border: 1px solid #197bbd;
+     border-radius: 50%;
+     background-color: #e6f0f7 !important;
+   }
+                 .add-on-detail-related-buttons input[type="submit"]{
+                   border: none;
+                 }
+             /*     .product-content-box{
+                   display: flex;
+                   justify-content: center;
+                   align-items: flex-start;
+                   flex-direction: column;
+                 } */
+                 @media only screen and (max-width:1350px){
+                   .carousel-cell_related .add-on-deal-name{
+                     font-size:14px;
+                   }
+                 }
+                 @media only screen and (max-width: 1246px){
+               .carousel-cell_related .add-on-deal-name {
+                   font-size: 12px;
+               }
+                 }
+                 @media only screen and (max-width: 1050px){
+               .carousel-cell_related .add-on-deal-name {
+                   font-size: 12px;
+               }
+                 }
+                 @media only screen and (max-width: 600px){
+               .carousel-cell_related .add-on-deal-name {
+                   font-size: 8px;
+                   height: 50px;
+               }
+                   .related-buttons {
+                   padding: 10px 0px 5px;
+               }
+                   .customOptions {
+                   height: 60px;
+               }
+                 }
+
+                    @media only screen and (max-width: 990px) {
+                     .carousel-cell_related{
+                       width: 40%;
+                     }
+                      .add-on-deals-wrapper{
+
+                   }
+                     .related-carousel .flickity-prev-next-button {
+                     width: 30px;
+                     height: 30px;
+                 }
+                      .related-carousel .flickity-prev-next-button.next {
+                     right: 25px;
+                 }
+                   .related-carousel .flickity-prev-next-button.previous {
+                     left: 25px;
+                 }
+                      .add-on-deals-wrapper .product-content-box {
+                         width: 100%;
+                         text-align: left;
+                         font-size: 12px;
+                         font-weight: 600;
+                         padding-left: 0px;
+                         color: #13394b;
+                     }
+                      .add-on-deals-wrapper .variantSelector {
+                         position: relative;
+                         display: flex;
+                         width: 20px;
+                         height: 20px;
+                         margin-right: 10px;
+                     }
+                      .customOptions {
+                           padding: 0px 0px;
+                           height: 60px;
+                       }
+
+                   }
+  @media only screen and (max-width: 900px) and (min-width:767px){
+      .add-on-deal-price{
+                        line-height:100%;
+                      }
+                      .add-on-detail-related-buttons{
+                        PADDING: 0px;
+                      }
+                      .add-on-detail-related-buttons .product-form__input{
+                        width: 80px;
+                        flex-direction: column-reverse;
+                      }
+                      .add-on-detail-related-buttons quantity-input{
+                        margin: 5px 0px;
+                      }
+  }
+                   @media only screen and (max-width: 600px) {
+                      .related-carousel .flickity-prev-next-button{
+                       display:none;
+                     .carousel-cell_related{
+                       width: 40%;
+                     }
+                     .related-carousel .flickity-prev-next-button {
+                     width: 20px;
+                     height: 20px;
+                 }
+                      .related-carousel .flickity-prev-next-button.next {
+                     right: 15px;
+                 }
+                   .related-carousel .flickity-prev-next-button.previous {
+                     left: 15px;
+                 }
+                     .add-on-deals-wrapper .product-content-box {
+                   width: 100%;
+                   text-align: left;
+                   font-size: 10px;
+                   font-weight: 600;
+                   padding-left: 0px;
+                   color: #13394b;
+                   line-height: 110%;
+               }
+                     .customOptions {
+                   padding: 5px 0px;
+                   height: max-content;
+               }
+                     .add-on-deals-wrapper .variantSelector {
+                   position: relative;
+                   display: flex;
+                   width: 15px;
+                   height: 15px;
+                   margin-right: 5px;
+               }
+                   .add-on-deals-wrapper input[type=radio][name$=_card_color] {
+                   width: 15px;
+                   height: 15px;
+                   }
+
+                    .add-on-deals-wrapper .custom-button {
+                   padding: 8px 0px;
+               }
+                   }
+                   .variantSelector{
+                   position: relative;
+                   display: flex;
+                   width: 25px;
+                   height: 25px;
+                     margin-right: 10px;
+                 }
+                 .variantSelector img{
+                   width: 100%;
+                   height: 100%;
+                   border-radius: 50%;
+                   border: 1px solid #adadad;
+                   cursor: pointer;
+                   z-index: 1;
+                 }
+                 .variantSelector input{
+                   width: 100%;
+                   height: 100%;
+                   border-radius: 50%;
+                   border: 1px solid #adadad;
+                   appearance: none;
+                   background-size: 9px 9px;
+                   background-image: repeating-linear-gradient(45deg, #000 0, #000 1px, #ebebeb 0, #ebebeb 50%);
+                   cursor: pointer;
+                   position: absolute;
+                 }
+                     .add-on-deal-image{
+                       max-width: 60px;
+                     }
+                 }
+             .add-on-deal hr {
+               margin: 5px 10px;
+               background: transparent;
+           }
+           @media only screen and (max-width: 990px) {
+           .add-on-deal-details {
+             width: 100%;
+             padding: 0px 0px;
+
+         }
+         }
+
+         @media only screen and (max-width: 767px) {
+           .add-on-deals-wrapper{
+                     padding:20px 20px;
+                   }
+           .related-buttons {
+           padding: 0px 0px 0px;
+       }
+           .related-buttons * {
+           border: none;
+           background: transparent;
+           display: block;
+       }
+           .add-on-deal-details {
+             width: 100%;
+         }
+           .add-on-deals-wrapper h2 {
+             font-size: 16px;
+         }
+           .venderName {
+             font-size: 10px;
+         }
+           .add-on-deal-name.product_title {
+             font-size: 12px;
+         }
+           .add-on-deal hr {
+             margin: 1px 10px;
+             background: transparent;
+         }
+           .add-on-deal-price {
+             font-size: 12px;
+         }
+           .custom-button{
+             font-size: 10px !important
+           }
+         }
+    @media only screen and (max-width: 500px) {
+      .add-on-deals-wrapper{
+        padding: 20px 10px;
+      }
+      .add-on-deal-price{
+                        line-height:100%;
+                      }
+                      .add-on-detail-related-buttons{
+                        PADDING: 0px;
+                      }
+                      .add-on-detail-related-buttons .product-form__input{
+                        width: 80px;
+                        flex-direction: column-reverse;
+                      }
+                      .add-on-detail-related-buttons quantity-input{
+                        margin: 5px 0px;
+                      }
+  }
+</style>
+<script>
+   $("[data-variant-img]").mouseover(function() {
+    $(this).parents(".product-card").find(".card-image img:first").attr('src', $(this).data("variant-img"));
+  });
+</script>
+<script>
+  const relatedProductsWrapper = document.querySelectorAll('.add-on-deal-details');
+
+
+  relatedProductsWrapper.forEach((box) => {
+      box.querySelectorAll('.variantSelector').forEach((vari, ind) => {
+      const redirectBtns = box.querySelectorAll('.related-buttons form');
+
+    vari.addEventListener("click", () => {
+      box.querySelectorAll('.variantSelector').forEach((btnNew, ind) => {
+        btnNew.classList.remove("clicked");
+        btnNew.classList.remove("selected");
+      })
+      vari.classList.add("selected")
+      vari.classList.add("clicked")
+      redirectBtns.forEach((btn) => {
+        btn.classList.add('hidden')
+        btn.classList.remove('show')
+      })
+      redirectBtns[ind+1].classList.add('show')
+
+       box.querySelector('.mainAddtoCart').style.display = 'none'
+    })
+
+    vari.addEventListener("mouseover", () => {
+    box.querySelectorAll('.variantImage')[ind].classList.add("show")
+    box.querySelectorAll('.variantImage')[ind].classList.remove("hidden")
+    box.querySelector('.featuredImage').style.display = 'none'
+    vari.classList.add("selected")
+  })
+
+    vari.addEventListener("mouseout", () => {
+    box.querySelectorAll('.variantImage')[ind].classList.remove("show")
+    box.querySelectorAll('.variantImage')[ind].classList.add("hidden")
+    box.querySelector('.featuredImage').style.display = 'block'
+    if(vari.classList.contains('clicked')){
+    vari.classList.add("selected")
+    }else {
+    vari.classList.remove("selected")
+    }
+  })
+
+  })
+  });
+</script>

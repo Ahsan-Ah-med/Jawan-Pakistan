@@ -1,0 +1,787 @@
+<div class="mainContainer {{ section.id }}">
+  <div class="subContainer">
+    <div class="container">
+      <div class="sectionHeading">{{ section.settings.heading1 }}</div>
+      <div class="productsContainer">
+        {% for product in section.settings.collection.products %}
+          <a href="{{ product.url }}">
+            <div class="product_card">
+              <div class="addToCart_overlay">
+                <form method="post" action="/cart/add">
+                  <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                  <input min="1" type="hidden" id="quantity" name="quantity" value="1">
+                  <input type="submit" value="Voir le panier" class="btn custom_add_cart_btn">
+                </form>
+                <img
+                  class="addToCart_overlay_arrowImg"
+                  src="https://cdn.shopify.com/s/files/1/0789/9778/2834/files/Vector_9.svg?v=1690789459"
+                >
+              </div>
+              <div class="productImg">
+                <img src="{{ product.featured_image | img_url: 'master' }}">
+              </div>
+              <div class="productInfo">
+                <div class="productProfile">
+                  <div class="productTitle">
+                    <h1>{{ product.title }}</h1>
+                  </div>
+                  <div class="avatarImg"><img src="{{ product.metafields.custom.avatar | img_url: 'master' }}"></div>
+                  {%- if show_rating and product.metafields.reviews.rating.value != blank -%}
+                    {% liquid
+                      assign rating_decimal = 0
+                      assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+                      if decimal >= 0.3 and decimal <= 0.7
+                        assign rating_decimal = 0.5
+                      elsif decimal > 0.7
+                        assign rating_decimal = 1
+                      endif
+                    %}
+                    <div
+                      class="rating"
+                      role="img"
+                      aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="rating-star"
+                        style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
+                      ></span>
+                    </div>
+                    <p class="rating-text caption">
+                      <span aria-hidden="true">
+                        {{- product.metafields.reviews.rating.value }} /
+                        {{ product.metafields.reviews.rating.value.scale_max -}}
+                      </span>
+                    </p>
+                    <p class="rating-count caption">
+                      <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
+                      <span class="visually-hidden">
+                        {{- product.metafields.reviews.rating_count }}
+                        {{ 'accessibility.total_reviews' | t -}}
+                      </span>
+                    </p>
+                  {%- endif -%}
+                  {% if section.settings.showRating %}
+                    <div class="main-image-block">
+                      <img src="{{ section.settings.starImag | img_url : 'master' }}">
+                      <img src="{{ section.settings.starImag | img_url : 'master' }}">
+                      <img src="{{ section.settings.starImag | img_url : 'master' }}">
+                      <img src="{{ section.settings.starImag | img_url : 'master' }}">
+                      <img src="{{ section.settings.starImag | img_url : 'master' }}">
+                    </div>
+                  {% endif %}
+                  <div class="productInfoSubContainer">
+                    <div class="unitPriceContainer">
+                      <div class="product-weight">
+                        <span>{{ product.first_available_variant.weight | weight_with_unit }}</span>
+                      </div>
+                      <small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
+                        <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                        <span class="price-item price-item--last">
+                          <span class="metafield_weight_value">
+                            {{ product.metafields.custom.product_card_weight_details }}
+                          </span>
+                          {% comment %}
+                              <span>{{- product.selected_or_first_available_variant.unit_price | money -}}</span>
+                                <span aria-hidden="true">/</span>
+                                <span class="visually-hidden"
+                                  >&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span
+                                >
+
+                            <span>
+                              {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value
+                                  != 1
+                              -%}
+                                {{- product.selected_or_first_available_variant.unit_price_measurement.reference_value -}}
+                              {%- endif -%}
+                              {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+                            </span>
+                          {% endcomment %}
+                        </span>
+                      </small>
+                    </div>
+                    <div class="product_hover_text">{{ product.metafields.custom.product_card_details }}</div>
+                    <div class="productPriceContainer">
+                      <div class="productPrice">
+                        <p>{{ product.price | money }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .main-image-block{
+    margin-top: 10px;
+    line-height: 100%;
+    display: flex;
+    gap: 1px;
+    flex-direction: row;
+  }
+  .main-image-block img{
+    width: auto;
+  }
+    .mainContainer{
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .subContainer{
+
+    }
+    .container{
+      padding: {{  section.settings.top_padding }}px {{ section.settings.right_padding }}px {{ section.settings.bottom_padding }}px {{ section.settings.left_padding }}px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      max-width: {{ section.settings.page_size }}px;
+    }
+    .sectionHeading, .sectionHeading p{
+      color: {{ section.settings.headingColor }};
+      font-size: {{ section.settings.headingsize }}px;
+      font-weight: {{ section.settings.headingWieght }};
+      text-align: {{section.settings.heading_alignment}};
+      font-family: Poppins;
+      font-style: normal;
+      line-height: 52px;
+      margin-bottom: 30px;
+      width: 100%
+    }
+    .productProfile{
+      position: relative;
+    }
+    .avatarImg{
+      width: 100px;
+      position: absolute;
+      right: 5%;
+      top: -30%;
+      width: 80px;
+      height: 80px;
+    }
+    .avatarImg img{
+      border: {{ section.settings.imgborderWidth }}px solid {{ section.settings.imgBorderColor }};
+      width: 100%;
+      border-radius: 50px;
+    }
+    .productsContainer{
+      width: 100%;
+      gap: 40px;
+
+      display: inline-flex;
+      align-items: flex-start;
+      flex-shrink: 0;
+      justify-content: space-between;
+    }
+    .product_card{
+      border: 1px solid #064E3B;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      border-radius: 12px;
+      box-shadow: -1px 2px 9px 3px #E5DFD9;
+      overflow: hidden;
+      max-width: 344px;
+      width: 100%;
+      height: 385px;
+      position: relative;
+    }
+    .productImg {
+      width: 100%;
+      background-color: {{ section.settings.imgBgColor }};
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+    .productInfo {
+      width: 100%;
+      background-color: {{ section.settings.infoBgColor }};
+      border-top: 1px solid #064E3B;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+    .productTitle h1{
+      color: {{ section.settings.productTitleColor }};
+      font-size: {{ section.settings.productTitlesize }}px;
+      font-weight: {{ section.settings.productTitleWieght }};
+      line-height: 12px;
+      text-align: center;
+      font-family: Poppins;
+    }
+    .productTitle{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .productProfile{
+      padding: 15px 15px;
+    }
+    .productImg img{
+       max-width: 260px;
+        max-height: 170px;
+    }
+    .productImg{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 40px;
+    }
+    .product-weight span{
+      color: {{ section.settings.weightColor }};
+      font-size: {{ section.settings.weightSize }}px;
+      font-weight: {{ section.settings.weightThickness }};
+      text-align: center;
+      font-family: Poppins;
+      font-style: normal;
+    }
+    .price-item--last span{
+      color: {{ section.settings.unitPriceColor }};
+      font-size: {{ section.settings.unitPriceSize }}px;
+      font-weight: {{ section.settings.unitPriceThickness }};
+      text-align: center;
+      font-family: Poppins;
+      font-style: normal;
+    }
+    .productPrice p{
+      color: {{ section.settings.priceColor }};
+      font-size: {{ section.settings.priceSize }}px;
+      font-weight: {{ section.settings.priceThickness }};
+      text-align: center;
+      font-family: Poppins;
+      font-style: normal;
+      line-height: 100%;
+    }
+    .productInfoSubContainer{
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: 0px;
+      position: relative;
+      padding-top: 15px;
+    }
+    .productPrice p sup{
+      color: #18181B;
+      text-align: center;
+      font-family: Poppins;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 12.313px;
+    }
+    .addToCart_overlay{
+      width: 100%;
+      text-align: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #064E3B;
+      position: absolute;
+      top: -17%;
+      transition: 0.5s;
+      background-color: #f7f0e9ab;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .addToCart_overlay img{
+      width: 14px;
+      height: 14px;
+    }
+    .product_card:hover .addToCart_overlay{
+      top: 0;
+    }
+    .addToCart_overlay .custom_add_cart_btn{
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      font-weight: 600;
+      color: #064E3B;
+      width: 100%;
+      cursor: pointer;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: -0.54px;
+      margin-right: 15px
+    }
+    .product_hover_text{
+      position: absolute;
+      top: 40%;
+      left: 20%;
+      opacity: 0;
+      transition: 0.2s;
+    }
+    .product_card:hover .product_hover_text{
+      opacity: 1;
+    }
+  .product_hover_text{
+    color: #EA571D;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: 0.52px;
+  }
+    @media only screen and (max-width:990px){
+      .productsContainer{
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .productTitle h1{
+        font-size: 20px;
+      }
+      .product-weight span{
+        font-size: 16px;
+      }
+      .price-item--last span{
+        font-size: 13px;
+      }
+      .productPrice p{
+        font-size: 36px;
+      }
+      .productPrice p sup{
+        font-size: 10px;
+      }
+    }
+
+  .sectionHeading p strong:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+   height: 50%;
+    top: 2px;
+    left: 0px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s ease, background-position 1.5s ease;
+    background: linear-gradient(to right,transparent 50%,#49946d 50%);
+    background-size: 200% 100%;
+    background-position: left bottom;
+    transition: all .5s ease-out;
+  }
+  .productrightToleft p strong:after {
+    background-position: right bottom !important;
+    opacity: 1 !important;
+  }
+  .sectionHeading p strong:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    bottom: 0px;
+    left: 0px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s ease, background-position 1.5s ease;
+    background: linear-gradient(to right, #49946d 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .5s ease-out;
+  }
+  .productrightToleft p strong:before {
+    background-position: left bottom !important;
+    opacity: 1 !important;
+  }
+  .productrightToleft p strong{
+    color: #fff;
+    position:relative;
+    padding: 0px 5px;
+    margin: 0px 5px;
+  }
+
+  @media only screen and (max-width:600px){
+     .sectionHeading p strong:before {
+    content: none;
+  }
+   .sectionHeading p strong:after {
+    content: none;
+  }
+  .productrightToleft p strong{
+  background: linear-gradient(to right, #49946d 50%, transparent 50%);
+    background-size: 200% 100%;
+  }
+  }
+</style>
+
+<script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  const prices = document.querySelectorAll('.productPrice p')
+
+prices.forEach((price) => {
+    const [beforeCommaText, afterCommaText] = price.innerText.split(',')
+    const [euro, number, secondNumber] = beforeCommaText.split('');
+    price.innerHTML = `${number}${secondNumber}.<sup>${afterCommaText} ${euro}</sup>`
+})
+
+
+
+window.addEventListener('scroll', function() {
+    var section = document.querySelector('.mainContainer.{{ section.id }}');
+    var customImage = document.querySelector('.sectionHeading');
+
+    // Yahan pe aap class ka naam change kar sakte hain agar kuch aur naam rakhna hai to
+    var classNameToAdd = 'productrightToleft';
+
+    if (section.getBoundingClientRect().top < window.innerHeight) {
+      // Jab window scroll karke section ke top pe aa jaye, class add karenge
+      customImage.classList.add(classNameToAdd);
+    } else {
+      // Agar window section ke top se bahar jaata hai, class hata denge
+      customImage.classList.remove(classNameToAdd);
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+{% schema %}
+{
+  "name": "Custom Products",
+  "settings": [
+     {
+      "type": "header",
+      "content": "Desktop Settings",
+      "info": "The settings below work above 900px screens"
+    },
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1250
+    },
+   {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "range",
+      "id": "top_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "right_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Padding",
+      "default":20
+    },
+    {
+      "type": "range",
+      "id": "left_padding",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 20
+    },
+    {
+      "type": "richtext",
+      "id": "heading1",
+      "label": "Heading"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Custom Collection"
+    },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+    {
+       "type": "color",
+       "id": "headingColor",
+       "label": "Heading Color",
+       "default": "#000000"
+     },
+    {
+       "type": "checkbox",
+       "id": "showRating",
+       "label": "Show Stars",
+       "default": true
+     },
+    {
+       "type": "image_picker",
+       "id": "starImag",
+       "label": "Star Rating Image"
+     },
+     {
+        "type": "range",
+        "id": "headingsize",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading Size",
+        "default": 22
+      },
+     {
+        "type": "range",
+        "id": "headingWieght",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "label": "Heading Weight",
+        "default": 700
+      },
+    {
+          "type": "select",
+          "id": "heading_alignment",
+          "label": "Heading alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+    {
+      "type": "header",
+      "content": "Product image Settings"
+    },
+    {
+      "type": "color",
+      "id": "imgBgColor",
+      "label": "Image Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Product Title Settings"
+    },
+    {
+       "type": "color",
+       "id": "infoBgColor",
+       "label": "Product Details Bg Color",
+       "default": "#fff"
+     },
+    {
+       "type": "color",
+       "id": "productTitleColor",
+       "label": "Title Color",
+       "default": "#000000"
+     },
+     {
+        "type": "range",
+        "id": "productTitlesize",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Title Size",
+        "default": 20
+      },
+     {
+        "type": "range",
+        "id": "productTitleWieght",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "label": "Title Weight",
+        "default": 600
+      },
+    {
+       "type": "color",
+       "id": "weightColor",
+       "label": "Title Color",
+       "default": "#000000"
+     },
+     {
+        "type": "range",
+        "id": "weightSize",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Title Size",
+        "default": 20
+      },
+     {
+        "type": "range",
+        "id": "weightThickness",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "label": "Title Weight",
+        "default": 600
+      },
+    {
+       "type": "color",
+       "id": "unitPriceColor",
+       "label": "Title Color",
+       "default": "#000000"
+     },
+     {
+        "type": "range",
+        "id": "unitPriceSize",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Title Size",
+        "default": 20
+      },
+     {
+        "type": "range",
+        "id": "unitPriceThickness",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "label": "Title Weight",
+        "default": 600
+      },
+    {
+       "type": "color",
+       "id": "priceColor",
+       "label": "Title Color",
+       "default": "#000000"
+     },
+     {
+        "type": "range",
+        "id": "priceSize",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Title Size",
+        "default": 20
+      },
+     {
+        "type": "range",
+        "id": "priceThickness",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "label": "Title Weight",
+        "default": 600
+      },
+    {
+      "type": "header",
+      "content": "Avatar settings"
+    },
+    {
+       "type": "color",
+       "id": "imgBorderColor",
+       "label": "Image Border Color",
+       "default": "#064E3B"
+     },
+     {
+        "type": "range",
+        "id": "imgborderWidth",
+        "min": 0,
+        "max": 25,
+        "step": 1,
+        "label": "Image Border Width",
+        "default": 4
+      }
+
+
+
+  ],
+  "presets": [
+    {
+      "name": "Custom Products"
+    }
+  ]
+}
+{% endschema %}

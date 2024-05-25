@@ -1,0 +1,937 @@
+<div class="timeline-container {{ section.id }}">
+  <div class="timeLine">
+    <div class="timeLineSub">
+      <div class="timeline-box-1">
+        <div class="timeline-heading">{{ section.settings.main_timeline_heading }}</div>
+        <div class="timeline-para">{{ section.settings.main_timeline_para }}</div>
+      </div>
+      <div class="timeline-box-2">
+        {% for block in section.blocks %}
+          <div class="steps-div-{{ forloop.index }} steps-div">
+            <div class="image-box-container imageBorder">
+              <img src="{{ block.settings.step_logo | img_url: 'master' }}">
+            </div>
+            <div class="content-box-{{ forloop.index }} content-box">
+              <h2 class="content-h2">
+                <div class="stepTitle">
+                  {{ block.settings.step_tittle -}}
+                </div>
+                <div class="stepName">
+                  <a href="{{ section.settings.urlRedirect }}">
+                    {{ block.settings.step_name }}
+                    {% if section.settings.arrowImg != blank %}
+                      <img src="{{ section.settings.arrowImg | img_url: 'orignal' }}" alt="">
+                    {% endif %}
+                  </a>
+                </div>
+              </h2>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="butonContainer">
+        <a href="{{ section.settings.btnUrl }}" class="servove-btn threeDEffect">{{ section.settings.btnText }}</a>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+      .{{section.id}} .timeline-para p{
+        color: {{section.settings.para_fc}};
+        text-align: center;
+        font-family: Poppins;
+        font-size: {{section.settings.para_fz}}px;
+        font-style: normal;
+        font-weight: {{section.settings.para_fw}};
+        line-height: 24px;
+      }
+      .{{section.id}} .timeline-para p strong{
+        color: {{section.settings.para_fc_bold}};
+      }
+    .timeLine{
+      display: inline-flex;
+      padding: 22px 24px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      border-radius: 54px;
+      border: 1px solid #49946D;
+    }
+    .timeLineSub{
+      display: flex;
+      width: 100%;
+      padding: 30px 60px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      border-radius: 54px;
+      background: #FFF8F1;
+  }
+      .timeline-para{
+        padding-top: 24px;
+      }
+      .{{ section.id }}.timeline-container{
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 40px;
+      margin: 0 auto;
+      max-width: 100%;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      display: flex;
+      gap: 60px;
+      align-self: stretch;
+      background: {{section.settings.main_background}};
+      padding: {{ section.settings.secTopPad }}px {{ section.settings.secRightLeftPad }}px {{section.settings.secBottomPad}}px;
+
+      }
+      .{{ section.id }} .timeline-box-1{
+      width: 100%;
+      text-align: center
+      }
+
+      {% comment %}         .threeDEffect{
+      box-shadow: 4px 4px 0px {{ section.settings.shadowColor }};
+      border-radius: 12px;
+      border: 0.42px {{ section.settings.shadoBorderColor }} solid;
+      }
+      .{{ section.id }} .threeDEffect:hover {
+      box-shadow: 4px 4px 0px {{ section.settings.shodawColorOhHover }};
+      border-radius: 12px;
+      border: 0.42px {{ section.settings.shodowBorderColorOnHover }} solid;
+      background-color: {{ section.settings.shadowBGcolor }};
+      }
+      .{{ section.id }} .threeDEffect:active {
+      box-shadow: 0px 0px 0px #FFF8F1;
+      transform: translate(2px, 2px);
+      } {% endcomment %}
+      .{{ section.id }} .timeline-heading p{
+      line-height: 39px;
+      letter-spacing: -1px;
+      font-size: {{ section.settings.mainFontSize }}px;
+      color: {{section.settings.main_headingColor}};
+      font-weight: {{ section.settings.main_headingWeight }};
+      margin: 0px;
+      }
+      .{{ section.id }} .timeline-heading strong{
+      color: {{section.settings.main_heading_bold}};
+      font-weight: {{ section.settings.main_headingWeight }};
+      font-size: {{ section.settings.mainFontSize }}px;
+      position: relative;
+      }
+
+      .{{ section.id }} .animate strong{
+      color: #fff;
+      position: relative;
+      z-index:1;
+      }
+
+      .{{ section.id }} .timeline-heading p strong:after{
+      content: '';
+      position: absolute;
+      width: {{ section.settings.animation_width }}px;
+      height: {{ section.settings.animation_height }}px;
+      top: 0;
+      left: -3px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 1s ease,  background-position 1.5s ease;
+      background: linear-gradient(to right,transparent 50%,#49946d 50%);
+      background-size: 200% 100%;
+      background-position: left bottom;
+      transition: all .5s ease-out;
+      }
+
+      .{{ section.id }} .animate p strong:after{
+      background-position: right bottom;
+      opacity: 1;
+      }
+
+      .{{ section.id }} .timeline-box-2{
+      width: 100%;
+      max-width: {{ section.settings.page_size }}px;
+      display: inline-flex;
+      align-items: flex-start;
+      flex-shrink: 0;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      }
+      .{{ section.id }} .timeline-box-3{
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      text-align: center
+
+      }
+
+      .{{ section.id }} .steps-div{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 18px;
+      /*     width: 23%; */
+
+      }
+
+      .{{ section.id }} .image-box-container{
+      display: block;
+      }
+      .{{ section.id }} .image-box-container img{
+
+      width: 100%;
+      border-radius: 50%;
+      max-width: 180px;
+      max-height: 180px;
+      height: 100%;
+      }
+
+      .{{ section.id }} .content-box{
+      padding: 0px 10px;
+      text-align: center;
+      }
+   .{{ section.id }} .timeline-box-2{
+  padding-top: 15px;
+   }
+      .{{ section.id }} .timeline-box-2 h3{
+      margin: 8px 0px 0px 0px;
+      color: {{section.settings.steps_color}};
+      font-weight: 700;
+      text-transform: none;
+      }
+      .{{ section.id }} .content-h2{
+      margin: 0px;
+      }
+      .{{ section.id }} .content-h2 .stepTitle p{
+      color: {{section.settings.steps_title_color}};
+      font-weight: {{ section.settings.stepTitleWeight }};
+      font-size: {{ section.settings.stepTitleSize }}px;
+      text-align: center;
+      font-family: Poppins;
+      font-style: normal;
+      line-height: 134.99%;
+      letter-spacing: 1px;
+      text-decoration-line: underline;
+      }
+      .{{ section.id }} .content-h2 .stepName a{
+      color: {{section.settings.steps_name_color}};
+      font-weight: {{ section.settings.step_name_Weight }};
+      font-size: {{ section.settings.step_nam_Size }}px;
+
+      }
+      .{{ section.id }} .content-h2 .stepName p{
+      color: {{section.settings.steps_name_color}}c4;
+      font-weight: {{ section.settings.step_name_Weight }};
+      font-size: {{ section.settings.step_nam_Size }}px;
+      text-align: center;
+      font-family: Poppins;
+      font-style: normal;
+      line-height: 32.475px;
+      }
+      .{{ section.id }} .content-h2 .stepName a{
+      display:flex;
+      align-items: center;
+      flex-direction: column;
+      }
+      .{{ section.id }} .content-h2 p{
+      margin: 0px 0px 0px 0px;
+      letter-spacing: 0;
+      text-transform: none;
+      }
+
+      /*    .timeline-box-2 p strong{
+      color: yellow;
+      font-weight: 700;
+      } */
+
+      .{{ section.id }} .butonContainer{
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .{{ section.id }} .servove-btn {
+      padding: 10px 20px;
+      width: 100%;
+      max-width: 300px;
+      font-size: {{ section.settings.btnSize }}px;
+      font-weight: {{ section.settings.btnWeight }};
+      margin: 0px 0 0 0;
+      text-transform: none;
+      text-decoration: none;
+      color: {{section.settings.button_text}};
+      background-color:  {{section.settings.button_background}};
+      text-align: center;
+      border-radius: 12px;
+      border: 0.42px {{ section.settings.shadoBorderColor }} solid;
+      box-shadow:
+      5px 5px 0 0px {{ section.settings.shadowBgColor }},
+      6px 4px 0 0px {{ section.settings.shadowBorderColor }},
+      4px 6px 0 0px {{ section.settings.shadowBorderColor }},
+      6px 6px 0 0px {{ section.settings.shadowBorderColor }};
+
+      }
+
+      .{{ section.id }} .servove-btn:hover {
+      box-shadow:
+      2px 2px 0 0px {{ section.settings.shadowBgColor }},
+      3px 1px 0 0px {{ section.settings.shadowBorderColor }},
+      2px 3px 0 0px {{ section.settings.shadowBorderColor }},
+      3px 3px 0 0px {{ section.settings.shadowBorderColor }};
+      transform: translateX(2px);
+      transform: translate(2px, 2px);
+
+      }
+
+
+
+
+      .{{ section.id }} .imageBorder{
+      border: 1px solid {{ section.settings.imgBorderColor }};
+      border-radius: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      background-color: {{ section.settings.imgBgColor }};
+      }
+      .{{ section.id }} .bouncyBtn{
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: -0.598px;
+      }
+      .{{ section.id }} .stepName{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+      .{{ section.id }} .stepName img{
+      width: 10px;
+      }
+    {% comment %}
+      @media only screen and (max-width: 1280px) {
+      .{{ section.id }} .content-h2 .stepTitle p {
+      font-size: {{ section.settings.stepText1280 }}px;
+      }
+      .{{ section.id }} .image-box-container img {
+      max-width: 180px;
+      max-height: 180px;
+      height: 180px;
+      width: 180px;
+      }
+
+      .{{ section.id }} .imageBorder {
+      padding: 6px;
+      }
+      .{{ section.id }} .timeline-box-2 {
+      gap: 0px;
+      height: auto;
+      }
+      .{{ section.id }} .timeline-box-1{
+      width: 100%;
+      text-align: center;
+      }
+      }
+
+      @media only screen and (max-width: 1023px) {
+
+        .{{ section.id }} .image-box-container img {
+      max-width: 150px;
+      max-height: 150px;
+      height: 130px;
+      width: 130px;
+      }
+
+      .{{ section.id }} .steps-div {
+      gap: 10px;
+      }
+      .{{ section.id }} .content-h2 .stepTitle p {
+      font-size: {{ section.settings.stepTitleSize1023 }}px;
+      }
+      .{{ section.id }} .content-h2 .stepName {
+      font-size: {{ section.settings.stepNameSize1023 }}px;
+      }
+      .{{ section.id }} .stepName img {
+      width: 6px;
+      }
+      .{{ section.id }} .content-box {
+      padding: 0px 0px;
+      text-align: center;
+      }
+      }
+       {% endcomment %}
+      @media only screen and (max-width: 900px) {
+      .{{ section.id }}.timeline-container{
+      padding: {{ section.settings.secTopPadMob }}px {{ section.settings.secRightLeftPadMob }}px {{section.settings.secBottomPadMob}}px;
+      }
+      }
+      @media only screen and (max-width: 767px) {
+      .timeLineSub{
+      padding: 15px 25px;
+      }
+      .{{ section.id }} .timeline-box-2 {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      }
+      .{{ section.id }}.timeline-container {
+      gap: 0px;
+      }
+      .{{ section.id }} .timeline-box-1{
+      margin-bottom: 30px;
+      }
+      .{{ section.id }} .timeline-box-2{
+      margin-bottom: 10px;
+      }
+      .{{ section.id }} .steps-div {
+      width: 100%;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      }
+      .{{ section.id }} .imageBorder {
+      padding: 6px;
+      }
+      {% comment %}
+        .{{ section.id }} .image-box-container img {
+      max-width: 120px;
+      max-height: 120px;
+      height: 130px;
+      width: 130px;
+      }
+      {% endcomment %}
+      .{{ section.id }} .content-h2 .stepTitle p {
+      font-size: {{ section.settings.stepTitleSize767 }}px;
+      }
+      .{{ section.id }} .timeline-heading p strong:after{
+        width: {{ section.settings.animation_width }}px;
+        height: {{ section.settings.animation_height }}px;
+      }
+      .{{ section.id }} .content-h2 .stepName p{
+        font-size: 14px;
+      }
+      .{{section.id}} .timeline-para p{
+      font-size: {{section.settings.para_fz_mb}}px;
+      }
+      }
+</style>
+<script>
+  function isElementInViewport(el) {
+      var rect = el.getBoundingClientRect();
+      return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+  }
+
+  function animateOnScroll() {
+      var section = document.querySelector('.timeline-heading');
+
+      if (isElementInViewport(section)) {
+          section.classList.add('animate');
+      }
+  }
+
+  // Attach the animateOnScroll function to the scroll event
+  window.addEventListener('scroll', animateOnScroll);
+</script>
+
+{% schema %}
+ {
+   "name": "Icons With Text",
+   "settings": [
+     {
+      "type": "header",
+      "content": "Desktop Settings",
+      "info": "The settings below work above 900px screens"
+    },
+    {
+      "type": "number",
+      "id": "page_size",
+      "label": "Page Container",
+      "default": 1250
+    },
+    {
+      "type": "header",
+      "content": "Section Paddings"
+    },
+    {
+      "type": "range",
+      "id": "secTopPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secRightLeftPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Right Left Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "secBottomPad",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+     {
+      "type": "range",
+      "id": "animation_width",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Animation Width",
+      "default": 105
+    },
+     {
+      "type": "range",
+      "id": "animation_height",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Animation Height",
+      "default": 46
+    },
+     {
+      "type": "range",
+      "id": "animation_width_mb",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Animation Width Mobile",
+      "default": 105
+    },
+     {
+      "type": "range",
+      "id": "animation_height_mb",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Animation Height Mobile",
+      "default": 46
+    },
+     {
+       "type": "header",
+       "content": "Heading Settings"
+     },
+     {
+       "type": "richtext",
+       "id": "main_timeline_heading",
+       "label": "Main Heading"
+     },
+     {
+      "type": "range",
+      "id": "main_headingWeight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Main Heading Font Weight",
+      "default": 500
+    },
+     {
+      "type": "range",
+      "id": "mainFontSize",
+      "min": 8,
+      "max": 48,
+      "step": 1,
+      "label": "Main Heading Font size",
+      "default": 26
+    },
+     {
+       "type": "color",
+       "id": "main_headingColor",
+       "label": "Main Heading Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "main_heading_bold",
+       "label": "Main Heading Bold Color",
+       "default": "#49946D"
+     },
+     {
+       "type": "richtext",
+       "id": "main_timeline_para",
+       "label": "Main Paragraph"
+     },
+     {
+      "type": "range",
+      "id": "para_fw",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Main Paragraph Font Weight",
+      "default": 400
+    },
+     {
+      "type": "range",
+      "id": "para_fz",
+      "min": 8,
+      "max": 48,
+      "step": 1,
+      "label": "Main Paragraph Font size",
+      "default": 16
+    },
+     {
+       "type": "color",
+       "id": "para_fc",
+       "label": "Main Paragraph Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "para_fc_bold",
+       "label": "Main Paragraph Bold Color",
+       "default": "#49946D"
+     },
+     {
+      "type": "range",
+      "id": "para_fz_mb",
+      "min": 8,
+      "max": 48,
+      "step": 1,
+      "label": "Main Paragraph Font size Mobile",
+      "default": 16
+    },
+     {
+       "type": "color",
+       "id": "main_background",
+       "label": "Section Background Color",
+       "default": "#000000"
+     },
+     {
+       "type": "header",
+       "content": "block Images setting"
+     },
+     {
+     "type": "color",
+     "id": "imgBorderColor",
+     "label": "Image Border Color",
+     "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "form-heading-color",
+       "label": "Form Heading Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "dots_color",
+       "label": "Line Dots Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "steps_color",
+       "label": "Steps Tittle Color",
+       "default": "#000000"
+     },
+     {
+       "type": "header",
+       "content": "title settings"
+     },
+     {
+       "type": "color",
+       "id": "steps_title_color",
+       "label": "Steps Name Color",
+       "default": "#000000"
+     },
+     {
+        "type": "range",
+        "id": "stepTitleSize",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Name Size",
+        "default": 16
+      },
+     {
+        "type": "range",
+        "id": "stepTitleWeight",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "label": "Step Name Weight",
+        "default": 700
+      },
+     {
+       "type": "header",
+       "content": "name settings"
+     },
+     {
+       "type": "color",
+       "id": "steps_name_color",
+       "label": "Steps Name Color",
+       "default": "#000000"
+     },
+     {
+       "type": "image_picker",
+       "id": "arrowImg",
+       "label": "Steps Arrow After"
+     },
+     {
+        "type": "range",
+        "id": "step_nam_Size",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Name Size",
+        "default": 16
+      },
+     {
+        "type": "range",
+        "id": "step_name_Weight",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "label": "Step Name Weight",
+        "default": 700
+      },
+     {
+       "type": "color",
+       "id": "imgBgColor",
+       "label": "Image Background Color"
+     },
+     {
+       "type": "header",
+       "content": "Button Settings"
+     },
+     {
+       "type": "text",
+       "id": "btnText",
+       "label": "Button Text",
+       "default": "View All"
+     },
+     {
+       "type": "url",
+       "id": "btnUrl",
+       "label": "Button URL"
+     },
+     {
+       "type": "range",
+       "id": "btnSize",
+       "min": 8,
+       "max": 48,
+       "step": 1,
+       "unit": "px",
+       "label": "Button Text Size",
+       "default": 15
+     },
+     {
+       "type": "range",
+       "id": "btnWeight",
+       "min": 100,
+       "max": 900,
+       "step": 100,
+       "label": "Button Text Size",
+       "default": 500
+     },
+     {
+       "type": "color",
+       "id": "button_text",
+       "label": "Button Text Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "button_background",
+       "label": "Button Background Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "button_hover_text",
+       "label": "Hover Button Text Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "button_hover_background",
+       "label": "Hover Button Background Color",
+       "default": "#000000"
+     },
+     {
+       "type": "color",
+       "id": "shadowColor",
+       "label": "Shadow background Color",
+       "default": "#064E3B"
+     },
+     {
+       "type": "color",
+       "id": "shodawColorOhHover",
+       "label": "Button Color on hover",
+       "default": "#FFF8F1"
+     },
+     {
+       "type": "color",
+       "id": "shodowBorderColorOnHover",
+       "label": "Shadow Border Color on hover",
+       "default": "#064E3B"
+     },
+     {
+       "type": "color",
+       "id": "shadowBGcolor",
+       "label": "Shadow Background Color",
+       "default": "#fff"
+     },
+     {
+       "type": "color",
+       "id": "shadowBorderColor",
+       "label": "Shadow Border Color",
+       "default": "#000"
+     },
+     {
+       "type": "color",
+       "id": "shadoBorderColor",
+       "label": "Button Border Color",
+       "default": "#064E3B"
+     },
+     {
+       "type": "header",
+       "content": "Mobile settings",
+       "info": "This setting will work on 1280 screen sizes"
+     },
+     {
+        "type": "range",
+        "id": "stepText1280",
+        "min": 8,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Title Font size",
+        "default": 18
+      },
+     {
+       "type": "header",
+       "content": "Mobile settings",
+       "info": "This setting will work on 1023 screen sizes"
+     },
+     {
+        "type": "range",
+        "id": "stepTitleSize1023",
+        "min": 8,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Title Font size",
+        "default": 16
+      },
+     {
+        "type": "range",
+        "id": "stepNameSize1023",
+        "min": 8,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Title Font size",
+        "default": 8
+      },
+     {
+       "type": "header",
+       "content": "Mobile settings",
+       "info": "This setting will work on 1023 screen sizes"
+     },
+     {
+        "type": "range",
+        "id": "secTopPadMob",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Top padding on mobile",
+        "default": 30
+      },
+     {
+        "type": "range",
+        "id": "secRightLeftPadMob",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Right Left Padding on Mobile",
+        "default": 30
+      },
+     {
+        "type": "range",
+        "id": "secBottomPadMob",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Bottom Padding Mobile",
+        "default": 30
+      },
+     {
+       "type": "header",
+       "content": "Mobile settings",
+       "info": "This setting will work on 767 screen sizes"
+     },
+     {
+        "type": "range",
+        "id": "stepTitleSize767",
+        "min": 8,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Step Title Font size",
+        "default": 12
+      }
+     ],
+     "blocks":[
+            {
+          "name": "slider",
+           "type": "block",
+           "settings": [
+             {
+             "type": "image_picker",
+             "id": "step_logo",
+             "label": "Step logo"
+             },
+             {
+             "type": "richtext",
+             "id": "step_tittle",
+             "label": "Step Tittle"
+             },
+             {
+             "type": "richtext",
+             "id": "step_name",
+             "label": "Step Name"
+             },
+             {
+             "type": "url",
+             "id": "urlRedirect",
+             "label": "Url"
+             }
+     ]
+     }
+     ],
+"presets": [
+    {
+      "name": "Icons With Text Product First"
+
+    }
+  ]
+ }
+{% endschema %}

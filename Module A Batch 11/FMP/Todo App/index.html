@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="text-center">Todo App</h1>
+      <div class="row mt-3">
+        <div class="col-md-6 offset-md-3">
+          <input
+            type="text"
+            id="todoInput"
+            class="form-control mb-2"
+            placeholder="Add a new todo"
+          />
+          <button id="addTodoBtn" class="btn btn-primary btn-block">
+            Add Todo
+          </button>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-6 offset-md-3">
+          <ul id="todoList" class="list-group"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
