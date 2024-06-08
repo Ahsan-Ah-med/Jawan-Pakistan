@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Brand and Model Filter</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      #mobileDetails {
+        margin-top: 20px;
+      }
+      div#mobileDetails:empty {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 p-6">
+    <h1 class="text-2xl font-bold mb-6">Mobile Brand and Model Filter</h1>
+
+    <label for="brandSelect" class="block mb-2">Select Brand:</label>
+    <select
+      id="brandSelect"
+      class="block w-full p-2 border border-gray-300 rounded mb-4"
+    >
+      <option value="">Select a brand</option>
+    </select>
+
+    <label for="modelSelect" class="block mb-2">Select Model:</label>
+    <select
+      id="modelSelect"
+      class="block w-full p-2 border border-gray-300 rounded mb-4"
+      disabled
+    >
+      <option value="">Select a model</option>
+    </select>
+
+    <button
+      id="searchButton"
+      class="bg-blue-500 text-white px-4 py-2 rounded disabled:opacity-50"
+      disabled
+    >
+      Search
+    </button>
+
+    <div id="mobileDetails" class="mt-6 p-4 bg-white rounded shadow"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
