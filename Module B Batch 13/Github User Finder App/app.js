@@ -1,5 +1,5 @@
 const userFetch = async (search) => {
-  console.log(search)
+  // console.log(search)
   document.querySelector(".userCards").innerHTML = `
   <div class="loader">
   <div class="loaderMiniContainer">
@@ -36,7 +36,10 @@ const userFetch = async (search) => {
   await fetch(`https://api.github.com/users/${search}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
+      // console.log(data?.message)
+      if (data.message) {
+        return document.querySelector(".userCards").innerHTML = `${data.message}`
+      }
       document.querySelector(".userCards").innerHTML = `
       <div class="card">
         <button button class="mail" >
