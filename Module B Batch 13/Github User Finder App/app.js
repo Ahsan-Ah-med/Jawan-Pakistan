@@ -59,7 +59,7 @@ const userFetch = async (search) => {
               <div class="followers"><img src="./icon/following.png" />${data?.following}</div>
               <div class="followers"><img src="./icon/repos.png" />${data?.public_repos}</div>
             </div>
-            <a href="${data?.html_url}" target="_blank" class="button">Contact Me</a>
+            <a href="${data?.html_url}" target="_blank" class="button">Github</a>
           </div>
         </div>
       </div > `
@@ -125,7 +125,7 @@ const userload = async () => {
             <span class="name">User Name: ${e?.login}</span>
           </div>
           <div class="bottom-bottom">
-            <a href="${e?.html_url}" target="_blank" class="button">Contact Me</a>
+            <a href="${e?.html_url}" target="_blank" class="button">Github</a>
           </div>
         </div>
     </div>`;
