@@ -1,0 +1,79 @@
+.landing-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5a563;
+  position: relative;
+}
+
+
+.landing-page-content {
+  background-color: #ffeddf;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-shape {
+  width: 24px;
+  height: 24px;
+  background-color: #ff843d;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+}
+
+.brand-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.nav a {
+  margin-left: 1rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.search-icon {
+  font-size: 1.2rem;
+}
+
+.main-content {
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.extra-info {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #999;
+}
