@@ -1,0 +1,40 @@
+.ul {
+  list-style: none;
+  gap: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+}
+.submenu {
+  display: none;
+  position: absolute;
+  width: auto;
+  background: #fff;
+  list-style: none;
+  padding: 20px 10px 10px 10px;
+  top: 20px;
+  z-index: 9;
+}
+.ul li:first-child {
+  color: #d2093c;
+}
+.ul li {
+  color: #00306e;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+}
+.ul li:hover .submenu {
+  display: block;
+}

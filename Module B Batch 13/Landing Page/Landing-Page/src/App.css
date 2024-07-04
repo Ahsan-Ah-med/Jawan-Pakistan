@@ -1,4 +1,41 @@
-#root {
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+img {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: 25px !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+  color: #686c6b !important;
+  font-size: 25px !important;
+}
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  right: 25px !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  color: #686c6b !important;
+  font-size: 25px !important;
+}
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +76,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
