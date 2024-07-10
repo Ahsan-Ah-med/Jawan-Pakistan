@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  gap: 20px;
+}
+.containerReverse {
+  flex-direction: row;
+}
+.image_div {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.form_div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 50%;
+}
+.heading p {
+  font-size: 26px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 25px;
+}
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.form div {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+input:not(input[type="checkbox"]) {
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 10px 0 10px 30px;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+input:focus-visible {
+  outline: unset;
+}
+label {
+  margin: 10px 0 0 10px;
+  line-height: 1;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+.signin button {
+  padding: 15px 30px;
+  background: #6a86fa;
+  color: #fff;
+  margin-top: 30px;
+  line-height: 1;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.footer p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  line-height: 1;
+}
+.icon {
+  width: 20px !important;
+  position: absolute !important;
+  bottom: 22px;
+  left: 0;
+}
+.socialLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.socialLogin img {
+  width: 30px;
+}
