@@ -5,12 +5,49 @@ import "./App.css";
 import Login from "./Components/Login";
 import loginImage from "./assets/login.png";
 import signupImage from "./assets/singup.avif";
+import firebaseappNew from "./Firebase/Firebase";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function App() {
+  const auth = getAuth(firebaseappNew);
   const [isLoggedIn, setisLoggedIn] = useState(true);
   const toggle = () => {
     setisLoggedIn(!isLoggedIn);
   };
+
+  const login = (
+    event,
+    userAuthName,
+    userAuthPass,
+    userAuthEmail,
+    userAuthConPass
+  ) => {
+    event.preventDefault();
+    // console.log(userAuthEmail, userAuthPass);
+    // signInWithEmailAndPassword(auth, userAuthEmail, userAuthPass)
+    //   .then((userCredential) => {
+    //     // Signed in
+    //     const user = userCredential.user;
+    //     // ...
+    //     console.log("login:", user);
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //   });
+  };
+
+  const signup = (
+    event,
+    userAuthName,
+    userAuthPass,
+    userAuthEmail,
+    userAuthConPass
+  ) => {
+    event.preventDefault();
+    // console.log(userAuthName,userAuthEmail, userAuthPass, userAuthConPass);
+  };
+
   return (
     <>
       {isLoggedIn ? (
@@ -27,6 +64,7 @@ function App() {
           userPassRe={false}
           imageDir={false}
           click={toggle}
+          submitFunc={login}
         />
       ) : (
         <Login
@@ -42,6 +80,7 @@ function App() {
           userPassRe={true}
           imageDir={true}
           click={toggle}
+          submitFunc={signup}
         />
       )}
     </>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import emailIcon from "../assets/email.png";
 import lock1Icon from "../assets/lock (1).png";
 import lockIcon from "../assets/lock.png";
@@ -21,7 +21,13 @@ const Login = ({
   userPassRe,
   imageDir,
   click,
+  submitFunc,
 }) => {
+  const [userAuthName, setUserAuthName] = useState("");
+  const [userAuthEmail, setUserAuthEmail] = useState("");
+  const [userAuthPass, setUserAuthPass] = useState("");
+  const [userAuthConPass, setUserAuthConPass] = useState("");
+
   return (
     <div
       className={`${styles.container} ${imageDir && styles.containerReverse}`}
@@ -41,6 +47,10 @@ const Login = ({
                 placeholder="John Doe"
                 name="username"
                 id="username"
+                value={userAuthName}
+                onChange={(e) => {
+                  setUserAuthName(e.target.value);
+                }}
               />
             </div>
           )}
@@ -54,6 +64,10 @@ const Login = ({
                 placeholder="JohnDoe@example"
                 name="email"
                 id="email"
+                value={userAuthEmail}
+                onChange={(e) => {
+                  setUserAuthEmail(e.target.value);
+                }}
               />
             </div>
           )}
@@ -63,10 +77,14 @@ const Login = ({
                 <img src={lockIcon} />
               </div>
               <input
-                type="text"
+                type="password"
                 placeholder="Password"
                 name="password"
                 id="password"
+                value={userAuthPass}
+                onChange={(e) => {
+                  setUserAuthPass(e.target.value);
+                }}
               />
             </div>
           )}
@@ -76,19 +94,35 @@ const Login = ({
                 <img src={lock1Icon} />
               </div>
               <input
-                type="text"
+                type="password"
                 placeholder="Confirm Password"
                 name="confirm_password"
                 id="confirm_password"
+                value={userAuthConPass}
+                onChange={(e) => {
+                  setUserAuthConPass(e.target.value);
+                }}
               />
             </div>
           )}
           <div className={styles.rem}>
             <input type="checkbox" className="remember" id="remem" />
-            <label for="remem">{agreementText}</label>
+            <label htmlFor="remem">{agreementText}</label>
           </div>
           <div className={styles.signin}>
-            <button>{main_btn}</button>
+            <button
+              onClick={(e) =>
+                submitFunc(
+                  e,
+                  userAuthName,
+                  userAuthPass,
+                  userAuthEmail,
+                  userAuthConPass
+                )
+              }
+            >
+              {main_btn}
+            </button>
           </div>
         </div>
         {socialLogin && (
