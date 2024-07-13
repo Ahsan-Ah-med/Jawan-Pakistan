@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 const Signup = ({ clickFunc }) => {
   return (
     <div className="container-fluid mt-5 d-flex justify-content-center ">
-      <div className={styles.boss}>
+      <div className={styles.container1}>
         <h1 className="mt-1 mb-5">Sign-Up</h1>
 
         <div className="mb-2">
@@ -68,7 +68,7 @@ const Signup = ({ clickFunc }) => {
           </div>
           <input className="mb-5" type="checkbox" /> <i>Remember Me</i>
         </div>
-        <Button className="mb-2 p-2 w-50" variant="outline-secondary">
+        <Button className="mb-2 p-2 w-50" variant="outline-light">
           Sign Up...
         </Button>
         <p className="mb-5">
