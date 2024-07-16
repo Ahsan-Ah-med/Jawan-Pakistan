@@ -4,24 +4,35 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 
 function App() {
-  const [listText, setListText] = useState("");
+  const [listText, setListText] = useState({ value: "", type: "" });
   const [listItem, setListItem] = useState([]);
+  const [isEditing, setIsEditing] = useState(null);
+  const [editedText, setEditedText] = useState("");
 
   const addlist = () => {
     setListItem([listText, ...listItem]);
-    setListText("");
-  };
-  const deleted = (index) => {
-    // console.log(index);
-    const datas = listItem.filter((e, i) => {
-      return index != i;
-    });
-    setListItem(datas);
-  };
-  const edit = (index) => {
-    console.log(index)
+    setListText({ value: "", type: "" });
   };
 
+  const deleted = (index) => {
+    const datas = listItem.filter((_, i) => index !== i);
+    setListItem(datas);
+  };
+
+  const edit = (index) => {
+    setIsEditing(index);
+    setEditedText(listItem[index].value);
+  };
+
+  const updateItem = (index) => {
+    const updatedItems = listItem.map((item, i) =>
+      i === index ? { ...item, value: editedText } : item
+    );
+    console.log(updatedItems)
+    setListItem(updatedItems);
+    setIsEditing(null);
+    setEditedText("");
+  };
   return (
     <>
       <div className="container">
@@ -34,9 +45,9 @@ function App() {
               type="text"
               id="input-box"
               placeholder="add your tasks"
-              value={listText}
+              value={listText.value}
               onChange={(e) => {
-                setListText(e.target.value);
+                setListText({ value: e.target.value, type: "text" });
               }}
             />
             <button onClick={addlist}>Add</button>
@@ -54,10 +65,24 @@ function App() {
                     cursor: "pointer",
                   }}
                 >
-                  <li>{e}</li>
+                  {isEditing === i ? (
+                    <input
+                      value={editedText}
+                      type={e.type}
+                      onChange={(e) => setEditedText(e.target.value)}
+                    />
+                  ) : (
+                    <li>{e.value}</li>
+                  )}
                   <div>
-                    <FaRegEdit onClick={() => edit(i)} />
-                    <MdDeleteForever onClick={() => deleted(i)} />
+                    {isEditing === i ? (
+                      <button onClick={() => updateItem(i)} id="edit">Update</button>
+                    ) : (
+                      <>
+                        <FaRegEdit onClick={() => edit(i)} />
+                        <MdDeleteForever onClick={() => deleted(i)} />
+                      </>
+                    )}
                   </div>
                 </div>
               );

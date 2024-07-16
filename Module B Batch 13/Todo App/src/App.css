@@ -172,3 +172,6 @@ span:hover{
     background-color: #c9c9c9;
     color: #fff;
 }
+#edit{
+  padding: 15px 20px !important;
+}
