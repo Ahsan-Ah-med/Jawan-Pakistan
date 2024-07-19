@@ -1,0 +1,35 @@
+.user_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.user_card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.user_card:hover {
+  transform: translateY(-5px);
+}
+
+.user_card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.user_card p {
+  margin: 5px 0;
+}
+
+.user_card p strong {
+  font-weight: bold;
+}
