@@ -1,0 +1,12 @@
+.cards {
+  cursor: pointer;
+}
+.main {
+  text-align: center;
+  margin: 0 auto;
+  color: #006838;
+  font-family: "Fira Sans" sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  letter-spacing: 0.05em;
+}

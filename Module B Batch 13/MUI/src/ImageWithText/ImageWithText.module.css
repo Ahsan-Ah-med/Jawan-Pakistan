@@ -1,0 +1,19 @@
+.main{
+    margin-top: 100px !important;
+    margin-bottom: 120px !important;
+
+}
+.intro{
+    color: #006838;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: bold;
+    font-size: 2.25em;
+}
+.para{
+    color: #77859b;
+    margin-bottom: 2rem !important;
+    line-height: 1.625;
+    font-size: 1.0em;
+    font-family: 'Fira Sans', sans-serif;
+
+}
