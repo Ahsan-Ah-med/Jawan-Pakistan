@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import signupImage from "../assets/singup.avif";
 import Forms from '../component/form/Forms';
 
-const Signup = ({ toggle, signData,signinDataVal }) => {
+const Signup = ({ toggle }) => {
     // console.log(signData)
     return (
         <Forms
@@ -18,8 +18,6 @@ const Signup = ({ toggle, signData,signinDataVal }) => {
             userPassRe={false}
             imageDir={true}
             click={toggle}
-            signData={signData}
-            signinDataVal={signinDataVal}
         // submitFunc={signup}
         />
     )

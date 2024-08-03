@@ -22,7 +22,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={isLoggedIn ? <Login toggle={toggle} /> : <Navigate to="/signup" />} />
-        <Route path="/signup" element={!isLoggedIn ? <Signup toggle={toggle} signData={setSinginData} signinDataVal={signinData} /> : <Navigate to="/" />} />
+        <Route path="/signup" element={!isLoggedIn ? <Signup toggle={toggle} /> : <Navigate to="/" />} />
         <Route
           path="/dashboard"
           element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />}

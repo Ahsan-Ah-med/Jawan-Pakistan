@@ -23,8 +23,6 @@ const Forms = ({
   imageDir,
   click,
   submitFunc,
-  signData,
-  signinDataVal
 }) => {
   const [userAuthName, setUserAuthName] = useState("");
   const [userAuthEmail, setUserAuthEmail] = useState("");
@@ -50,10 +48,10 @@ const Forms = ({
                 placeholder="John Doe"
                 name="username"
                 id="username"
-                value={signinDataVal.fullName}
-                onChange={(e) => {
-                  signData(({ fullName }) => fullName = e.target.value);
-                }}
+                // value={signinDataVal?.fullName}
+                // onChange={(e) => {
+                //   signData();
+                // }}
               />
             </div>
           )}
