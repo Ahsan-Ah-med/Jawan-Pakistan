@@ -17,7 +17,7 @@ const LoginForm = () => {
     e.preventDefault();
     const getData = localStorage.getItem('data')
     const jsonData = JSON.parse(getData)
-    if(jsonData.email == email.toLowerCase() && jsonData.password == password){
+    if(jsonData?.email == email.toLowerCase() && jsonData?.password == password){
         navigate('/products')
     } else{
         alert("credential not match")
