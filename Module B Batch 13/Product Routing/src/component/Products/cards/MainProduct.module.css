@@ -1,0 +1,50 @@
+.main_product {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.main_product > div {
+  width: 46%;
+  padding: 20px;
+}
+.title {
+  font-size: 30px;
+  font-weight: 600;
+  text-align: left;
+  color: #000;
+}
+.des {
+  text-align: left;
+  font-size: 18px;
+  color: #000;
+}
+.variants button {
+  padding: 10px 15px;
+  border: 1px solid;
+  background: #fff;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #000;
+  font-weight: 600;
+  transition: 0.5s;
+}
+.variants button:hover {
+  background: #000;
+  color: #fff;
+}
+.variants {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
+@media only screen and (max-width: 767px) {
+  .main_product > div {
+    width: 100%;
+    padding: 0;
+  }
+}
