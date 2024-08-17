@@ -31,6 +31,7 @@ const Home = () => {
       </Button>
       <UserTable
         data={userData}
+        setData={setUserData}
         heading={userData && userData.length > 0 && Object.keys(userData[0])}
       />
     </>

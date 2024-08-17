@@ -1,14 +1,6 @@
 {
   "users": [
     {
-      "id": 3,
-      "name": "Sarah",
-      "username": "sarah123",
-      "email": "sarah@example.com",
-      "phone": "1-800-555-0102",
-      "website": "sarah.com"
-    },
-    {
       "id": 4,
       "name": "Anfaal Abdul Hai",
       "username": "anfaal_hai",

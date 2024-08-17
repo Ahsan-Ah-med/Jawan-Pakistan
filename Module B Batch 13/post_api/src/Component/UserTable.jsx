@@ -32,11 +32,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function UserTable({ data, heading }) {
+export default function UserTable({ data, heading, setData }) {
   const navigate = useNavigate();
   const handleDelete = async (id) => {
     // console.log(id);
     await axios.delete(`http://localhost:1226/users/${id}`);
+    const remainData = data.filter((e) => {
+      return e.id != id;
+    });
+    setData(remainData);
   };
   const handleEdit = async (id) => {
     // console.log(id);
