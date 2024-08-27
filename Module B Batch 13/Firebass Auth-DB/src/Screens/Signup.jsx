@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import styles from "./LoginForm.module.css";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import Loader from "../Component/Loader";
 import { auth } from "../../config/Firebass";
+import GoogleIcon from "@mui/icons-material/Google";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -32,6 +39,55 @@ const Signup = () => {
         }, 500);
       });
   };
+  // google signin
+  const googleSignin = async () => {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
+  // GitHub signin
+  const gitHubSignin = async () => {
+    const provider = new GithubAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GithubAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
   return (
     <>
       {process ? (
@@ -39,6 +95,17 @@ const Signup = () => {
       ) : (
         <form className={styles.form} onSubmit={handleSubmit}>
           <p id="heading">Sign Up</p>
+          <div className={styles.field}>
+            <input
+              autoComplete="off"
+              placeholder="Full Name"
+              className={styles["input-field"]}
+              type="text"
+              // value={login.email}
+              // onChange={(e) => setLogin({ ...login, email: e.target.value })}
+              // required
+            />
+          </div>
           <div className={styles.field}>
             <svg
               className={styles["input-icon"]}
@@ -87,6 +154,26 @@ const Signup = () => {
             <button className={styles.button2} onClick={() => navigate("/")}>
               Already Account
             </button>
+          </div>
+          <div>
+            <GoogleIcon
+              sx={{
+                width: "50px",
+                height: "50px",
+                margin: "5px 10px",
+                cursor: "pointer",
+              }}
+              onClick={googleSignin}
+            />
+            <GitHubIcon
+              sx={{
+                width: "50px",
+                height: "50px",
+                margin: "5px 10px",
+                cursor: "pointer",
+              }}
+              onClick={gitHubSignin}
+            />
           </div>
         </form>
       )}

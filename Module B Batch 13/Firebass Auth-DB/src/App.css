@@ -21,6 +21,14 @@ li {
   top: 5%;
   right: 5%;
 }
+.todoToggleBtn svg {
+  width: 24px;
+  height: auto;
+  color: #000;
+}
+.todoToggleBtn svg:last-child {
+  color: red;
+}
 /* .logo {
   height: 6em;
   padding: 1.5em;
