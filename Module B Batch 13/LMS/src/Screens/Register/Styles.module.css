@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #2b2738;
+  max-width: 800px;
+  margin: 100px auto 0;
+  gap: 50px;
+  box-shadow: 5px 5px 15px -5px #2b2738;
+}
+.container > div {
+  width: 50%;
+}
+.image {
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+}
+body {
+  background: #676179;
+}
+h1 {
+  color: #fff;
+  font-size: clamp(25px, (35 / 1600) * 100vw, 40px);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.signup {
+  font-size: clamp(14px, (16 / 1440) * 100vw, 16px);
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.signup a {
+  text-decoration: underline;
+}
+.defhead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+.defhead p {
+  color: #fff;
+  font-size: 12px;
+  width: -webkit-fill-available;
+  text-align: center;
+}
+.defhead span {
+  height: 1px;
+  background: #fff;
+  width: -webkit-fill-available;
+}
+.socialBtn button svg {
+  width: 24px;
+  height: auto;
+}
+.socialBtn button:hover {
+  background: #00000030;
+}
+.socialBtn button {
+  border: 1px solid #fff;
+  background: transparent;
+  border-radius: 3px;
+  color: #fff;
+  padding: 5px 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  gap: 5px;
+  transition: 0.3s;
+}
+.socialBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
