@@ -1,0 +1,54 @@
+.container {
+}
+.navBar {
+  width: 100%;
+  background: #2b2738;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.openMenu svg,
+.profile svg {
+  height: auto;
+  width: 24px;
+}
+.sideBar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #2b2738;
+  color: #fff;
+  max-width: 350px;
+  min-height: 100vh;
+  left: 0;
+  transition: 0.3s;
+  padding: 20px;
+}
+.close svg {
+  width: 24px;
+  height: auto;
+}
+.close {
+  text-align: right;
+}
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #ffffff36;
+}
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.logo {
+  width: 90px;
+  display: flex;
+  cursor: pointer;
+}
