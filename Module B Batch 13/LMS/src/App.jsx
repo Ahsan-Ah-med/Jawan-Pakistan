@@ -28,44 +28,72 @@ import Exam_Schedule from "./Screens/Exam/Exam_Schedule";
 import Exam_Result from "./Screens/Exam/Exam_Result";
 import AuthRoute from "./routes/AuthRoute";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  const navigate = useNavigate();
   useEffect(() => {
     Aos.init();
+    isLogin();
   }, []);
+  const isLogin = () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const uid = user.uid;
+        console.log(uid);
+        // navigate("/dashboard");
+        // ...
+      } else {
+        // User is signed out
+        navigate("/");
+        // ...
+      }
+    });
+  };
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition:Bounce
+      />
       <Routes>
-        <Route element={<AuthRoute />}>
-          <Route index element={<Login />} />
-          <Route path="/register" element={<Signup />} />
-        </Route>
-        <Route element={<ProtectedRoute />}>
-          {/* <Route path="/dashboard" element={<Nav />} /> */}
-          <Route path="/dashboard" element={<Nav />}>
-            <Route index element={<List_Students />} />
-            <Route path="student_registration" element={<Added_Students />} />
-            <Route path="student_list" element={<List_Students />} />
-            <Route path="teachers_registration" element={<Added_Teacher />} />
-            <Route path="teachers_list" element={<List_Teacher />} />
-            <Route path="subjects_add" element={<Added_Subjects />} />
-            <Route path="subjects_list" element={<List_Subjects />} />
-            <Route path="syllabus_form" element={<Syllabus_Form />} />
-            <Route path="syllabus_list" element={<Syllabus_List />} />
-            <Route
-              path="schools_registration"
-              element={<Schools_Registration />}
-            />
-            <Route path="class_form" element={<Class_Form />} />
-            <Route path="class_list" element={<Class_List />} />
-            <Route path="fees_structure" element={<Fee_Structure />} />
-            <Route path="fees_voucher" element={<Fee_Voucher />} />
-            <Route path="fees_submission" element={<Fee_Submission />} />
-            <Route path="admission_form" element={<Admission />} />
-            <Route path="exam_schedule" element={<Exam_Schedule />} />
-            <Route path="exam_result" element={<Exam_Result />} />
-          </Route>
+        <Route index element={<Login />} />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/dashboard" element={<Nav />}>
+          <Route index element={<List_Students />} />
+          <Route path="student_registration" element={<Added_Students />} />
+          <Route path="student_list" element={<List_Students />} />
+          <Route path="teachers_registration" element={<Added_Teacher />} />
+          <Route path="teachers_list" element={<List_Teacher />} />
+          <Route path="subjects_add" element={<Added_Subjects />} />
+          <Route path="subjects_list" element={<List_Subjects />} />
+          <Route path="syllabus_form" element={<Syllabus_Form />} />
+          <Route path="syllabus_list" element={<Syllabus_List />} />
+          <Route
+            path="schools_registration"
+            element={<Schools_Registration />}
+          />
+          <Route path="class_form" element={<Class_Form />} />
+          <Route path="class_list" element={<Class_List />} />
+          <Route path="fees_structure" element={<Fee_Structure />} />
+          <Route path="fees_voucher" element={<Fee_Voucher />} />
+          <Route path="fees_submission" element={<Fee_Submission />} />
+          <Route path="admission_form" element={<Admission />} />
+          <Route path="exam_schedule" element={<Exam_Schedule />} />
+          <Route path="exam_result" element={<Exam_Result />} />
         </Route>
       </Routes>
     </>

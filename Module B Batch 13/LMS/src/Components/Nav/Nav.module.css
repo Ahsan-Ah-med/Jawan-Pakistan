@@ -32,6 +32,9 @@
 }
 .close {
   text-align: right;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 .overlay {
   position: absolute;
@@ -51,4 +54,15 @@
   width: 90px;
   display: flex;
   cursor: pointer;
+}
+.logout {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+.profile {
+  position: relative;
+}
+.childList{
+  margin-left: 10px;
 }

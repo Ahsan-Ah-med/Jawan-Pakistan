@@ -11,20 +11,33 @@ const InputField = ({
   requireds = false,
   id,
   style,
+  className = "",
+  name,
 }) => {
   const [showPass, setShowPass] = useState(false);
+
   return (
-    <div className={styles.input_wrapper} style={style}>
-      <label htmlFor={id}>{label}</label>
+    <div
+      className={`${styles.input_wrapper} ${
+        type === "radio" ? "flex flex-nowrap gap-2" : ""
+      }`}
+      style={style}
+    >
+      <label htmlFor={id} className={type === "radio" ? "w-fit" : ""}>
+        {label}
+      </label>
       <input
         id={id}
         placeholder={placeholder}
         required={requireds}
-        type={type == "password" ? (showPass ? "text" : "password") : type}
+        type={type === "password" ? (showPass ? "text" : "password") : type}
         value={value}
-        onChange={onChange} // Use correct prop name
+        onChange={onChange}
+        className={`${className} ${type === "radio" ? "w-fit" : ""}`}
+        name={name}
+        checked={type === "radio" && value ? value === id : undefined} // Only apply `checked` for radio inputs
       />
-      {type == "password" && (
+      {type === "password" && (
         <>
           {!showPass ? (
             <FaEyeSlash onClick={() => setShowPass(true)} />

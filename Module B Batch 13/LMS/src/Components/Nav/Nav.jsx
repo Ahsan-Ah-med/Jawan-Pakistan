@@ -11,6 +11,7 @@ import { auth } from "../../Config/Firebase";
 
 const Nav = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [profile, setProfile] = useState(false);
   const navigate = useNavigate();
   const handleLogout = async () => {
     await signOut(auth)
@@ -244,10 +245,12 @@ const Nav = () => {
             </div>
           </div>
           <div className={styles.profile}>
-            <CgProfile />
-            <div className={styles.logout}>
-              <Button label={"Logout"} onClick={handleLogout} id={"logout"} />
-            </div>
+            <CgProfile onClick={() => setProfile(!profile)} />
+            {profile && (
+              <div className={styles.logout}>
+                <Button label={"Logout"} onClick={handleLogout} id={"logout"} />
+              </div>
+            )}
           </div>
         </div>
       </div>
