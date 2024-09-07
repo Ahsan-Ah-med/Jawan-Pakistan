@@ -5,10 +5,22 @@ import { CgProfile } from "react-icons/cg";
 import { CgCloseO } from "react-icons/cg";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import Button from "../Button/Button";
+import { signOut } from "firebase/auth";
+import { auth } from "../../Config/Firebase";
 
 const Nav = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const navigate = useNavigate();
+  const handleLogout = async () => {
+    await signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
   return (
     <>
       <div className={styles.container}>
@@ -227,12 +239,15 @@ const Nav = () => {
             <div className={styles.openMenu}>
               <RiMenuFold2Fill onClick={() => setOpenDrawer(!openDrawer)} />
             </div>
-            <div className={styles.logo} onClick={()=>navigate('/dashboard')}>
+            <div className={styles.logo} onClick={() => navigate("/dashboard")}>
               <img src={logo} />
             </div>
           </div>
           <div className={styles.profile}>
             <CgProfile />
+            <div className={styles.logout}>
+              <Button label={"Logout"} onClick={handleLogout} id={"logout"} />
+            </div>
           </div>
         </div>
       </div>
